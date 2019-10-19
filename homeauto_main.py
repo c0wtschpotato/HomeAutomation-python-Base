@@ -8,7 +8,8 @@ config = configparser.ConfigParser()
 initcfg = configparser.ConfigParser()
 initcfg.read('cfg.ini')
 
-rmSendPath = "sudo python python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --send "
+# old send path rmSendPath = "sudo python python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --send "
+rmSendPath = "sudo python /home/pi/python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --send "
 
 def cfgcompare():##Reads cfg for changes to apply
         config.read("cfg.ini")
@@ -26,7 +27,7 @@ def cfgcompare():##Reads cfg for changes to apply
 def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type and way to proceed
         
         if type == "rf":
-                os.system("sudo raspberry-remote/./send "+str(section)[10:][:-1]+ " "+str(key)+" "+str(value))
+                os.system("sudo /home/pi/raspberry-remote/./send "+str(section)[10:][:-1]+ " "+str(key)+" "+str(value))
                 
                 
         if type == "ir":
