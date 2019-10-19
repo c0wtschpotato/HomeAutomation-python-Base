@@ -6,13 +6,13 @@ import configparser
 
 config = configparser.ConfigParser()
 initcfg = configparser.ConfigParser()
-initcfg.read('cfg.ini')
+initcfg.read('/home/pi/HomeAutomation-python-Base/cfg.ini')
 
 # old send path rmSendPath = "sudo python python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --send "
 rmSendPath = "sudo python /home/pi/python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --send "
 
 def cfgcompare():##Reads cfg for changes to apply
-        config.read("cfg.ini")
+        config.read("/home/pi/HomeAutomation-python-Base/cfg.ini")
         
         for section in initcfg.sections():
                 
