@@ -3,10 +3,10 @@ import configparser
 
 ##learnfile sudo python python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --learn --learnfile python-broadlink/cli/philips-up.vol_change
 
-
+cfgpath = "/var/lib/snips/skills/Snips-HomA/cfg.ini"
 config = configparser.ConfigParser()
 initcfg = configparser.ConfigParser()
-initcfg.read('/home/pi/HomeAutomation-python-Base/cfg.ini')
+initcfg.read(cfgpath)
 
 # old send path rmSendPath = "sudo python python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --send "
 rmSendPath = "sudo python /home/pi/python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --send "
@@ -54,12 +54,12 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                         os.system(rmSendPath+"@python-broadlink/cli/couchled-down.brightness")
 
                                 config = configparser.ConfigParser()
-                                config.read(os.path.join(os.getcwd(), 'cfg.ini'))
+                                config.read(os.path.join(os.getcwd(), cfgpath))
                                 config['philips']['vol_up'] = '0'
                                 config['philips']['vol_down'] = '0'     
                                 config['couchled']['brightness_up'] = '0'
                                 config['couchled']['brightness_down'] = '0'             
-                                with open('cfg.ini', 'w') as configfile:
+                                with open(cfgpath, 'w') as configfile:
                                         config.write(configfile)
 
 
@@ -67,7 +67,7 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                         os.system(rmSendPath+"@python-broadlink/cli/"+str(section)[10:][:-1]+"-"+str(value)+"."+str(key))
         # if type == "software":
         global initcfg
-        initcfg.read('cfg.ini')
+        initcfg.read(cfgpath)
 while True:
 
 
