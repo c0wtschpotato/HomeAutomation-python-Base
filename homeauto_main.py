@@ -54,7 +54,7 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                         os.system(rmSendPath+"@/home/pi/python-broadlink/cli/couchled-down.brightness")
 
                                 config = configparser.ConfigParser()
-                                # config.read(os.path.join(os.getcwd(), cfgpath))
+                                config.read(os.path.join(os.getcwd(), cfgpath))
                                 config['philips']['vol_up'] = '0'
                                 config['philips']['vol_down'] = '0'     
                                 config['couchled']['brightness_up'] = '0'
