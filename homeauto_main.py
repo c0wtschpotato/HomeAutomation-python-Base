@@ -60,7 +60,7 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                                 return
                                         else:
                                                 for i in range(curr_channel,5):
-                                                        os.system(rmSendPath+"@/home/pi/python-broadlink/cli/couchled-down.brightness")
+                                                        os.system(rmSendPath+"@/home/pi/python-broadlink/cli/couchled-switch.source")
                                                         time.sleep(0.1)
                                                         i = i+1
                                                         if i == curr_channel:
