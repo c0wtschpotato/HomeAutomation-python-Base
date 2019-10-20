@@ -52,18 +52,21 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                 if key == "brightness_down":    
                                         print("brightness_down")                                        
                                         os.system(rmSendPath+"@/home/pi/python-broadlink/cli/couchled-down.brightness")
-                                if key == "hdmi" or key == "aux":##actuellen channel holen und pushes bis hdmi hochrechnen
-                                        if key == "hdmi":
-                                                targetchannel = 0
-                                        if key == "aux":
-                                                targetchannel = 5
+                                if key == "targetchannel":##actuellen channel holen und pushes bis hdmi hochrechnen
+
                                         curr_channel = int(config["philips"]["targetchannel"])#0 hdmi, 1 fm, 2 bt, 3 apps, 4bd in, 5 aux
                                         if curr_channel == 0:## ist bereits current channel
                                                 return
                                         else:
                                                 for i in range(curr_channel,5):
                                                         os.system(rmSendPath+"@/home/pi/python-broadlink/cli/couchled-down.brightness")
+                                                        time.sleep(0.1)
                                                         i = i+1
+                                                        if i == curr_channel:
+                                                                return
+                                                        if i == 5:
+                                                                i == 0
+
                                                 os.system(rmSendPath+"@/home/pi/python-broadlink/cli/couchled-down.brightness")
                                 config = configparser.ConfigParser()
                                 config.read(os.path.join(os.getcwd(), cfgpath))
