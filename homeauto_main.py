@@ -42,19 +42,19 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                 
                                 if key == "vol_up":
                                         print("volume up")
-                                        os.system(rmSendPath+"@python-broadlink/cli/"+str(section)[10:][:-1]+"-up.vol_change")
+                                        os.system(rmSendPath+"@/home/pi/python-broadlink/cli/"+str(section)[10:][:-1]+"-up.vol_change")
                                 if key == "vol_down":
                                         print("volume down")
-                                        os.system(rmSendPath+"@python-broadlink/cli/"+str(section)[10:][:-1]+"-down.vol_change")
+                                        os.system(rmSendPath+"@/home/pi/python-broadlink/cli/"+str(section)[10:][:-1]+"-down.vol_change")
                                 if key == "brightness_up":      
                                         print("brightness_up")          
-                                        os.system(rmSendPath+"@python-broadlink/cli/couchled-up.brightness")
+                                        os.system(rmSendPath+"@/home/pi/python-broadlink/cli/couchled-up.brightness")
                                 if key == "brightness_down":    
                                         print("brightness_down")                                        
-                                        os.system(rmSendPath+"@python-broadlink/cli/couchled-down.brightness")
+                                        os.system(rmSendPath+"@/home/pi/python-broadlink/cli/couchled-down.brightness")
 
                                 config = configparser.ConfigParser()
-                                config.read(os.path.join(os.getcwd(), cfgpath))
+                                # config.read(os.path.join(os.getcwd(), cfgpath))
                                 config['philips']['vol_up'] = '0'
                                 config['philips']['vol_down'] = '0'     
                                 config['couchled']['brightness_up'] = '0'
