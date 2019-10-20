@@ -10,7 +10,7 @@ initcfg.read(cfgpath)
 print initcfg.sections()
 # old send path rmSendPath = "sudo python python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --send "
 rmSendPath = "sudo python /home/pi/python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --send "
-
+syn_IR = ["vol_up","vol_down","brightness_up", "brightness_down","hdmi","aux"]
 def cfgcompare():##Reads cfg for changes to apply
         config.read(cfgpath)
         
@@ -33,7 +33,7 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
         if type == "ir":
                 print("in ir")
                 # print(rmSendPath+"@python-broadlink/cli/"+str(section)[10:][:-1]+"-"+str(key)+"."+str(value))
-                if key == "vol_up" or key == "vol_down" or key == "brightness_up" or key == "brightness_down":##if its volume change for philips
+                if key in syn_IR:##if its volume change for philips
                         
                         if int(value)> 10:
                                 value = "10"
