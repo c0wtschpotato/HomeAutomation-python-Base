@@ -10,7 +10,7 @@ initcfg.read(cfgpath)
 print initcfg.sections()
 # old send path rmSendPath = "sudo python python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --send "
 rmSendPath = "sudo python /home/pi/python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --send "
-syn_IR = ["vol_up","vol_down","brightness_up", "brightness_down","hdmi","aux"]
+syn_IR = ["vol_up","vol_down","brightness_up", "brightness_down","targetchannel"]
 def cfgcompare():##Reads cfg for changes to apply
         config.read(cfgpath)
         
