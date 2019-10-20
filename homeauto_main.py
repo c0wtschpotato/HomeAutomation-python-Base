@@ -64,7 +64,7 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
 
 
                 else:
-                        os.system(rmSendPath+"@python-broadlink/cli/"+str(section)[10:][:-1]+"-"+str(value)+"."+str(key))
+                        os.system(rmSendPath+"@/home/pi/python-broadlink/cli/"+str(section)[10:][:-1]+"-"+str(value)+"."+str(key))
         # if type == "software":
         global initcfg
         initcfg.read(cfgpath)
