@@ -42,10 +42,10 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                 
                                 if key == "vol_up":
                                         print("volume up")
-                                        os.system(rmSendPath+"@/home/pi/python-broadlink/cli/"+str(section)[10:][:-1]+"-up.vol_change")
+                                        os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-up.vol_change")
                                 if key == "vol_down":
                                         print("volume down")
-                                        os.system(rmSendPath+"@/home/pi/python-broadlink/cli/"+str(section)[10:][:-1]+"-down.vol_change")
+                                        os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-down.vol_change")
                                 if key == "brightness_up":      
                                         print("brightness_up")          
                                         os.system(rmSendPath+"@/home/pi/python-broadlink/cli/couchled-up.brightness")
