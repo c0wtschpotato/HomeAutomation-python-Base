@@ -53,7 +53,7 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                         print("brightness_down")                                        
                                         os.system(rmSendPath+"@/home/pi/python-broadlink/cli/couchled-down.brightness")
                                 if key == "targetchannel":##actuellen channel holen und pushes bis hdmi hochrechnen
-
+                                        config.read(cfgpath)
                                         curr_channel = int(config["philips"]["targetchannel"])#0 hdmi, 1 fm, 2 bt, 3 apps, 4bd in, 5 aux
                                         if curr_channel == 0:## ist bereits current channel
                                                 return
