@@ -56,8 +56,9 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                         config = configparser.ConfigParser()
                                         config.read(cfgpath)
                                         curr_channel = int(config["philips"]["channel"])#0 hdmi, 1 fm, 2 bt, 3 apps, 4bd in, 5 aux
+                                        targetchannel =  int(config["philips"]["targetchannel"])
                                         if curr_channel == 0:## ist bereits current channel
-                                                print("already on targetchannel"+str(curr_channel)+ " of "+str(key))
+                                                print("already on targetchannel"+str(curr_channel)+ " of "+str(targetchannel))
                                                 
                                         else:
                                                 print ("started from "+str(curr_channel)+ " to ")
@@ -67,7 +68,7 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                                         time.sleep(0.5)
                                                         i = i+1
                                                         print("switch to"+ str(i))
-                                                        if i == key:
+                                                        if i == targetchannel:
                                                                 print("channel bereits erreicht")
                                                                 
                                                         os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-switch.source")
