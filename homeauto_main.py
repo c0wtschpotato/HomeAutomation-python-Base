@@ -64,6 +64,7 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                                         os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-switch.source")
                                                         time.sleep(0.5)
                                                         i = i+1
+                                                        print("on channel"+ str(i))
                                                         if i == curr_channel:
                                                                 return
                                                         if i == 5:
