@@ -63,6 +63,7 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                                 for i in range(curr_channel,5):
                                                         os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-switch.source")
                                                         time.sleep(0.5)
+y
                                                         i = i+1
                                                         if i == curr_channel:
                                                                 return
