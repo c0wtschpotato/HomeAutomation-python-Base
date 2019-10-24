@@ -73,6 +73,7 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                                 config["philips"]["channel"] = config["philips"]["targetchannel"]
                                                 with open(cfgpath, 'w') as configfile:
                                                         config.write(configfile)
+                                                return
 
                                                 
                                 config = configparser.ConfigParser()
