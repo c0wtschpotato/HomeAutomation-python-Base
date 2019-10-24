@@ -57,6 +57,7 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                         config.read(cfgpath)
                                         curr_channel = int(config["philips"]["targetchannel"])#0 hdmi, 1 fm, 2 bt, 3 apps, 4bd in, 5 aux
                                         if curr_channel == 0:## ist bereits current channel
+                                                print("already on targetchannel")
                                                 return
                                         else:
                                                 for i in range(curr_channel,5):
@@ -67,8 +68,7 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                                                 return
                                                         if i == 5:
                                                                 i == 0
-                                                        print("channel"+str(i)+" von 5")
-                                                config.read(os.path.join(os.getcwd(), cfgpath))
+y                                               config.read(os.path.join(os.getcwd(), cfgpath))
                                                 config["philips"]["channel"] = config["philips"]["targetchannel"]
                                                 with open(cfgpath, 'w') as configfile:
                                                         config.write(configfile)
