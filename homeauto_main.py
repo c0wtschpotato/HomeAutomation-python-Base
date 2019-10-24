@@ -55,18 +55,22 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                 if key == "targetchannel":##actuellen channel holen und pushes bis hdmi hochrechnen
                                         config = configparser.ConfigParser()
                                         config.read(cfgpath)
-                                        curr_channel = int(config["philips"]["targetchannel"])#0 hdmi, 1 fm, 2 bt, 3 apps, 4bd in, 5 aux
+                                        curr_channel = int(config["philips"]["channel"])#0 hdmi, 1 fm, 2 bt, 3 apps, 4bd in, 5 aux
                                         if curr_channel == 0:## ist bereits current channel
                                                 print("already on targetchannel")
                                                 return
                                         else:
+                                                print ("started from "+str(curr_channel)+ " to ")
+
                                                 for i in range(curr_channel,5):
-                                                        os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-switch.source")
+                                                       
                                                         time.sleep(0.5)
                                                         i = i+1
-                                                        print("on channel"+ str(i))
-                                                        if i == curr_channel:
+                                                        print("switch to"+ str(i))
+                                                        if i == key:
+                                                                print("channel bereits erreicht")
                                                                 return
+                                                        os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-switch.source")
                                                         if i == 5:
                                                                 i == 0
                                                 config.read(os.path.join(os.getcwd(), cfgpath))
