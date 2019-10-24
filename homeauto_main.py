@@ -63,7 +63,7 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                         else:
                                                 print ("started from "+str(curr_channel)+ " to ")
 
-                                                for i in range(curr_channel,5):
+                                                for i in range(curr_channel,6):
                                                         os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-switch.source")
 
                                                         time.sleep(1)
@@ -73,8 +73,8 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                                                 print("channel bereits erreicht")
                                                                 break
 
-                                                        if i == 5:
-                                                                # i = 0
+                                                        if i == 6:
+                                                                i = 0
                                                                 print("reached 5")
                                                 config.read(os.path.join(os.getcwd(), cfgpath))
                                                 config["philips"]["channel"] = config["philips"]["targetchannel"]
