@@ -64,15 +64,15 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                                 print ("started from "+str(curr_channel)+ " to ")
 
                                                 for i in range(curr_channel,5):
-                                                       
-                                                        time.sleep(0.5)
+                                                        os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-switch.source")
+
+                                                        time.sleep(1)
                                                         i = i+1
                                                         print("switch to"+ str(i))
                                                         if i == targetchannel:
                                                                 print("channel bereits erreicht")
                                                                 break
-                                                                
-                                                        os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-switch.source")
+
                                                         if i == 5:
                                                                 # i = 0
                                                                 print("reached 5")
