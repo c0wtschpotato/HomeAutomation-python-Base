@@ -57,7 +57,7 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                         config.read(cfgpath)
                                         curr_channel = int(config["philips"]["channel"])#0 hdmi, 1 fm, 2 bt, 3 apps, 4bd in, 5 aux
                                         if curr_channel == 0:## ist bereits current channel
-                                                print("already on targetchannel")
+                                                print("already on targetchannel"+str(curr_channel)+ " of "+str(key))
                                                 
                                         else:
                                                 print ("started from "+str(curr_channel)+ " to ")
