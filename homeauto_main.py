@@ -74,6 +74,7 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
                                                         os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-switch.source")
                                                         if i == 5:
                                                                 # i = 0
+                                                                print("reached 5")
                                                 config.read(os.path.join(os.getcwd(), cfgpath))
                                                 config["philips"]["channel"] = config["philips"]["targetchannel"]
                                                 with open(cfgpath, 'w') as configfile:
