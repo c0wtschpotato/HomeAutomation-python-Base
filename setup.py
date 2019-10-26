@@ -15,7 +15,6 @@ os.system("sudo apt-get install install libzbar-dev libzbar0 libffi-dev libssl-d
 print ("installing configparser")
 os.system("sudo pip install configparser")
 print ("installing git and python broadlink")
-os.system ("sudo apt-get install git")
 os.system("sudo git clone https://github.com/mjg59/python-broadlink")
 r  = os.system("sudo chmod +x /home/pi/python-broadlink/setup.py")
 if r == 0:
