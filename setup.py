@@ -12,8 +12,9 @@ from termcolor import colored
 print ("installing depencies")
 os.system("sudo apt-get install install libzbar-dev libzbar0 libffi-dev libssl-dev wiringpi")
 
-print ("installing configparser")
+print ("installing configparser & adafruit ws2801 driver")
 os.system("sudo pip install configparser")
+o.system("sudo pip install Adafruit_WS2801")
 print ("installing git and python broadlink")
 os.system("sudo git clone https://github.com/mjg59/python-broadlink")
 r  = os.system("sudo chmod +x /home/pi/python-broadlink/setup.py")
