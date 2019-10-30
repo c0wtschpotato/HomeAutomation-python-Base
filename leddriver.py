@@ -9,11 +9,10 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("HomA/ledstrip1/set_status")
 
 def on_message(client, userdata, msg):
-	print(msg)
-	print(msg.payload)
+	
 	if msg.topic == "HomA/ledstrip1/set_status":
 		print("ledstrip 1 status set: "+msg.payload)
-		
+
 		
 	if msg.topic =="HomA/ledstrip1/get_status":
 		client.publish(msg.topic,current_status)
