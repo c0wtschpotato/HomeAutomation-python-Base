@@ -18,7 +18,7 @@ def on_message(client, userdata, msg):
 	if msg.topic == "HomA/ledstrip1/get_status":
 		client.publish(msg.topic,current_status)
 		print("published status "+current_status)
-
+		msg.topic = ""##reset topic to prevent overload
 		
 
 
