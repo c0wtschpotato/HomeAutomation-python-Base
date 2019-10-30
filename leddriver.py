@@ -5,7 +5,7 @@ PORT = 1883
 current_status =""## init empty
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
-    client.subscribe("HomA/ledstrip1")
+    client.subscribe("HomA/ledstrip1/get_status")
     client.subscribe("HomA/ledstrip1/set_status")
 
 def on_message(client, userdata, msg):
