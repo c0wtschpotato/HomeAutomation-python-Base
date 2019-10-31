@@ -15,7 +15,7 @@ def on_message(client, userdata, msg):
 		current_status = msg.payload
 
 		
-	if msg.topic == "HomA/ledstrip1/get_status" 
+	if msg.topic == "HomA/ledstrip1/get_status" :
 
 		if msg.payload != "get":
 			print("status called with "+msg.payload)
