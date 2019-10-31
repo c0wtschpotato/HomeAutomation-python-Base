@@ -5,9 +5,7 @@ import ws2801effects as ws
 PIXEL_COUNT = 50
 SPI_PORT   = 0
 SPI_DEVICE = 0
-pixels = Adafruit_WS2801.WS2801Pixels(PIXEL_COUNT, spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE), gpio=GPIO)
-
-
+pixels = ws.pixels
 
 import paho.mqtt.client as mqtt
 HOST = 'localhost'
