@@ -26,12 +26,15 @@ def on_connect(client, userdata, flags, rc):
     print("Connected to {0} with result code {1}".format(HOST, rc))
     client.subscribe("hermes/hotword/default/detected")
     client.subscribe("hermes/hotword/toggleOn")
+    client.subscribe("HomA/ledstrip1/get_status")
+    client.subscribe("HomA/ledstrip1/set_status")
 
 def on_message(client, userdata, msg):
     if msg.topic == 'hermes/hotword/default/detected':
         print("Wakeword detected!")
         global do_run
         do_run = True
+        client.publish("HomA/ledstrip1/set_status","wakeword")
         t = threading.Thread(target=loopfunc,args=()).start()
     elif msg.topic == "hermes/hotword/toggleOn":
         print("Finished listening")
