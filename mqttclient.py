@@ -14,6 +14,7 @@ PORT = 1883
 def loopfunc():
         while do_run == True:
                 ws.running_on_chain(pixels,(44,44,44),(255,0,0),5,0.05)
+                print("pixels set")
                 pixels.clear()
                 pixels.show()
                 if do_run == False:
