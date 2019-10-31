@@ -13,7 +13,7 @@ def on_message(client, userdata, msg):
 	if msg.topic == "HomA/ledstrip1/set_status":
 		print("ledstrip 1 status set: "+msg.payload)
 		current_status = msg.payload
-
+		client.publish("HomA/ledstrip1",current_status)
 		
 	if msg.topic == "HomA/ledstrip1/get_status" :
 
@@ -36,3 +36,4 @@ client.connect(HOST, 1883, 60)
 client.loop_forever()
 
 
+####textline just to push 
