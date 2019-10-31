@@ -37,6 +37,8 @@ def set_leds_to_input(sentpayload):
 	if obj["function"] == "lightning":
 		print("starting function lightning")
 		ws.lightning(ws.pixels)
+	if obj["running_on_chain"]:
+		ws.running_on_chain(ws.pixels,(obj["basecolor"]["r"],obj["basecolor"]["g"],obj["basecolor"]["b"],(obj["runningcolor"]["r"],obj["runningcolor"]["g"],obj["runningcolor"]["b"],obj["number_of_running"],obj["sleep_time"])
 
 
 client = mqtt.Client()
