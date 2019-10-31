@@ -1,7 +1,7 @@
 
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
+import ws2801effects as ws
 PIXEL_COUNT = 50
 SPI_PORT   = 0
 SPI_DEVICE = 0
@@ -15,7 +15,7 @@ PORT = 1883
 
 def loopfunc():
         while do_run == True:
-                ws2801effects.running_on_chain(pixels,(44,44,44),(255,0,0),5,0.05)
+                ws.running_on_chain(pixels,(44,44,44),(255,0,0),5,0.05)
                 pixels.clear()
                 pixels.show()
                 if do_run == False:
