@@ -36,7 +36,7 @@ def set_leds_to_input(sentpayload):
 	print(obj["function"])
 	if obj["function"] == "lightning":
 		print("starting function lightning")
-		ws.lightning()
+		ws.lightning(ws.pixels)
 
 
 client = mqtt.Client()
