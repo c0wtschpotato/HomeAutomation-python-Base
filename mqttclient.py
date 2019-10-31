@@ -1,7 +1,7 @@
 
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import /var/libv/snips/skills/Snips-HomA/ws2801effects as ws 
+
 PIXEL_COUNT = 50
 SPI_PORT   = 0
 SPI_DEVICE = 0
