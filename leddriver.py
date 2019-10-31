@@ -20,7 +20,7 @@ def on_message(client, userdata, msg):
 		if msg.payload != "get":
 			print("status called with "+msg.payload)
 			
-		elif: msg.payload =="get":
+		elif msg.payload =="get":
 			print("published status "+current_status)
 			client.publish(msg.topic,current_status)
 
