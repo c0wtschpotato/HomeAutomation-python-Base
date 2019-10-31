@@ -1,5 +1,6 @@
 
-
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 PIXEL_COUNT = 50
 SPI_PORT   = 0
 SPI_DEVICE = 0
