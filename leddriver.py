@@ -31,7 +31,7 @@ def on_message(client, userdata, msg):
 			client.publish(msg.topic,current_status)
 
 def set_leds_to_input(json):
-	print ("in set leds to input")
+	
 	obj = json.loads(json)
 	print(obj["function"])
 	if obj["function"] == "lightning":
