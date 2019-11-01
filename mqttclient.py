@@ -14,10 +14,10 @@ HOST = 'localhost'
 PORT = 1883
 wakewordasjson ={
                 "function":"running_on_chain",
-                "basecolor":{"r":55,"g":55,"b":55},
-                "runningcolor":{"r":255,"g":0,"b":0},
-                "number_of_running":5,
-                "sleep_time":0.1
+                "basecolor":{"r":"55","g":"55","b":"55"},
+                "runningcolor":{"r":"255","g":"0","b":"0"},
+                "number_of_running":"5",
+                "sleep_time":"0.1"
                 }
 
 settonormal = {
