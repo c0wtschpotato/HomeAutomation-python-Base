@@ -10,7 +10,7 @@ current_status =""## init empty
 last_status =""##empty, saves current to last before changing current
 
 def loopfunc():###function used with threading to loop certain effects
-        
+	global last_status
         while do_run == True:
                 ws.running_on_chain(ws.pixels,(44,44,44),(255,0,0),5,0.05)               
                 ws.pixels.show()
