@@ -19,6 +19,7 @@ def loopfunc():###function used with threading to loop certain effects
                         ws.pixels.show()
 #                       break
                 print("do run true")
+                time.slep(3)### stopper to stop flooding of console for debugging
         print("do run false")
 
 
@@ -63,6 +64,7 @@ def on_message(client, userdata, msg):
         t = threading.Thread(target=loopfunc,args=()).start()
         # set_leds_to_input(payload)
 	if msg.topic == "hermes/hotword/toggleOn":
+		print("toggle on detected, turning off lights.")
 	    global do_run
 	    do_run = False
 	    t.join()
