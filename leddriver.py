@@ -1,17 +1,32 @@
 import paho.mqtt.client as mqtt
 import ws2801effects as ws
 import json
-
+import threading
 
 HOST = '192.168.1.103'
 PORT = 1883
 current_status =""## init empty
 
 
+def loopfunc():###function used with threading to loop certain effects
+        
+        while do_run == True:
+                ws.running_on_chain(pixels,(44,44,44),(255,0,0),5,0.05)               
+                pixels.show()
+                if do_run == False:
+                        pixels.clear()
+                        pixels.show()
+#                       break
+                print("do run true")
+        print("do run false")
+
+
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
-    client.subscribe("HomA/ledstrip1/get_status")
+    client.subscribe("HomA/ledstrip1/get_status")## for internal comm
     client.subscribe("HomA/ledstrip1/set_status")
+    client.subscribe("hermes/hotword/default/detected")##gets hermes action from snips and starts led strip
+    client.subscribe("hermes/hotword/toggleOn")
 
 def on_message(client, userdata, msg):
 	global current_status
@@ -29,6 +44,20 @@ def on_message(client, userdata, msg):
 		elif msg.payload =="get":
 			print("published status "+current_status)
 			client.publish(msg.topic,current_status)
+
+
+	if msg.topic = ="hermes/hotword/default/detected":
+		### since no payload is transmitted here we create the wanted json object in this function
+		fake_payload = ={
+                "function":"running_on_chain",
+                "basecolor":{"r":"55","g":"55","b":"55"},
+                "runningcolor":{"r":"255","g":"0","b":"0"},
+                "number_of_running":"5",
+                "sleep_time":"0.1"
+                }
+        print("LED-Driver detected hotword from hermes")
+		set_leds_to_input(json.dumps(fake_payload))
+
 
 def set_leds_to_input(sentpayload):
 	print ("in set leds to input")
