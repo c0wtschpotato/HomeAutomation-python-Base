@@ -17,7 +17,7 @@ def loopfunc():###function used with threading to loop certain effects
                 if do_run == False:
 					if last_status !="free":
 						last_status = json.loads(last_status)
-						
+						set_leds_to_input(last_status)
 					else:
 						ws.pixels.clear()
 						ws.pixels.show()
