@@ -26,7 +26,7 @@ def loopfunc(laststatus):###function used with threading to loop certain effects
 				else:
 					ws.pixels.clear()
 					ws.pixels.show()
-	                break
+					break
 	        # print("do run true")
 		print(laststatus)
 	        # ws.time.sleep(3)### stopper to stop flooding of console for debugging
