@@ -12,11 +12,11 @@ current_status =""## init empty
 def loopfunc():###function used with threading to loop certain effects
         
         while do_run == True:
-                ws.running_on_chain(pixels,(44,44,44),(255,0,0),5,0.05)               
-                pixels.show()
+                ws.running_on_chain(ws.pixels,(44,44,44),(255,0,0),5,0.05)               
+                ws.pixels.show()
                 if do_run == False:
-                        pixels.clear()
-                        pixels.show()
+                        ws.pixels.clear()
+                        ws.pixels.show()
 #                       break
                 print("do run true")
         print("do run false")
