@@ -15,7 +15,7 @@ def loopfunc():###function used with threading to loop certain effects
                 ws.running_on_chain(ws.pixels,(44,44,44),(255,0,0),5,0.05)               
                 ws.pixels.show()
                 if do_run == False:
-                	if last_status !="free":
+					if last_status !="free":
 						client.publish("HomA/ledstrip1/set_status", last_status)
 						print("setting strip back to last status "+ last_status["function"])
 					else:
