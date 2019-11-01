@@ -37,7 +37,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
 	global current_status, last_status
 	# last_status = current_status
-	print(msg.topic + " "+ msg.payload)
+	# print(msg.topic + " "+ msg.payload)
 	if msg.topic == "HomA/ledstrip1/set_status":
 		print("ledstrip 1 status set: "+msg.payload+ "\n\n")
 		current_status = msg.payload
