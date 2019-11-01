@@ -11,15 +11,18 @@ current_status =""## init empty
 ##empty, saves current to last before changing current
 
 def loopfunc(laststatus):###function used with threading to loop certain effects
-	
+	i = 0
         while do_run == True:
         	print("im in loop")
-                ws.running_on_chain(ws.pixels,(44,44,44),(255,0,0),5,0.05)
+        	i = i+1
+        	if i == 5:
+        		do_run = False
+        	ws.running_on_chain(ws.pixels,(44,44,44),(255,0,0),5,0.05)
                 if do_run == False:
 					if last_status !="free":
-						
+						print("hitting out laststatus")
 						set_leds_to_input(laststatus)
-						pass
+						break
 					else:
 						ws.pixels.clear()
 						ws.pixels.show()
