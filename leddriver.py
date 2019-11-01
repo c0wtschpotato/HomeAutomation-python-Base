@@ -17,7 +17,7 @@ def on_message(client, userdata, msg):
 	global current_status
 	if msg.topic == "HomA/ledstrip1/set_status":
 		print("ledstrip 1 status set: "+msg.payload)
-		current_status = msg.payload
+		current_status = msg.payload["function"]
 		client.publish("HomA/ledstrip1",current_status)
 		set_leds_to_input(current_status)
 		
