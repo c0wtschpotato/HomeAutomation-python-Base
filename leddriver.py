@@ -65,7 +65,7 @@ def on_message(client, userdata, msg):
 		fake_payload ={
 			"function":"running_on_chain",
 			"basecolor":{"r":"55","g":"55","b":"55"},
-			"runningcolor":{"r":"255","g":"0","b":"0"},
+			"runningcolor":{"r":"0","g":"255","b":"0"},
 			"number_of_running":"5",
 			"sleep_time":"0.1"
 			}
@@ -73,7 +73,7 @@ def on_message(client, userdata, msg):
 		payload = json.dumps(fake_payload)
 		# t = threading.Thread(target=loopfunc,args=()).start()
 
-		loopfunc(fake_payload)
+		loopfunc(current_status)
 		# client.publish("HomA/ledstrip1/set_status",current_status)
 		# set_leds_to_input(payload)
 	if msg.topic == "hermes/hotword/toggleOn":
