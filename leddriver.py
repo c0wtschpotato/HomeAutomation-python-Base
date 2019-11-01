@@ -19,7 +19,7 @@ def loopfunc():###function used with threading to loop certain effects
                         ws.pixels.show()
 #                       break
                 print("do run true")
-                ws.time.slep(3)### stopper to stop flooding of console for debugging
+                ws.time.sleep(3)### stopper to stop flooding of console for debugging
         print("do run false")
 
 
