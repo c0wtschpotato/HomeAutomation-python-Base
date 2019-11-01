@@ -47,7 +47,7 @@ def on_message(client, userdata, msg):
 		current_status = msg.payload
 		# client.publish("HomA/ledstrip1",current_status)###?! wtf
 		last_status = current_status
-		# set_leds_to_input(current_status)
+		set_leds_to_input(current_status)
 		# print("last know status was "+ last_status)
 		
 	if msg.topic == "HomA/ledstrip1/get_status" :
@@ -73,14 +73,14 @@ def on_message(client, userdata, msg):
 		payload = json.dumps(fake_payload)
 		# t = threading.Thread(target=loopfunc,args=()).start()
 
-		# loopfunc(current_status)
+		loopfunc(current_status)
 		# client.publish("HomA/ledstrip1/set_status",current_status)
 		# set_leds_to_input(payload)
 	if msg.topic == "hermes/hotword/toggleOn":
 		print("toggle on detected, stopping wake word animation")
 		global do_run		
 		do_run = False
-		client.publish("HomA/ledstrip1/set_status",current_status)		
+		# client.publish("HomA/ledstrip1/set_status",current_status)		
 		t.join()
 		
 	
