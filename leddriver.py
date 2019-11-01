@@ -8,6 +8,7 @@ current_status = ""
 HOST = '192.168.1.103'
 PORT = 1883
 current_status =""## init empty
+last_status = None
 ##empty, saves current to last before changing current
 
 def loopfunc(input_payload):###function used with threading to loop certain effects
@@ -19,6 +20,8 @@ def loopfunc(input_payload):###function used with threading to loop certain effe
 				if last_status !="free":
 					print("hitting out laststatus")
 					set_leds_to_input()
+					return
+				elif last_status == None:
 					return
 	return
 
