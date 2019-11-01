@@ -42,7 +42,9 @@ def set_leds_to_input(sentpayload):
 		print(obj["basecolor"])
 		print(obj["runningcolor"]["r"])
 		print(typeof(obj["number_of_running"]))
-		ws.running_on_chain(ws.pixels,(obj["basecolor"]["r"],obj["basecolor"]["g"],obj["basecolor"]["b"]),(obj["runningcolor"]["r"],obj["runningcolor"]["g"],obj["runningcolor"]["b"]),obj["number_of_running"],obj["sleep_time"])
+		#ws.running_on_chain(ws.pixels,(obj["basecolor"]["r"],obj["basecolor"]["g"],obj["basecolor"]["b"]),(obj["runningcolor"]["r"],obj["runningcolor"]["g"],obj["runningcolor"]["b"]),obj["number_of_running"],obj["sleep_time"])
+
+		ws.running_on_chain(ws.pixels,(255,0,0),(0,255,0),5,0.1)
 
 
 client = mqtt.Client()
