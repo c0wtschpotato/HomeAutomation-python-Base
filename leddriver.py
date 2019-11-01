@@ -16,7 +16,7 @@ def loopfunc():###function used with threading to loop certain effects
                 ws.pixels.show()
                 if do_run == False:
 					if last_status !="free":
-						
+						status = json.dumps(last_status)
 						set_leds_to_input(last_status)
 					else:
 						ws.pixels.clear()
@@ -36,7 +36,7 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
 	global current_status, last_status
-	last_status = current_status
+	# last_status = current_status
 	print(msg.topic + " "+ msg.payload)
 	if msg.topic == "HomA/ledstrip1/set_status":
 		print("ledstrip 1 status set: "+msg.payload+ "\n\n")
@@ -44,7 +44,7 @@ def on_message(client, userdata, msg):
 		client.publish("HomA/ledstrip1",current_status)
 		last_status = current_status
 		set_leds_to_input(current_status)
-		print("last know status was "+ last_status)
+		# print("last know status was "+ last_status)
 		
 	if msg.topic == "HomA/ledstrip1/get_status" :
 		if msg.payload != "get":
