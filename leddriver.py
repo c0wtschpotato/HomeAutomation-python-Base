@@ -16,6 +16,7 @@ def loopfunc():###function used with threading to loop certain effects
                 ws.pixels.show()
                 if do_run == False:
 					if last_status !="free":
+						print("thread says object is \n"+last_status)
 						set_leds_to_input(last_status)
 						pass
 					else:
