@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import paho.mqtt.client as mqtt
 import ws2801effects as ws
 import json
