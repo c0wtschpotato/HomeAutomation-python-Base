@@ -42,6 +42,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
 	global current_status
 	global last_status
+	current_status = msg.payload
 	# last_status = current_status
 	# print(msg.topic + " "+ msg.payload)
 	if msg.topic == "HomA/ledstrip1/set_status":
@@ -73,8 +74,7 @@ def on_message(client, userdata, msg):
 		print("LED-Driver detected hotword from hermes")
 		payload = json.dumps(fake_payload)
 		# t = threading.Thread(target=loopfunc,args=()).start()
-		print(current_status)
-		input("status okay?")
+
 		loopfunc(current_status)
 		# client.publish("HomA/ledstrip1/set_status",current_status)
 		# set_leds_to_input(payload)
