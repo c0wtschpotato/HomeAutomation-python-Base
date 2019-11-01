@@ -25,7 +25,7 @@ def loopfunc():###function used with threading to loop certain effects
                 # print("do run true")
                 # ws.time.sleep(3)### stopper to stop flooding of console for debugging
         # print("do run false")
-        break
+        return
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
