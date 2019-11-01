@@ -56,7 +56,8 @@ def on_message(client, userdata, msg):
                 "sleep_time":"0.1"
                 }
         print("LED-Driver detected hotword from hermes")
-        set_leds_to_input(json.dumps(fake_payload))
+        payload = json.dumps(fake_payload)
+        set_leds_to_input(payload)
 
 
 def set_leds_to_input(sentpayload):
