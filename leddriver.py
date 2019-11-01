@@ -13,6 +13,7 @@ current_status =""## init empty
 def loopfunc(laststatus):###function used with threading to loop certain effects
 	
         while do_run == True:
+        	print("im in loop")
                 ws.running_on_chain(ws.pixels,(44,44,44),(255,0,0),5,0.05)
                 if do_run == False:
 					if last_status !="free":
@@ -64,7 +65,6 @@ def on_message(client, userdata, msg):
 		global do_run
 		do_run = True
 		print("LED-Driver detected hotword from hermes")
-		payload = json.dumps(fake_payload)
 		# t = threading.Thread(target=loopfunc,args=()).start()
 
 		loopfunc(current_status)
