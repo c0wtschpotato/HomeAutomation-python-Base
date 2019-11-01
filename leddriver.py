@@ -10,7 +10,7 @@ PORT = 1883
 current_status =""## init empty
 ##empty, saves current to last before changing current
 
-def loopfunc(laststatus):###function used with threading to loop certain effects
+def loopfunc():###function used with threading to loop certain effects
 	i = 0
 	while do_run == True:
 		print("im in loop")
@@ -64,13 +64,12 @@ def on_message(client, userdata, msg):
 		global current_status
 		### since no payload is transmitted here we create the wanted json object in this function
 		print("hotword first")
-		print(current_status)
 		global do_run
 		do_run = True
 		print("LED-Driver detected hotword from hermes")
 		# t = threading.Thread(target=loopfunc,args=()).start()
 		gayload =json.dumps()
-		loopfunc(current_status)
+		loopfunc()
 		print("right after loop")
 		# client.publish("HomA/ledstrip1/set_status",current_status)
 		# set_leds_to_input(payload)
