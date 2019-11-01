@@ -46,7 +46,7 @@ def on_message(client, userdata, msg):
 			client.publish(msg.topic,current_status)
 
 
-	if msg.topic =="hermes/hotword/default/detected":
+	if msg.topic =='hermes/hotword/default/detected':
 		### since no payload is transmitted here we create the wanted json object in this function
 		fake_payload =={
                 "function":"running_on_chain",
@@ -57,6 +57,7 @@ def on_message(client, userdata, msg):
                 }
         print("LED-Driver detected hotword from hermes")
         payload = json.dumps(fake_payload)
+        print(payload)
         set_leds_to_input(payload)
 
 
