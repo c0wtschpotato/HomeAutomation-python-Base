@@ -62,10 +62,10 @@ def on_message(client, userdata, msg):
         payload = json.dumps(fake_payload)
         t = threading.Thread(target=loopfunc,args=()).start()
         # set_leds_to_input(payload)
-        if msg.topic == "hermes/hotword/toggleOn":
-	    	global do_run
-	    	do_run = False
-	    	t.join()
+    if msg.topic == "hermes/hotword/toggleOn":
+	    global do_run
+	    do_run = False
+	    t.join()
 
 def set_leds_to_input(sentpayload):
 	print ("in set leds to input")
