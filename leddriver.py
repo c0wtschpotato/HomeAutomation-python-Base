@@ -41,14 +41,13 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
 	global current_status
-	global last_status
-	current_status = msg.payload
+	global last_status	
 	# last_status = current_status
 	# print(msg.topic + " "+ msg.payload)
 	if msg.topic == "HomA/ledstrip1/set_status":
 		print("ledstrip 1 status set: "+msg.payload+ "\n\n")
 		current_status = msg.payload
-		client.publish("HomA/ledstrip1",current_status)
+		# client.publish("HomA/ledstrip1",current_status)###?! wtf
 		last_status = current_status
 		set_leds_to_input(current_status)
 		# print("last know status was "+ last_status)
@@ -89,17 +88,14 @@ def on_message(client, userdata, msg):
 
 def set_leds_to_input(sentpayload):
 	print ("in set leds to input")
-	obj = json.loads(sentpayload)
-	# print(obj["function"])	
+	obj = json.loads(sentpayload)	
 	if obj["function"] == "lightning":
 		print("starting function lightning")
 		ws.lightning(ws.pixels)
+
 	if obj["function"] == "running_on_chain":
-		# print(obj["basecolor"])
-		# print(obj["runningcolor"])
-		# print(obj["number_of_running"])
-		# print(obj["sleep_time"])	
 		ws.running_on_chain(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])),(int(obj["runningcolor"]["r"]),int(obj["runningcolor"]["g"]),int(obj["runningcolor"]["b"])),int(obj["number_of_running"]),float(obj["sleep_time"]))
+		
 	if obj["function"] == "setalltocolor":
 		ws.setalltocolor(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])))
 
