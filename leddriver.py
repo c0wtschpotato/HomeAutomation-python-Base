@@ -12,22 +12,22 @@ PORT = 1883
 current_status =""## init empty
 last_status =""##empty, saves current to last before changing current
 
-def loopfunc():###function used with threading to loop certain effects
-	global last_status
+def loopfunc(laststatus):###function used with threading to loop certain effects
+	
         while do_run == True:
                 ws.running_on_chain(ws.pixels,(44,44,44),(255,0,0),5,0.05)               
                 ws.pixels.show()
                 if do_run == False:
 					if last_status !="free":
-						print("thread says object is \n"+last_status)
-						set_leds_to_input(last_status)
+						print("thread says object is \n"+laststatus)
+						set_leds_to_input(laststatus)
 						pass
 					else:
 						ws.pixels.clear()
 						ws.pixels.show()
 #                       break
                 # print("do run true")
-        	print(last_status)
+        	print(laststatus)
                 # ws.time.sleep(3)### stopper to stop flooding of console for debugging
         # print("do run false")
         return
@@ -73,7 +73,7 @@ def on_message(client, userdata, msg):
 		print("LED-Driver detected hotword from hermes")
 		payload = json.dumps(fake_payload)
 		# t = threading.Thread(target=loopfunc,args=()).start()
-		loopfunc()
+		loopfunc(laststatus)
 		# client.publish("HomA/ledstrip1/set_status",current_status)
 		# set_leds_to_input(payload)
 	if msg.topic == "hermes/hotword/toggleOn":
