@@ -14,12 +14,9 @@ last_status = None
 def loopfunc(input_payload):###function used with threading to loop certain effects
 	global do_run
 	while do_run == True:
-		print("im in loop")
 		ws.running_on_chain(ws.pixels,(0,0,250),(255,120,60),5,0.05)
 	        if do_run == False:
 				if last_status !="free":
-					print("hitting out laststatus")
-					print(last_status)
 					set_leds_to_input(last_status)
 					return
 				elif last_status == None:
