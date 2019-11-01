@@ -42,6 +42,7 @@ def on_message(client, userdata, msg):
 		print("ledstrip 1 status set: "+msg.payload+ "\n\n")
 		current_status = msg.payload
 		client.publish("HomA/ledstrip1",current_status)
+		last_status = current_status
 		set_leds_to_input(current_status)
 		print("last know status was "+ last_status)
 		
