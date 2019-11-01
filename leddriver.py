@@ -8,13 +8,12 @@ current_status = ""
 HOST = '192.168.1.103'
 PORT = 1883
 current_status =""## init empty
-last_status =""##empty, saves current to last before changing current
+##empty, saves current to last before changing current
 
 def loopfunc(laststatus):###function used with threading to loop certain effects
 	
         while do_run == True:
-                ws.running_on_chain(ws.pixels,(44,44,44),(255,0,0),5,0.05)               
-                ws.pixels.show()
+                ws.running_on_chain(ws.pixels,(44,44,44),(255,0,0),5,0.05)
                 if do_run == False:
 					if last_status !="free":
 						
@@ -39,10 +38,10 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
 	global current_status
-	global last_status	
 	# last_status = current_status
 	# print(msg.topic + " "+ msg.payload)
 	if msg.topic == "HomA/ledstrip1/set_status":
+		global current_status
 		print("ledstrip 1 status set: "+msg.payload+ "\n\n")
 		current_status = msg.payload
 		# client.publish("HomA/ledstrip1",current_status)###?! wtf
@@ -51,24 +50,19 @@ def on_message(client, userdata, msg):
 		# print("last know status was "+ last_status)
 		
 	if msg.topic == "HomA/ledstrip1/get_status" :
+		global current_status
 		if msg.payload != "get":
 			print("status called with "+msg.payload)			
 		elif msg.payload =="get":
 			print("published status "+current_status)
 			client.publish(msg.topic,current_status)
 	if msg.topic =='hermes/hotword/default/detected':
+		global current_status
 		### since no payload is transmitted here we create the wanted json object in this function
 		print("hotword first")
 		print(current_status)
 		global do_run
 		do_run = True
-		fake_payload ={
-			"function":"running_on_chain",
-			"basecolor":{"r":"55","g":"55","b":"55"},
-			"runningcolor":{"r":"0","g":"255","b":"0"},
-			"number_of_running":"5",
-			"sleep_time":"0.1"
-			}
 		print("LED-Driver detected hotword from hermes")
 		payload = json.dumps(fake_payload)
 		# t = threading.Thread(target=loopfunc,args=()).start()
@@ -77,6 +71,7 @@ def on_message(client, userdata, msg):
 		# client.publish("HomA/ledstrip1/set_status",current_status)
 		# set_leds_to_input(payload)
 	if msg.topic == "hermes/hotword/toggleOn":
+		global current_status
 		print("toggle on detected, stopping wake word animation")
 		global do_run		
 		do_run = False
