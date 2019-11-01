@@ -57,7 +57,7 @@ def on_message(client, userdata, msg):
                 }
         print("LED-Driver detected hotword from hermes")
         payload = json.dumps(fake_payload)
-        print(payload)
+        print("WATTAFUCK")
         set_leds_to_input(payload)
 
 
