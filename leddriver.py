@@ -66,12 +66,12 @@ def on_message(client, userdata, msg):
 		# set_leds_to_input(payload)
 	if msg.topic == "hermes/hotword/toggleOn":
 		print("toggle on detected, stopping wake word animation")
-		global do_run
-		
+		global do_run		
 		do_run = False
 		client.publish("HomA/ledstrip1/set_status",current_status)
 		t.join()
 		client.publish("Hom/ledstrip1/set_status", last_status)
+		print("setting strip back to last status "+ last_status["function"])
 	
 
 def set_leds_to_input(sentpayload):
