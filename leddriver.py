@@ -54,7 +54,7 @@ def on_message(client, userdata, msg):
 			client.publish(msg.topic,current_status)
 	if msg.topic =='hermes/hotword/default/detected':
 		### since no payload is transmitted here we create the wanted json object in this function
-		current_status = "wakeword"
+		
 		global do_run
 		do_run = True
 		fake_payload ={
@@ -67,14 +67,13 @@ def on_message(client, userdata, msg):
 		print("LED-Driver detected hotword from hermes")
 		payload = json.dumps(fake_payload)
 		t = threading.Thread(target=loopfunc,args=()).start()
-		client.publish("HomA/ledstrip1/set_status",current_status)
+		# client.publish("HomA/ledstrip1/set_status",current_status)
 		# set_leds_to_input(payload)
 	if msg.topic == "hermes/hotword/toggleOn":
 		print("toggle on detected, stopping wake word animation")
 		global do_run		
 		do_run = False
-		client.publish("HomA/ledstrip1/set_status",current_status)
-		
+		# client.publish("HomA/ledstrip1/set_status",current_status)		
 		t.join()
 		
 	
