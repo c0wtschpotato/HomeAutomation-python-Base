@@ -9,17 +9,16 @@ HOST = '192.168.1.103'
 PORT = 1883
 current_status =""## init empty
 ##empty, saves current to last before changing current
-def justsayshit():
-	print("im just sayin shit so we nknow anything works after all")
-def loopfunc(input_payload):###function used with threading to loop certain effects
 
+def loopfunc(input_payload):###function used with threading to loop certain effects
+	global do_run
 	while do_run == True:
 		print("im in loop")
 		ws.running_on_chain(ws.pixels,(0,0,250),(255,120,60),5,0.05)
 	        if do_run == False:
 				if last_status !="free":
 					print("hitting out laststatus")
-					set_leds_to_input(laststatus)
+					set_leds_to_input()
 					return
 					
 				else:
@@ -40,9 +39,7 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("hermes/hotword/toggleOn")
 
 def on_message(client, userdata, msg):
-	global current_status
-	# last_status = current_status
-	# print(msg.topic + " "+ msg.payload)
+	global do_run
 	if msg.topic == "HomA/ledstrip1/set_status":
 		global current_status
 		print("ledstrip 1 status set: "+msg.payload+ "\n\n")
@@ -63,7 +60,7 @@ def on_message(client, userdata, msg):
 		global current_status
 		### since no payload is transmitted here we create the wanted json object in this function
 		print("hotword first")
-		global do_run
+		
 		do_run = True
 		print("LED-Driver detected hotword from hermes")
 		################t = threading.Thread(target=loopfunc,args=()).start()
@@ -74,7 +71,6 @@ def on_message(client, userdata, msg):
 	if msg.topic == "hermes/hotword/toggleOn":
 		global current_status
 		print("toggle on detected, stopping wake word animation")
-		global do_run		
 		do_run = False
 		# client.publish("HomA/ledstrip1/set_status",current_status)		
 		t.join()
