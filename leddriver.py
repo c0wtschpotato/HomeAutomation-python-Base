@@ -1,6 +1,6 @@
 import paho.mqtt.client as mqtt
 import ws2801effects as ws
-import json, time
+import json
 import threading
 do_run = ""
 
@@ -19,7 +19,7 @@ def loopfunc():###function used with threading to loop certain effects
                         ws.pixels.show()
 #                       break
                 print("do run true")
-                time.slep(3)### stopper to stop flooding of console for debugging
+                ws.time.slep(3)### stopper to stop flooding of console for debugging
         print("do run false")
 
 
