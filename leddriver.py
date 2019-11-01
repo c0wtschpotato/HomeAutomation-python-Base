@@ -2,7 +2,7 @@ import paho.mqtt.client as mqtt
 import ws2801effects as ws
 import json
 import threading
-do_run
+do_run = ""
 
 HOST = '192.168.1.103'
 PORT = 1883
