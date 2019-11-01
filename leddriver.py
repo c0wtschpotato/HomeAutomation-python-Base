@@ -15,8 +15,12 @@ def loopfunc():###function used with threading to loop certain effects
                 ws.running_on_chain(ws.pixels,(44,44,44),(255,0,0),5,0.05)               
                 ws.pixels.show()
                 if do_run == False:
-                        ws.pixels.clear()
-                        ws.pixels.show()
+                	if last_status !="free":
+						client.publish("HomA/ledstrip1/set_status", last_status)
+						print("setting strip back to last status "+ last_status["function"])
+					else:
+						ws.pixels.clear()
+						ws.pixels.show()
 #                       break
                 print("do run true")
                 # ws.time.sleep(3)### stopper to stop flooding of console for debugging
@@ -69,8 +73,7 @@ def on_message(client, userdata, msg):
 		global do_run		
 		do_run = False
 		client.publish("HomA/ledstrip1/set_status",current_status)
-		client.publish("HomA/ledstrip1/set_status", last_status)
-		print("setting strip back to last status "+ last_status["function"])
+		
 		t.join()
 		
 	
