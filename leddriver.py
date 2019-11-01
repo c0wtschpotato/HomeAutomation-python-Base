@@ -44,6 +44,7 @@ def set_leds_to_input(sentpayload):
 		# print(typeof(obj["number_of_running"]))
 		# ws.running_on_chain(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])),(int(obj["runningcolor"]["r"]),int(obj["runningcolor"]["g"]),int(obj["runningcolor"]["b"])),int(obj["number_of_running"]),float(obj["sleep_time"]))
 		print("running on chain with hardcoded inputs")
+		print(int(obj["runningcolor"]["r"]))
 		ws.running_on_chain(ws.pixels,(255,0,0),(int(obj["runningcolor"]["r"]),int(obj["runningcolor"]["g"]),int(obj["runningcolor"]["b"])),int(obj["number_of_running"]),float(obj["sleep_time"]))
 
 
