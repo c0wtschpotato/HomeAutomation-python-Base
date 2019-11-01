@@ -46,9 +46,9 @@ def on_message(client, userdata, msg):
 			client.publish(msg.topic,current_status)
 
 
-	if msg.topic = ="hermes/hotword/default/detected":
+	if msg.topic =="hermes/hotword/default/detected":
 		### since no payload is transmitted here we create the wanted json object in this function
-		fake_payload = ={
+		fake_payload =={
                 "function":"running_on_chain",
                 "basecolor":{"r":"55","g":"55","b":"55"},
                 "runningcolor":{"r":"255","g":"0","b":"0"},
