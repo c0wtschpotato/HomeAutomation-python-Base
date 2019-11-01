@@ -58,7 +58,8 @@ def on_message(client, userdata, msg):
 			client.publish(msg.topic,current_status)
 	if msg.topic =='hermes/hotword/default/detected':
 		### since no payload is transmitted here we create the wanted json object in this function
-		
+		print("hotword first")
+		print(current_status)
 		global do_run
 		do_run = True
 		fake_payload ={
