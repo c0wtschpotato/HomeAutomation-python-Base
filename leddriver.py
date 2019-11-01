@@ -71,7 +71,8 @@ def on_message(client, userdata, msg):
 			}
 		print("LED-Driver detected hotword from hermes")
 		payload = json.dumps(fake_payload)
-		t = threading.Thread(target=loopfunc,args=()).start()
+		# t = threading.Thread(target=loopfunc,args=()).start()
+		loopfunc()
 		# client.publish("HomA/ledstrip1/set_status",current_status)
 		# set_leds_to_input(payload)
 	if msg.topic == "hermes/hotword/toggleOn":
