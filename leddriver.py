@@ -17,6 +17,7 @@ def loopfunc(input_payload):###function used with threading to loop certain effe
 		ws.running_on_chain(ws.pixels,(0,0,250),(255,120,60),5,0.05)
 	        if do_run == False:
 				if last_status !="free":
+					print("setting back leds")
 					set_leds_to_input(last_status)
 					return
 				elif last_status == None:
