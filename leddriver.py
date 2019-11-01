@@ -9,7 +9,8 @@ HOST = '192.168.1.103'
 PORT = 1883
 current_status =""## init empty
 ##empty, saves current to last before changing current
-
+def justsayshit():
+	print("im just sayin shit so we nknow anything works after all")
 def loopfunc():###function used with threading to loop certain effects
 	i = 0
 	while do_run == True:
@@ -69,7 +70,7 @@ def on_message(client, userdata, msg):
 		print("LED-Driver detected hotword from hermes")
 		# t = threading.Thread(target=loopfunc,args=()).start()
 		gayload =json.dumps()
-		loopfunc()
+		justsayshit()
 		print("right after loop")
 		# client.publish("HomA/ledstrip1/set_status",current_status)
 		# set_leds_to_input(payload)
