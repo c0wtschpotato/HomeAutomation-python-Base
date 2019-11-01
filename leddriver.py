@@ -47,7 +47,7 @@ def on_message(client, userdata, msg):
 		current_status = msg.payload
 		# client.publish("HomA/ledstrip1",current_status)###?! wtf
 		last_status = current_status
-		set_leds_to_input(current_status)
+		# set_leds_to_input(current_status)
 		# print("last know status was "+ last_status)
 		
 	if msg.topic == "HomA/ledstrip1/get_status" :
