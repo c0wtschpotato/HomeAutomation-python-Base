@@ -3,11 +3,11 @@ import ws2801effects as ws
 import json
 import threading
 do_run = ""
-
+current_status = ""
 HOST = '192.168.1.103'
 PORT = 1883
 current_status =""## init empty
-
+last_status =""##empty, saves current to last before changing current
 
 def loopfunc():###function used with threading to loop certain effects
         
@@ -19,7 +19,7 @@ def loopfunc():###function used with threading to loop certain effects
                         ws.pixels.show()
 #                       break
                 print("do run true")
-                ws.time.sleep(3)### stopper to stop flooding of console for debugging
+                # ws.time.sleep(3)### stopper to stop flooding of console for debugging
         print("do run false")
 
 
@@ -31,7 +31,9 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("hermes/hotword/toggleOn")
 
 def on_message(client, userdata, msg):
-	global current_status
+	global current_status, last_status
+	last_status = current_status
+	
 	if msg.topic == "HomA/ledstrip1/set_status":
 		print("ledstrip 1 status set: "+msg.payload)
 		current_status = msg.payload["function"]
@@ -50,6 +52,7 @@ def on_message(client, userdata, msg):
 
 	if msg.topic =='hermes/hotword/default/detected':
 		### since no payload is transmitted here we create the wanted json object in this function
+		current_status = "wakeword"
 		global do_run
 		do_run = True
 		fake_payload ={
@@ -62,12 +65,16 @@ def on_message(client, userdata, msg):
 		print("LED-Driver detected hotword from hermes")
 		payload = json.dumps(fake_payload)
 		t = threading.Thread(target=loopfunc,args=()).start()
+		client.publish("HomA/ledstrip1/set_status",current_status)
 		# set_leds_to_input(payload)
 	if msg.topic == "hermes/hotword/toggleOn":
 		print("toggle on detected, stopping wake word animation")
 		global do_run
+		current_status = "free"
 		do_run = False
+		client.publish("HomA/ledstrip1/set_status",current_status)
 		t.join()
+	
 
 def set_leds_to_input(sentpayload):
 	print ("in set leds to input")
@@ -77,10 +84,10 @@ def set_leds_to_input(sentpayload):
 		print("starting function lightning")
 		ws.lightning(ws.pixels)
 	if obj["function"] == "running_on_chain":
-		print(obj["basecolor"])
-		print(obj["runningcolor"])
-		print(obj["number_of_running"])
-		print(obj["sleep_time"])	
+		# print(obj["basecolor"])
+		# print(obj["runningcolor"])
+		# print(obj["number_of_running"])
+		# print(obj["sleep_time"])	
 		ws.running_on_chain(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])),(int(obj["runningcolor"]["r"]),int(obj["runningcolor"]["g"]),int(obj["runningcolor"]["b"])),int(obj["number_of_running"]),float(obj["sleep_time"]))
 
 
