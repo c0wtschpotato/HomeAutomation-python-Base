@@ -2,6 +2,7 @@ import paho.mqtt.client as mqtt
 import ws2801effects as ws
 import json
 import threading
+do_run
 
 HOST = '192.168.1.103'
 PORT = 1883
@@ -48,6 +49,8 @@ def on_message(client, userdata, msg):
 
 	if msg.topic =='hermes/hotword/default/detected':
 		### since no payload is transmitted here we create the wanted json object in this function
+		global do_run
+		do_run = True
 		fake_payload ={
                 "function":"running_on_chain",
                 "basecolor":{"r":"55","g":"55","b":"55"},
@@ -57,8 +60,12 @@ def on_message(client, userdata, msg):
                 }
         print("LED-Driver detected hotword from hermes")
         payload = json.dumps(fake_payload)
-        set_leds_to_input(payload)
-
+        t = threading.Thread(target=loopfunc,args=(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])),(int(obj["runningcolor"]["r"]),int(obj["runningcolor"]["g"]),int(obj["runningcolor"]["b"])),int(obj["number_of_running"]),float(obj["sleep_time"])).start()
+        # set_leds_to_input(payload)
+    if msg.topic == "hermes/hotword/toggleOn":
+    	global do_run
+    	do_run = False
+    	t.join()
 
 def set_leds_to_input(sentpayload):
 	print ("in set leds to input")
