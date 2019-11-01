@@ -57,22 +57,22 @@ def on_message(client, userdata, msg):
                 }
         print("LED-Driver detected hotword from hermes")
         payload = json.dumps(fake_payload)
-        print("WATTAFUCK")
         set_leds_to_input(payload)
 
 
 def set_leds_to_input(sentpayload):
 	print ("in set leds to input")
 	obj = json.loads(sentpayload)
-	# print(obj["function"])
-	
+	# print(obj["function"])	
 	if obj["function"] == "lightning":
 		print("starting function lightning")
 		ws.lightning(ws.pixels)
 	if obj["function"] == "running_on_chain":
 		print(obj["basecolor"])
-		print(obj["runningcolor"]["r"])
-		print(typeof(obj["number_of_running"]))
+		print(obj["runningcolor"])
+		print(obj["number_of_running"])
+		print(obj["sleep_time"])
+
 		# ws.running_on_chain(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])),(int(obj["runningcolor"]["r"]),int(obj["runningcolor"]["g"]),int(obj["runningcolor"]["b"])),int(obj["number_of_running"]),float(obj["sleep_time"]))
 		
 		ws.running_on_chain(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])),(int(obj["runningcolor"]["r"]),int(obj["runningcolor"]["g"]),int(obj["runningcolor"]["b"])),int(obj["number_of_running"]),float(obj["sleep_time"]))
