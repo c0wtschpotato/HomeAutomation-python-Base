@@ -42,15 +42,11 @@ def on_message(client, userdata, msg):
 		print("last know status was "+ last_status)
 		
 	if msg.topic == "HomA/ledstrip1/get_status" :
-
 		if msg.payload != "get":
-			print("status called with "+msg.payload)
-			
+			print("status called with "+msg.payload)			
 		elif msg.payload =="get":
 			print("published status "+current_status)
 			client.publish(msg.topic,current_status)
-
-
 	if msg.topic =='hermes/hotword/default/detected':
 		### since no payload is transmitted here we create the wanted json object in this function
 		current_status = "wakeword"
@@ -71,10 +67,11 @@ def on_message(client, userdata, msg):
 	if msg.topic == "hermes/hotword/toggleOn":
 		print("toggle on detected, stopping wake word animation")
 		global do_run
-		current_status = "free"
+		
 		do_run = False
 		client.publish("HomA/ledstrip1/set_status",current_status)
 		t.join()
+		client.publish("Hom/ledstrip1/set_status", last_status)
 	
 
 def set_leds_to_input(sentpayload):
