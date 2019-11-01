@@ -17,7 +17,7 @@ def loopfunc(laststatus):###function used with threading to loop certain effects
 		i = i+1
 		if i == 5:
 			do_run = False
-		ws.running_on_chain(ws.pixels,(44,44,44),(255,0,0),5,0.05)
+		ws.running_on_chain(ws.pixels,(0,0,250),(255,120,60),5,0.05)
 	        if do_run == False:
 				if last_status !="free":
 					print("hitting out laststatus")
@@ -69,8 +69,9 @@ def on_message(client, userdata, msg):
 		do_run = True
 		print("LED-Driver detected hotword from hermes")
 		# t = threading.Thread(target=loopfunc,args=()).start()
-
+		gayload =json.dumps()
 		loopfunc(current_status)
+		print("right after loop")
 		# client.publish("HomA/ledstrip1/set_status",current_status)
 		# set_leds_to_input(payload)
 	if msg.topic == "hermes/hotword/toggleOn":
