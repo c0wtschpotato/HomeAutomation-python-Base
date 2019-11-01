@@ -12,26 +12,26 @@ current_status =""## init empty
 
 def loopfunc(laststatus):###function used with threading to loop certain effects
 	i = 0
-        while do_run == True:
-        	print("im in loop")
-        	i = i+1
-        	if i == 5:
-        		do_run = False
-        	ws.running_on_chain(ws.pixels,(44,44,44),(255,0,0),5,0.05)
-                if do_run == False:
-					if last_status !="free":
-						print("hitting out laststatus")
-						set_leds_to_input(laststatus)
-						break
-					else:
-						ws.pixels.clear()
-						ws.pixels.show()
-#                       break
-                # print("do run true")
-        	print(laststatus)
-                # ws.time.sleep(3)### stopper to stop flooding of console for debugging
-        # print("do run false")
-        return
+	while do_run == True:
+		print("im in loop")
+		i = i+1
+		if i == 5:
+			do_run = False
+		ws.running_on_chain(ws.pixels,(44,44,44),(255,0,0),5,0.05)
+	        if do_run == False:
+				if last_status !="free":
+					print("hitting out laststatus")
+					set_leds_to_input(laststatus)
+					break
+				else:
+					ws.pixels.clear()
+					ws.pixels.show()
+	                break
+	        # print("do run true")
+		print(laststatus)
+	        # ws.time.sleep(3)### stopper to stop flooding of console for debugging
+	# print("do run false")
+	return
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
