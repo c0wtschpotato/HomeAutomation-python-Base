@@ -27,7 +27,7 @@ def loopfunc(laststatus):###function used with threading to loop certain effects
 						ws.pixels.show()
 #                       break
                 # print("do run true")
-        	print(laststatus)
+        	print(json.dumps(laststatus))
                 # ws.time.sleep(3)### stopper to stop flooding of console for debugging
         # print("do run false")
         return
@@ -95,7 +95,7 @@ def set_leds_to_input(sentpayload):
 
 	if obj["function"] == "running_on_chain":
 		ws.running_on_chain(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])),(int(obj["runningcolor"]["r"]),int(obj["runningcolor"]["g"]),int(obj["runningcolor"]["b"])),int(obj["number_of_running"]),float(obj["sleep_time"]))
-		
+
 	if obj["function"] == "setalltocolor":
 		ws.setalltocolor(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])))
 
