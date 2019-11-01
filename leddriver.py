@@ -33,7 +33,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
 	global current_status, last_status
 	last_status = current_status
-	
+	print(msg)
 	if msg.topic == "HomA/ledstrip1/set_status":
 		print("ledstrip 1 status set: "+msg.payload)
 		current_status = msg.payload
@@ -90,7 +90,7 @@ def set_leds_to_input(sentpayload):
 		# print(obj["sleep_time"])	
 		ws.running_on_chain(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])),(int(obj["runningcolor"]["r"]),int(obj["runningcolor"]["g"]),int(obj["runningcolor"]["b"])),int(obj["number_of_running"]),float(obj["sleep_time"]))
 	if obj["function"] == "setalltocolor":
-		ws.setalltocolor(pixels,(int(obj["color"]["r"]),int(obj["color"]["g"]),int(obj["color"]["b"])))
+		ws.setalltocolor(pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])))
 
 client = mqtt.Client()
 client.on_connect = on_connect
