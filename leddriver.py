@@ -34,11 +34,14 @@ def set_leds_to_input(sentpayload):
 	print ("in set leds to input")
 	obj = json.loads(sentpayload)
 	print(obj["function"])
+	
 	if obj["function"] == "lightning":
 		print("starting function lightning")
 		ws.lightning(ws.pixels)
 	if obj["function"] == "running_on_chain":
-		print(obj)
+		print(obj["basecolor"])
+		print(obj["runningcolor"]["r"])
+		print(typeof(obj["number_of_running"]))
 		ws.running_on_chain(ws.pixels,(obj["basecolor"]["r"],obj["basecolor"]["g"],obj["basecolor"]["b"]),(obj["runningcolor"]["r"],obj["runningcolor"]["g"],obj["runningcolor"]["b"]),obj["number_of_running"],obj["sleep_time"])
 
 
