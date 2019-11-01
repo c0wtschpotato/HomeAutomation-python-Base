@@ -25,7 +25,7 @@ settonormal = {
             }
 export_settonormal = json.dumps(settonormal)
 export = json.dumps(wakewordasjson)
-def loopfunc():
+def loopfunc():### not needed anymore since leddriver now starts and stops all led functions
         
         while do_run == True:
                 # ws.running_on_chain(pixels,(44,44,44),(255,0,0),5,0.05)
@@ -51,13 +51,14 @@ def on_message(client, userdata, msg):
         print("Wakeword detected!")
         global do_run
         do_run = True
-        client.publish("HomA/ledstrip1/set_status",export_settonormal)
-        t = threading.Thread(target=loopfunc,args=()).start()
+        client.publish("HomA/ledstrip1/set_status",wakewordasjson)
+        #t = threading.Thread(target=loopfunc,args=()).start()
     elif msg.topic == "hermes/hotword/toggleOn":
         print("Finished listening")
+        client.publish("HomA/ledstrip1/set_status",settonormal)
         global do_run
         do_run = False
-        t.join()
+        #t.join()
 client = mqtt.Client()
 client.on_connect = on_connect
 do_run = True
