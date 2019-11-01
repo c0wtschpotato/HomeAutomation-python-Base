@@ -11,25 +11,23 @@ current_status =""## init empty
 ##empty, saves current to last before changing current
 def justsayshit():
 	print("im just sayin shit so we nknow anything works after all")
-def loopfunc():###function used with threading to loop certain effects
-	i = 0
+def loopfunc(input_payload):###function used with threading to loop certain effects
+
 	while do_run == True:
 		print("im in loop")
-		i = i+1
-		if i == 5:
-			do_run = False
 		ws.running_on_chain(ws.pixels,(0,0,250),(255,120,60),5,0.05)
 	        if do_run == False:
 				if last_status !="free":
 					print("hitting out laststatus")
 					set_leds_to_input(laststatus)
-					break
+					return
+					
 				else:
 					ws.pixels.clear()
 					ws.pixels.show()
-					break
+					
 	        # print("do run true")
-		print(laststatus)
+		# print(laststatus)
 	        # ws.time.sleep(3)### stopper to stop flooding of console for debugging
 	# print("do run false")
 	return
