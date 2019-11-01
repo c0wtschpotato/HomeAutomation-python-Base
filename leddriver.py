@@ -20,10 +20,6 @@ def loopfunc(input_payload):###function used with threading to loop certain effe
 					print("hitting out laststatus")
 					set_leds_to_input()
 					return
-					
-				else:
-					ws.pixels.clear()
-					ws.pixels.show()
 	return
 
 def on_connect(client, userdata, flags, rc):
