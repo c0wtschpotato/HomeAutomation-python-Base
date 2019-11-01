@@ -3,6 +3,10 @@ import paho.mqtt.client as mqtt
 import ws2801effects as ws
 import json
 import threading
+############################################################
+######if all goes wrong, restart snips skil server##########
+######before starting all over again, fucks shit up#########
+############################################################
 do_run = ""
 current_status = ""
 HOST = '192.168.1.103'
