@@ -23,7 +23,7 @@ wakewordasjson ={
 settonormal = {
                 "function":"return_to_last"
             }
-export_settonormal = json.dumps(export_settonormal)
+export_settonormal = json.dumps(settonormal)
 export = json.dumps(wakewordasjson)
 def loopfunc():
         
