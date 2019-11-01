@@ -70,7 +70,7 @@ def on_message(client, userdata, msg):
 		do_run = False
 		client.publish("HomA/ledstrip1/set_status",current_status)
 		t.join()
-		client.publish("Hom/ledstrip1/set_status", last_status)
+		client.publish("HomA/ledstrip1/set_status", last_status)
 		print("setting strip back to last status "+ last_status["function"])
 	
 
