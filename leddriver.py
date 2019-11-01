@@ -16,8 +16,8 @@ def loopfunc():###function used with threading to loop certain effects
                 ws.pixels.show()
                 if do_run == False:
 					if last_status !="free":
-						status = json.dumps(last_status)
-						set_leds_to_input(last_status)
+						# set_leds_to_input(last_status)
+						pass
 					else:
 						ws.pixels.clear()
 						ws.pixels.show()
@@ -76,7 +76,7 @@ def on_message(client, userdata, msg):
 		# client.publish("HomA/ledstrip1/set_status",current_status)		
 		print("setting strip back to last status:\n "+ last_status)
 		t.join()
-		
+		set_leds_to_input(last_status)
 	
 
 def set_leds_to_input(sentpayload):
