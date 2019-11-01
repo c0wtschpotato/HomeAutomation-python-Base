@@ -73,6 +73,8 @@ def on_message(client, userdata, msg):
 		print("LED-Driver detected hotword from hermes")
 		payload = json.dumps(fake_payload)
 		# t = threading.Thread(target=loopfunc,args=()).start()
+		print(current_status)
+		input("status okay?")
 		loopfunc(current_status)
 		# client.publish("HomA/ledstrip1/set_status",current_status)
 		# set_leds_to_input(payload)
