@@ -37,6 +37,7 @@ def on_message(client, userdata, msg):
 	global do_run
 	if msg.topic == "HomA/ledstrip1/set_status":
 		global current_status
+		global last_status
 		print("ledstrip 1 status set: "+msg.payload+ "\n\n")
 		current_status = msg.payload
 		# client.publish("HomA/ledstrip1",current_status)###?! wtf
