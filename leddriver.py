@@ -39,11 +39,11 @@ def set_leds_to_input(sentpayload):
 		print("starting function lightning")
 		ws.lightning(ws.pixels)
 	if obj["function"] == "running_on_chain":
-		print(obj["basecolor"])
-		print(obj["runningcolor"]["r"])
-		print(typeof(obj["number_of_running"]))
+		# print(obj["basecolor"])
+		# print(obj["runningcolor"]["r"])
+		# print(typeof(obj["number_of_running"]))
 		#ws.running_on_chain(ws.pixels,(obj["basecolor"]["r"],obj["basecolor"]["g"],obj["basecolor"]["b"]),(obj["runningcolor"]["r"],obj["runningcolor"]["g"],obj["runningcolor"]["b"]),obj["number_of_running"],obj["sleep_time"])
-
+		print("running on chain with hardcoded inputs")
 		ws.running_on_chain(ws.pixels,(255,0,0),(0,255,0),5,0.1)
 
 
