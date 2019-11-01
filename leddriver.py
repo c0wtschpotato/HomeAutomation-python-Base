@@ -16,7 +16,7 @@ def loopfunc():###function used with threading to loop certain effects
                 ws.pixels.show()
                 if do_run == False:
 					if last_status !="free":
-						# set_leds_to_input(last_status)
+						set_leds_to_input(last_status)
 						pass
 					else:
 						ws.pixels.clear()
@@ -74,10 +74,9 @@ def on_message(client, userdata, msg):
 		print("toggle on detected, stopping wake word animation")
 		global do_run		
 		do_run = False
-		# client.publish("HomA/ledstrip1/set_status",current_status)		
-		print("setting strip back to last status:\n "+ last_status)
+		client.publish("HomA/ledstrip1/set_status",current_status)		
 		t.join()
-		set_leds_to_input(last_status)
+		
 	
 
 def set_leds_to_input(sentpayload):
