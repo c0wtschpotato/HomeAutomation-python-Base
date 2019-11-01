@@ -69,7 +69,7 @@ def on_message(client, userdata, msg):
 		do_run = True
 		print("LED-Driver detected hotword from hermes")
 		################t = threading.Thread(target=loopfunc,args=()).start()
-		justsayshit()
+		loopfunc()
 		print("right after loop")
 		# client.publish("HomA/ledstrip1/set_status",current_status)
 		# set_leds_to_input(payload)
