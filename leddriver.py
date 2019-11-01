@@ -53,21 +53,21 @@ def on_message(client, userdata, msg):
 		global do_run
 		do_run = True
 		fake_payload ={
-                "function":"running_on_chain",
-                "basecolor":{"r":"55","g":"55","b":"55"},
-                "runningcolor":{"r":"255","g":"0","b":"0"},
-                "number_of_running":"5",
-                "sleep_time":"0.1"
-                }
-        print("LED-Driver detected hotword from hermes")
-        payload = json.dumps(fake_payload)
-        t = threading.Thread(target=loopfunc,args=()).start()
-        # set_leds_to_input(payload)
+			"function":"running_on_chain",
+			"basecolor":{"r":"55","g":"55","b":"55"},
+			"runningcolor":{"r":"255","g":"0","b":"0"},
+			"number_of_running":"5",
+			"sleep_time":"0.1"
+			}
+		print("LED-Driver detected hotword from hermes")
+		payload = json.dumps(fake_payload)
+		t = threading.Thread(target=loopfunc,args=()).start()
+		# set_leds_to_input(payload)
 	if msg.topic == "hermes/hotword/toggleOn":
-		print("toggle on detected, turning off lights.")
-	    global do_run
-	    do_run = False
-	    t.join()
+		print("toggle on detected, stopping wake word animation")
+		global do_run
+		do_run = False
+		t.join()
 
 def set_leds_to_input(sentpayload):
 	print ("in set leds to input")
