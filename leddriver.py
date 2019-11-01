@@ -20,7 +20,7 @@ def loopfunc(input_payload):###function used with threading to loop certain effe
 				if last_status !="free":
 					print("hitting out laststatus")
 					print(last_status)
-					set_leds_to_input()
+					set_leds_to_input(last_status)
 					return
 				elif last_status == None:
 					return
