@@ -33,7 +33,7 @@ def on_message(client, userdata, msg):
 def set_leds_to_input(sentpayload):
 	print ("in set leds to input")
 	obj = json.loads(sentpayload)
-	print(obj["function"])
+	# print(obj["function"])
 	
 	if obj["function"] == "lightning":
 		print("starting function lightning")
@@ -47,6 +47,7 @@ def set_leds_to_input(sentpayload):
 		print(obj["runningcolor"])
 		print("r part of object"+str(obj["runningcolor"]["r"]))
 		print("or as list "+str(obj["runningcolor"][0]["r"]))
+		print("just 0  "+str(obj["runningcolor"][0]))
 		ws.running_on_chain(ws.pixels,(255,0,0),(int(obj["runningcolor"]["r"]),int(obj["runningcolor"]["g"]),int(obj["runningcolor"]["b"])),int(obj["number_of_running"]),float(obj["sleep_time"]))
 
 
