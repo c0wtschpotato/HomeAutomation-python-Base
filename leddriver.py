@@ -24,11 +24,6 @@ def loopfunc(input_payload):###function used with threading to loop certain effe
 				else:
 					ws.pixels.clear()
 					ws.pixels.show()
-					
-	        # print("do run true")
-		# print(laststatus)
-	        # ws.time.sleep(3)### stopper to stop flooding of console for debugging
-	# print("do run false")
 	return
 
 def on_connect(client, userdata, flags, rc):
@@ -63,8 +58,7 @@ def on_message(client, userdata, msg):
 		
 		do_run = True
 		print("LED-Driver detected hotword from hermes")
-		################t = threading.Thread(target=loopfunc,args=()).start()
-		loopfunc()
+		t = threading.Thread(target=loopfunc,args=("testing arg",)).start()
 		print("right after loop")
 		# client.publish("HomA/ledstrip1/set_status",current_status)
 		# set_leds_to_input(payload)
