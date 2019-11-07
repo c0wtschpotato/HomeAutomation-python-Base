@@ -3,6 +3,7 @@ import paho.mqtt.client as mqtt
 import ws2801effects as ws
 import json
 import threading
+from random import randrange
 ############################################################
 ######if all goes wrong, restart snips skil server##########
 ######before starting all over again, fucks shit up#########
@@ -17,8 +18,11 @@ last_status = None
 
 def loopfunc(input_payload):###function used with threading to loop certain effects
 	global do_run
+	r = randrange(0,255)
+	g = randrange(0,255)
+	b  = randrange(0,255)
 	while do_run == True:
-		ws.running_on_chain(ws.pixels,(0,0,250),(255,120,60),5,0.01)
+		ws.running_on_chain(ws.pixels,(r,g,b),(255 -r ,255-g,255-b),5,0.01)
 	        if do_run == False:
 				if last_status !="free":
 					print("setting back leds")
