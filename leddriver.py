@@ -92,7 +92,7 @@ def set_leds_to_input(sentpayload):
 	if obj["function"] == "setalltocolor":
 		ws.setalltocolor(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])))
 	if obj["function"] == "rainbow_colors":
-		ws.rainbow_colors(ws.pixels,0.01)
+		ws.rainbow_colors(ws.pixels,0.2)
 
 client = mqtt.Client()
 client.on_connect = on_connect
