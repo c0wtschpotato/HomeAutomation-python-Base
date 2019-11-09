@@ -117,9 +117,9 @@ def running_on_chain(pixels,basecolor = (255,255,255),runningcolor= (255,0,0),nu
 
 def lightning(pixels):
     while 1:
-        setalltocolor(pixels,(0,0,255))
+        setalltocolor(pixels,(0,0,180))
         
-        time.sleep(random.randrange(0,25))
+        time.sleep(random.randrange(0,5))
         # time.sleep(4)
         which = random.randrange(0,PIXEL_COUNT-8)
 
@@ -127,7 +127,7 @@ def lightning(pixels):
             pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(21,131,148))
         pixels.show()
         time.sleep(1)
-        setalltocolor(pixels,(0,0,255))
+        setalltocolor(pixels,(0,0,180))
         time.sleep(0.3)
         for i in range(which,which +8):
             pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(21,131,148))
@@ -146,7 +146,7 @@ def setalltocolor(pixels,color=(255,255,255)):
         pixels.show()
         
 
-            
+
  
 if __name__ == "__main__":
     # Clear all the pixels to turn them off.
