@@ -56,17 +56,17 @@ def rainbow_colors(pixels, wait=0.05):
         if wait > 0:
             time.sleep(wait)
  
-def brightness_decrease(pixels, wait=0.01, step=1):
-    for j in range(int(256 // step)):
-        for i in range(pixels.count()):
-            r, g, b = pixels.get_pixel_rgb(i)
-            r = int(max(0, r - step))
-            g = int(max(0, g - step))
-            b = int(max(0, b - step))
-            pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color( r, g, b ))
-        pixels.show()
-        if wait > 0:
-            time.sleep(wait)
+def brightness_decrease(pixels, step=1):
+    # for j in range(int(256 // step)):
+    for i in range(pixels.count()):
+        r, g, b = pixels.get_pixel_rgb(i)
+        r = int(max(0, r - step))
+        g = int(max(0, g - step))
+        b = int(max(0, b - step))
+        pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color( r, g, b ))
+    pixels.show()
+        # if wait > 0:
+        #     time.sleep(wait)
  
 def blink_color(pixels, blink_times=5, wait=0.5, color=(255,0,0)):
     for i in range(blink_times):
@@ -138,7 +138,7 @@ def lightning(pixels):
         
 
         # pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(21,131,148))## hellblauer blitz
-def burning(pixels,basecolor=(120,30,0), runningcolor= (255, 30, 0), number_of_running= 8):
+def burning(pixels,basecolor=(120,30,0), runningcolor= (255, 10, 0), number_of_running= 15):
     
     setalltocolor(pixels,(int(basecolor[0]),int(basecolor[1]),int(basecolor[2])))
     startpixel = randrange(0,PIXEL_COUNT-number_of_running)
