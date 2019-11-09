@@ -58,14 +58,14 @@ def rainbow_colors(pixels, wait=0.05):
  
 def brightness(pixels, step=1,dec_or_inc = "decrease"):
     # for j in range(int(256 // step)):
-    if dec_or_inc = "decrease":
+    if dec_or_inc == "decrease":
         for i in range(pixels.count()):
             r, g, b = pixels.get_pixel_rgb(i)
             r = int(max(0, r - step))
             g = int(max(0, g - step))
             b = int(max(0, b - step))
             pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color( r, g, b ))
-    if dec_or_inc = "increase":
+    if dec_or_inc == "increase":
         for i in range(pixels.count()):
             r, g, b = pixels.get_pixel_rgb(i)
             r = int(max(0, r + step))
