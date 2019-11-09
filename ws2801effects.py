@@ -154,10 +154,10 @@ def burning(pixels,basecolor=(120,30,0), runningcolor= (255, 10, 0), number_of_r
         pixels.set_pixel(i,Adafruit_WS2801.RGB_to_color(runningcolor[0],runningcolor[1],runningcolor[2]))
     pixels.show()
     for j in range(0,30):
-        brightness(pixels,(i,i + number_of_running),1,"decrease")
+        brightness(pixels,(startpixel,startpixel + number_of_running),1,"decrease")
         time.sleep(0.02)
     for j in range(0,30):
-        brightness(pixels,(i,i + number_of_running),1,"increase")
+        brightness(pixels,(startpixel,startpixel + number_of_running),1,"increase")
         time.sleep(0.02)
     for j in range(0,30):
         brightness(pixels,(0,PIXEL_COUNT),1,"decrease")
