@@ -138,13 +138,13 @@ def lightning(pixels):
         
 
         # pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(21,131,148))## hellblauer blitz
-def burning(pixels,basecolor=(255,102,0), runningcolor= (255, 83, 26), number_of_running= 8):
+def burning(pixels,basecolor=(120,30,0), runningcolor= (255, 83, 26), number_of_running= 8):
     
     setalltocolor(pixels,(int(basecolor[0]),int(basecolor[1]),int(basecolor[2])))
-    for i in range( pixels.count()-number_of_running):###maximum all pixels - number of changed
-        for j in range(i,number_of_running+randrange(0,5)):
-            pixels.set_pixel(j,Adafruit_WS2801.RGB_to_color(runningcolor[0],runningcolor[1],runningcolor[2]))
-        pixels.show()
+    startpixel = randrange(0,PIXEL_COUNT-number_of_running)
+    for i in range(startpixel,startpixel+number_of_running):###maximum all pixels - number of changed
+        pixels.set_pixel(j,Adafruit_WS2801.RGB_to_color(runningcolor[0],runningcolor[1],runningcolor[2]))
+    pixels.show()
 
 
 
