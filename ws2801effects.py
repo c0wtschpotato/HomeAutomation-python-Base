@@ -161,12 +161,12 @@ def burning(pixels,basecolor=(120,30,0), runningcolor= (255, 10, 0), number_of_r
     pixels.show()
     endrange = min(basecolor[0],basecolor[1],basecolor[2],runningcolor[0],runningcolor[1],runningcolor[2])
 
-    for j in range(0,30):
+    for j in range(0,100):
         brightness(pixels,(startpixel,startpixel + number_of_running),1,"decrease",(None,"g","b"))
         time.sleep(0.1)        
     print("decreased spot")
 
-    for j in range(0,50):
+    for j in range(0,100):
         brightness(pixels,(startpixel,startpixel + number_of_running),1,"increase",(None,"g","b"))
         time.sleep(0.1)
     print("increased spot")
@@ -174,7 +174,7 @@ def burning(pixels,basecolor=(120,30,0), runningcolor= (255, 10, 0), number_of_r
     for j in range(0,60):
         brightness(pixels,(0,PIXEL_COUNT),1,"decrease",(None,"g","b"))
         time.sleep(0.05)
-        print("decreased all")
+    print("decreased all")
 
     for j in range(0,60):
         brightness(pixels,(0,PIXEL_COUNT),1,"increase",(None,"g","b"))
