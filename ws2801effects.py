@@ -152,7 +152,7 @@ def burning(pixels,basecolor=(120,30,0), runningcolor= (255, 10, 0), number_of_r
     startpixel = randrange(0,PIXEL_COUNT-number_of_running)
     for i in range(startpixel,startpixel+number_of_running):###maximum all pixels - number of changed
         pixels.set_pixel(i,Adafruit_WS2801.RGB_to_color(runningcolor[0],runningcolor[1],runningcolor[2]))
-
+    pixels.show()
     for j in range(0,30):
         for i in range(startpixel,startpixel+number_of_running):
             r, g, b = pixels.get_pixel_rgb(i)
@@ -160,7 +160,8 @@ def burning(pixels,basecolor=(120,30,0), runningcolor= (255, 10, 0), number_of_r
             g = int(max(0, g - 1))
             b = int(max(0, b - 1))
             pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color( r, g, b ))
-    pixels.show()
+            pixels.show()
+    
 
 
 
