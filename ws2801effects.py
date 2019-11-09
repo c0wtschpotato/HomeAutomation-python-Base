@@ -64,9 +64,9 @@ def brightness(pixels, affected_pixels = (0,PIXEL_COUNT),step=1,dec_or_inc = "de
             if not "r" in exclude_color:
                 r = int( r - step)
             if not "g" in exclude_color:
-                g = int(, g - step)
+                g = int( g - step)
             if not "b" in exclude_color:
-                b = int(, b - step)
+                b = int( b - step)
             pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color( r, g, b ))
     if dec_or_inc == "increase":
         for i in range(affected_pixels[0],affected_pixels[1]):
