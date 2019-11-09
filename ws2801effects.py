@@ -56,21 +56,27 @@ def rainbow_colors(pixels, wait=0.05):
         if wait > 0:
             time.sleep(wait)
  
-def brightness(pixels, affected_pixels = (0,PIXEL_COUNT),step=1,dec_or_inc = "decrease"):
+def brightness(pixels, affected_pixels = (0,PIXEL_COUNT),step=1,dec_or_inc = "decrease",exclude_color=(None,None,None)):
     # for j in range(int(256 // step)):
     if dec_or_inc == "decrease":
         for i in range(affected_pixels[0],affected_pixels[1]):
             r, g, b = pixels.get_pixel_rgb(i)
-            r = int(max(0, r - step))
-            g = int(max(0, g - step))
-            b = int(max(0, b - step))
+            in exclude_color[0] != None:
+                r = int(max(0, r - step))
+            in exclude_color[1] != None:
+                g = int(max(0, g - step))
+            in exclude_color[2] != None:
+                b = int(max(0, b - step))
             pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color( r, g, b ))
     if dec_or_inc == "increase":
         for i in range(affected_pixels[0],affected_pixels[1]):
             r, g, b = pixels.get_pixel_rgb(i)
-            r = int(max(0, r + step))
-            g = int(max(0, g + step))
-            b = int(max(0, b + step))
+            in exclude_color[0] != None:
+                r = int(max(0, r + step))
+            in exclude_color[1] != None:
+                g = int(max(0, g + step))
+            in exclude_color[2] != None:
+                b = int(max(0, b + step))
             pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color( r, g, b ))
     pixels.show()
         # if wait > 0:
@@ -156,19 +162,19 @@ def burning(pixels,basecolor=(120,30,0), runningcolor= (255, 10, 0), number_of_r
     endrange = min(basecolor[0],basecolor[1],basecolor[2],runningcolor[0],runningcolor[1],runningcolor[2])
 
     for j in range(0,30):
-        brightness(pixels,(startpixel,startpixel + number_of_running),1,"decrease")
+        brightness(pixels,(startpixel,startpixel + number_of_running),1,"decrease",(None,None,"b"))
         time.sleep(0.2)
     print("decreased spot")
     for j in range(0,30):
-        brightness(pixels,(startpixel,startpixel + number_of_running),1,"increase")
+        brightness(pixels,(startpixel,startpixel + number_of_running),1,"increase",(None,None,"b"))
         time.sleep(0.2)
     print("increased spot")
     for j in range(0,endrange):
-        brightness(pixels,(0,PIXEL_COUNT),1,"decrease")
+        brightness(pixels,(0,PIXEL_COUNT),1,"decrease",(None,None,"b"))
         time.sleep(0.05)
     print("decreased all")
     for j in range(0,endrange):
-        brightness(pixels,(0,PIXEL_COUNT),1,"increase")
+        brightness(pixels,(0,PIXEL_COUNT),1,"increase",(None,None,"b"))
         time.sleep(0.05)
     print("increased all")
 
