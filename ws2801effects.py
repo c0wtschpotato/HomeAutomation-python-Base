@@ -180,7 +180,7 @@ def burning(pixels,basecolor=(100,20,0), number_of_running= 15):
     print("increased all")
 
 
-def setalltocolor(pixels,color=(255,255,255)):
+def setalltocolor(pixels,color=(255,255,255),affected_pixels(0,PIXEL_COUNT)):
 
     for i in range(pixels.count()):
         pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(color[0],color[1],color[2]))#
