@@ -173,6 +173,7 @@ def burning(pixels,basecolor=(120,30,0), runningcolor= (255, 10, 0), number_of_r
             pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color( r, g, b ))
             pixels.show()
             time.sleep(0.01)
+            print("increased")
     
 
 
