@@ -56,17 +56,17 @@ def rainbow_colors(pixels, wait=0.05):
         if wait > 0:
             time.sleep(wait)
  
-def brightness(pixels, step=1,dec_or_inc = "decrease"):
+def brightness(pixels, affected_pixels = (0,PIXEL_COUNT),step=1,dec_or_inc = "decrease"):
     # for j in range(int(256 // step)):
     if dec_or_inc == "decrease":
-        for i in range(pixels.count()):
+        for i in range(affected_pixels[0],affected_pixels[1]):
             r, g, b = pixels.get_pixel_rgb(i)
             r = int(max(0, r - step))
             g = int(max(0, g - step))
             b = int(max(0, b - step))
             pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color( r, g, b ))
     if dec_or_inc == "increase":
-        for i in range(pixels.count()):
+        for i in range(affected_pixels[0],affected_pixels[1]):
             r, g, b = pixels.get_pixel_rgb(i)
             r = int(max(0, r + step))
             g = int(max(0, g + step))
@@ -154,27 +154,8 @@ def burning(pixels,basecolor=(120,30,0), runningcolor= (255, 10, 0), number_of_r
         pixels.set_pixel(i,Adafruit_WS2801.RGB_to_color(runningcolor[0],runningcolor[1],runningcolor[2]))
     pixels.show()
     for j in range(0,30):
-        for i in range(startpixel,startpixel+number_of_running):
-            r, g, b = pixels.get_pixel_rgb(i)
-            r = int(max(0, r - 1))
-            g = runningcolor[1]
-            b = runningcolor[2]
-            pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color( r, g, b ))
-            pixels.show()
-            time.sleep(0.01)
-    for j in range(0,60):
-        brightness(pixels,1,"decrease")
-    for j in range(0,50):
-        for i in range(startpixel,startpixel+number_of_running):
-            r, g, b = pixels.get_pixel_rgb(i)
-            r = int(max(0, r + 1))
-            g = runningcolor[1]
-            b = runningcolor[2]
-            pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color( r, g, b ))
-            pixels.show()
-            time.sleep(0.01)
-            print("increased")
-    
+        brightness(pixels,(i,PIXEL_COUNT-number_of_running),1,"decrease")
+
 
 
 
