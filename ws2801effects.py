@@ -143,7 +143,7 @@ def setalltocolor(pixels,color=(255,255,255)):
 
     for i in range(pixels.count()):
         pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(color[0],color[1],color[2]))#
-        pixels.show()
+    pixels.show()
         
 
 
