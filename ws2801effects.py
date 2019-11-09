@@ -152,34 +152,31 @@ def lightning(pixels):
         
 
         # pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(21,131,148))## hellblauer blitz
-def burning(pixels,basecolor=(120,30,0), runningcolor= (255, 10, 0), number_of_running= 15):
+def burning(pixels,basecolor=(100,20,0), number_of_running= 15):
 
     setalltocolor(pixels,(int(basecolor[0]),int(basecolor[1]),int(basecolor[2])))
     startpixel = randrange(0,PIXEL_COUNT-number_of_running)
-    for i in range(startpixel,startpixel+number_of_running):###maximum all pixels - number of changed
-        pixels.set_pixel(i,Adafruit_WS2801.RGB_to_color(runningcolor[0],runningcolor[1],runningcolor[2]))
-    pixels.show()
-    endrange = min(basecolor[0],basecolor[1],basecolor[2],runningcolor[0],runningcolor[1],runningcolor[2])
 
-    for j in range(0,5):
+    for i in range(0,10):###maximum all pixels - number of changed
+        brightness(pixels,(startpixel,startpixel + number_of_running),10,"increase",(None,"g","b"))
+        pixels.set_pixel(randrange(startpixel,startpixel+number_of_running), Adafruit_WS2801.RGB_to_color(255,255,26))#set a random pixel to yellow
+        time.sleep(0.2)
+  
+    for j in range(0,10):
         brightness(pixels,(startpixel,startpixel + number_of_running),10,"decrease",(None,"g","b"))
+        pixels.set_pixel(randrange(startpixel,startpixel+number_of_running), Adafruit_WS2801.RGB_to_color(255,255,26))#set a random pixel to yellow
         time.sleep(0.1)        
     print("decreased spot")
 
-    for j in range(0,5):
-        brightness(pixels,(startpixel,startpixel + number_of_running),10,"increase",(None,"g","b"))
-        time.sleep(0.1)
-    print("increased spot")
-
     for j in range(0,60):
         brightness(pixels,(0,PIXEL_COUNT),1,"decrease",(None,"g","b"))
-        time.sleep(0.05)
+        time.sleep(0.01)
     print("decreased all")
 
     for j in range(0,60):
         brightness(pixels,(0,PIXEL_COUNT),1,"increase",(None,"g","b"))
         
-        time.sleep(0.05)
+        time.sleep(0.02)
     print("increased all")
 
 
