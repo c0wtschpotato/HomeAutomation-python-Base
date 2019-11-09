@@ -153,19 +153,24 @@ def burning(pixels,basecolor=(120,30,0), runningcolor= (255, 10, 0), number_of_r
     for i in range(startpixel,startpixel+number_of_running):###maximum all pixels - number of changed
         pixels.set_pixel(i,Adafruit_WS2801.RGB_to_color(runningcolor[0],runningcolor[1],runningcolor[2]))
     pixels.show()
-    endrange = max(basecolor[0],basecolor[1],basecolor[2],runningcolor[0],runningcolor[1],runningcolor[2])
+    endrange = min(basecolor[0],basecolor[1],basecolor[2],runningcolor[0],runningcolor[1],runningcolor[2])
+
     for j in range(0,30):
         brightness(pixels,(startpixel,startpixel + number_of_running),1,"decrease")
         time.sleep(0.2)
+    print("decreased spot")
     for j in range(0,30):
         brightness(pixels,(startpixel,startpixel + number_of_running),1,"increase")
         time.sleep(0.2)
+    print("increased spot")
     for j in range(0,endrange):
         brightness(pixels,(0,PIXEL_COUNT),1,"decrease")
         time.sleep(0.05)
+    print("decreased all")
     for j in range(0,endrange):
         brightness(pixels,(0,PIXEL_COUNT),1,"increase")
         time.sleep(0.05)
+    print("increased all")
 
 
 def setalltocolor(pixels,color=(255,255,255)):
