@@ -162,7 +162,9 @@ def burning(pixels,basecolor=(120,30,0), runningcolor= (255, 10, 0), number_of_r
             pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color( r, g, b ))
             pixels.show()
             time.sleep(0.01)
-    for j in range(0,30):
+    for j in range(0,60):
+        brightness(pixels,1,"decrease")
+    for j in range(0,50):
         for i in range(startpixel,startpixel+number_of_running):
             r, g, b = pixels.get_pixel_rgb(i)
             r = int(max(0, r + 1))
