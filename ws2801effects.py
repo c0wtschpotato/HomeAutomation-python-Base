@@ -160,23 +160,23 @@ def burning(pixels,basecolor=(100,20,0), number_of_running= 15):
     for i in range(0,100):###maximum all pixels - number of changed
         brightness(pixels,(startpixel,startpixel + number_of_running),1,"increase",(None,"g","b"))
         pixels.set_pixel(randrange(startpixel,startpixel+number_of_running), Adafruit_WS2801.RGB_to_color(255,255,26))#set a random pixel to yellow
-        time.sleep(0.02)
+        time.sleep(0.2)
   
     for j in range(0,100):
         brightness(pixels,(startpixel,startpixel + number_of_running),1,"decrease",(None,"g","b"))
         pixels.set_pixel(randrange(startpixel,startpixel+number_of_running), Adafruit_WS2801.RGB_to_color(255,255,26))#set a random pixel to yellow
-        time.sleep(0.01)        
+        time.sleep(0.1)        
     print("decreased spot")
 
     for j in range(0,60):
         brightness(pixels,(0,PIXEL_COUNT),1,"decrease",(None,"g","b"))
-        time.sleep(0.01)
+        time.sleep(0.0)
     print("decreased all")
 
     for j in range(0,60):
         brightness(pixels,(0,PIXEL_COUNT),1,"increase",(None,"g","b"))
         
-        time.sleep(0.02)
+        time.sleep(0.2)
     print("increased all")
 
 
