@@ -161,7 +161,7 @@ def burning(pixels,basecolor=(120,30,0), runningcolor= (255, 10, 0), number_of_r
         time.sleep(0.02)
     for j in range(0,30):
         brightness(pixels,(0,PIXEL_COUNT),1,"decrease")
-        ime.sleep(0.01)
+        time.sleep(0.01)
 
 
 def setalltocolor(pixels,color=(255,255,255)):
