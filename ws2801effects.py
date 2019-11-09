@@ -5,7 +5,7 @@ import RPi.GPIO as GPIO
 # Import the WS2801 module.
 import Adafruit_WS2801
 import Adafruit_GPIO.SPI as SPI
- 
+from random import randrange
  
 # Configure the count of pixels:
 PIXEL_COUNT = 100
