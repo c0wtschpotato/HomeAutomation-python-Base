@@ -4,6 +4,18 @@ import socket
 import sys
 import os
 import ConfigParser
+## /etc/asound.conf
+# pcm.!default {
+#     type asym
+#     playback.pcm {
+#         type plug
+#         slave.pcm "hw:0,0"
+#     }
+#     capture.pcm {
+#         type plug
+#         slave.pcm "hw:1,0"
+#     }
+# }
 
 
 config = ConfigParser.ConfigParser()
