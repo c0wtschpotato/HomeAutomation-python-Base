@@ -78,7 +78,7 @@ def brightness(pixels, affected_pixels = (0,PIXEL_COUNT),step=1,dec_or_inc = "de
             if not "b" in exclude_color:
                 b = int(b + step)
             pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color( r, g, b ))
-    pixels.show()
+    # pixels.show()
         # if wait > 0:
         #     time.sleep(wait)
 
@@ -186,6 +186,24 @@ def setalltocolor(pixels,color=(255,255,255),affected_pixels=(0,PIXEL_COUNT)):
         pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(color[0],color[1],color[2]))#
     pixels.show()
         
+
+def ColorWave(pixels,basecolor=(255,0,128),runningcolor=(255,0,0),number_of_running=10,sleep_time=(0.1),turns=5,brightness_diff=25):
+    setalltocolor(pixels,(basecolor[0]/2,basecolor[1]/2,basecolor[2]/2))
+    if (basecolor[0]/2)<brightness_diff:
+        r = "r"
+    else:
+        r = None
+    if (basecolor[1]/2)<brightness_diff:
+        g = "g" 
+    else:
+        g = None
+    if (basecolor[2]/2)<brightness_diff:
+        b = "b"
+    else:
+        b = None
+    for i in range(1,turns):
+        for j in range(j,PIXEL_COUNT+number_of_running):
+            brightness(pixels, (j-(number_of_running-1),j),brightness_diff,"increase",(r,g,b))
 
 
  
