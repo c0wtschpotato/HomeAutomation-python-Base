@@ -64,7 +64,8 @@ def on_message(client, userdata, msg):
 
 		### since no payload is transmitted here we create the wanted json object in this function
 		print("hotword first")
-		print(msg.payload["siteId"])
+		ursprung = json.loads(msg.payload)
+		print(ursprung["siteId"])
 		if msg.payload["siteId"] == "192.168.1.103":
 			print("default siteId")
 		do_run = True
