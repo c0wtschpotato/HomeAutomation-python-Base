@@ -187,7 +187,7 @@ def setalltocolor(pixels,color=(255,255,255),affected_pixels=(0,PIXEL_COUNT)):
     pixels.show()
         
 
-def ColorWave(pixels,basecolor=(255,0,128),runningcolor=(255,0,0),number_of_running=10,sleep_time=(0.1),turns=5,brightness_diff=25):
+def ColorWave(pixels,basecolor=(255,0,128),runningcolor=(255,0,0),number_of_running=10,sleep_time=(0.1),turns=5,brightness_diff=10):
     setalltocolor(pixels,(basecolor[0]/2,basecolor[1]/2,basecolor[2]/2))
     if (basecolor[0]/2)<brightness_diff:
         r = "r"
@@ -201,9 +201,15 @@ def ColorWave(pixels,basecolor=(255,0,128),runningcolor=(255,0,0),number_of_runn
         b = "b"
     else:
         b = None
-    for i in range(1,turns):
-        for j in range(j,PIXEL_COUNT+number_of_running):
-            brightness(pixels, (j-(number_of_running-1),j),brightness_diff,"increase",(r,g,b))
+    if number_of_running % 2 == 0:
+        MIDLED = round(number_of_running/2)
+    else:
+        MIDLED=round((number_of_running-1)/2)
+    for i in range(-round((number_of_running/2)),turns):
+        for j in range(1,PIXEL_COUNT+number_of_running):#######keine fucking ahnung
+            brightness(pixels, (j,j+number_of_running-1),brightness_diff,"increase",(r,g,b))##light up all affected LEDs
+            for k in range(j,):
+                brightness(pixels, (j+round_down(number_of_running/4)),brightness_diff,"increase",(r,g,b))
 
 
  
