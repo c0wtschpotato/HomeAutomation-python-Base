@@ -61,9 +61,10 @@ def on_message(client, userdata, msg):
 			client.publish(msg.topic,current_status)
 	if msg.topic =='hermes/hotword/default/detected':
 		global current_status
+
 		### since no payload is transmitted here we create the wanted json object in this function
 		print("hotword first")
-		
+		print(msg.payload)
 		do_run = True
 		print("LED-Driver detected hotword from hermes")
 		t = threading.Thread(target=loopfunc,args=("testing arg",)).start()

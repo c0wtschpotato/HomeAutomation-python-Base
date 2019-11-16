@@ -9,7 +9,8 @@
 import os
 
 print ("installing depencies")
-os.system("sudo apt-get install install libzbar-dev libzbar0 libffi-dev libssl-dev wiringpi")
+os.system("sudo apt-get install libzbar-dev libzbar0 libffi-dev libssl-dev wiringpi")
+
 os.system("sudo pip install hermes")
 os.system("sudo pip install broadlink")
 os.system("sudo pip install board")
@@ -23,7 +24,7 @@ r  = os.system("sudo chmod +x /home/pi/python-broadlink/setup.py")
 if r == 0:
 	os.system("sudo /home/pi/python-broadlink/./setup.py install")
 else:
-	print colored("python-broadlink could not be installed via setup.py pls retry yourself")
+	print("python-broadlink could not be installed via setup.py pls retry yourself")
 
 print("cloning raspberry-remote")
 os.system("sudo git clone git://github.com/xkonni/raspberry-remote.git")
