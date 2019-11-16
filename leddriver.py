@@ -65,7 +65,7 @@ def on_message(client, userdata, msg):
 		### since no payload is transmitted here we create the wanted json object in this function
 		print("hotword first")
 		print(msg.payload)
-		if msg.payload["siteID"] == "192.168.1.103"
+		if msg.payload["siteID"] == "192.168.1.103":
 			do_run = True
 			print("LED-Driver detected hotword from hermes")
 			t = threading.Thread(target=loopfunc,args=("testing arg",)).start()
