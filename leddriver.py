@@ -66,7 +66,7 @@ def on_message(client, userdata, msg):
 
 		ursprung = json.loads(msg.payload)
 		print(ursprung["siteId"])
-		if ursprung["siteId"] == "default":
+		if do_run== False:
 			do_run = True
 			t = threading.Thread(target=loopfunc,args=("testing arg",)).start()
 			# client.publish("HomA/ledstrip1/set_status",current_status)

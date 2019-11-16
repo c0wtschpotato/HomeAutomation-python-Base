@@ -10,7 +10,7 @@ import os
 
 print ("installing depencies")
 os.system("sudo apt-get install libzbar-dev libzbar0 libffi-dev libssl-dev wiringpi")
-
+os.system("sudo pip install RPi.GPIO")
 os.system("sudo pip install hermes")
 os.system("sudo pip install broadlink")
 os.system("sudo pip install board")
