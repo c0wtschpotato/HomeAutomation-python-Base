@@ -63,20 +63,17 @@ def on_message(client, userdata, msg):
 		global current_status
 
 		### since no payload is transmitted here we create the wanted json object in this function
-		print("hotword first")
+
 		ursprung = json.loads(msg.payload)
 		print(ursprung["siteId"])
-		if msg.payload["siteId"] == "192.168.1.103":
-			print("default siteId")
-		do_run = True
-		print("LED-Driver detected hotword from hermes")
-		t = threading.Thread(target=loopfunc,args=("testing arg",)).start()
-		print("right after loop")
-		# client.publish("HomA/ledstrip1/set_status",current_status)
-		# set_leds_to_input(payload)
+		if ursprung["siteId"] == "default":
+			do_run = True
+			t = threading.Thread(target=loopfunc,args=("testing arg",)).start()
+			# client.publish("HomA/ledstrip1/set_status",current_status)
+			# set_leds_to_input(payload)
 	if msg.topic == "hermes/hotword/toggleOn":
 		global current_status
-		print("toggle on detected, stopping wake word animation")
+
 		do_run = False
 		# client.publish("HomA/ledstrip1/set_status",current_status)		
 		t.join()
