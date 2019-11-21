@@ -10,7 +10,7 @@ from random import randrange
 ############################################################
 do_run = ""
 current_status = ""
-HOST = '192.168.1.103'
+HOST = '192.168.1.107'
 PORT = 1883
 current_status =""## init empty
 last_status = None
