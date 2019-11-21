@@ -39,6 +39,7 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("HomA/ledstrip1/set_status")
     client.subscribe("hermes/hotword/default/detected")##gets hermes action from snips and starts led strip
     client.subscribe("hermes/hotword/toggleOn")
+    client.subscribe("c0wtschpotato:PCcontrol")
 
 def on_message(client, userdata, msg):
 	global do_run
