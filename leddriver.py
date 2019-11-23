@@ -21,7 +21,7 @@ def loopfunc(input_payload):###function used with threading to loop certain effe
 	r = randrange(0,255)
 	g = randrange(0,255)
 	b  = randrange(0,255)
-	pickfunc = random(0,1)
+	pickfunc = randrange(0,1)
 	while do_run == True:
 		if pickfunc == 1:
 			ws.running_on_chain(ws.pixels,(r,g,b),(255 -r ,255-g,255-b),5,0.01)
