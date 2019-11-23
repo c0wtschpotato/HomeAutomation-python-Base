@@ -69,7 +69,7 @@ def on_message(client, userdata, msg):
 		### since no payload is transmitted here we create the wanted json object in this function
 
 		ursprung = json.loads(msg.payload)
-		pickfunc = randrange(0,1)
+		pickfunc = randrange(0,2)
 		print("source: "+ursprung["siteId"])
 		print("func to call: "+str(pickfunc))
 		if do_run != True:
