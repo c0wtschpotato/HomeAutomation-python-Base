@@ -21,16 +21,20 @@ def loopfunc(input_payload):###function used with threading to loop certain effe
 	r = randrange(0,255)
 	g = randrange(0,255)
 	b  = randrange(0,255)
+	pickfunc = random(0,1)
 	while do_run == True:
-		ws.running_on_chain(ws.pixels,(r,g,b),(255 -r ,255-g,255-b),5,0.01)
-	        if do_run == False:
-				if last_status !="free":
-					print("setting back leds")
-					print(last_status)
-					set_leds_to_input(last_status)
-					return
-				elif last_status == None:
-					return
+		if pickfunc == 1:
+			ws.running_on_chain(ws.pixels,(r,g,b),(255 -r ,255-g,255-b),5,0.01)
+		if pickfunc == 0:
+			ws.rainbow_cycle(ws.pixels,0.05)
+		        if do_run == False:
+					if last_status !="free":
+						print("setting back leds")
+						print(last_status)
+						set_leds_to_input(last_status)
+						return
+					elif last_status == None:
+						return
 	return
 
 def on_connect(client, userdata, flags, rc):
