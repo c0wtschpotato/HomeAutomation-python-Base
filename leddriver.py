@@ -4,6 +4,7 @@ import ws2801effects as ws
 import json
 import threading
 from random import randrange
+import time
 ############################################################
 ######if all goes wrong, restart snips skil server##########
 ######before starting all over again, fucks shit up#########
