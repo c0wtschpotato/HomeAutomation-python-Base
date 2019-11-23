@@ -70,7 +70,7 @@ def on_message(client, userdata, msg):
 
 		ursprung = json.loads(msg.payload)
 		pickfunc = randrange(0,1)
-		print("source: "ursprung["siteId"])
+		print("source: "+ursprung["siteId"])
 		print("func to call: "+str(pickfunc))
 		if do_run != True:
 			do_run = True
