@@ -31,7 +31,7 @@ def loopfunc(input_payload,pickfunc):###function used with threading to loop cer
 					if last_status !="free":
 						print("setting back leds")
 						print(last_status)
-						time.sleep(1)### wait a second to reset status
+						# time.sleep(1)### wait a second to reset status
 						set_leds_to_input(last_status)
 						return
 					elif last_status == None:
