@@ -26,7 +26,7 @@ def loopfunc(input_payload):###function used with threading to loop certain effe
 		if pickfunc == 1:
 			ws.running_on_chain(ws.pixels,(r,g,b),(255 -r ,255-g,255-b),5,0.01)
 		if pickfunc == 0:
-			ws.rainbow_cycle(ws.pixels,0.05)
+			ws.rainbow_cycle(ws.pixels,0.005)
 		        if do_run == False:
 					if last_status !="free":
 						print("setting back leds")
