@@ -16,17 +16,16 @@ current_status =""## init empty
 last_status = None
 ##empty, saves current to last before changing current
 
-def loopfunc(input_payload):###function used with threading to loop certain effects
+def loopfunc(input_payload,pickfunc):###function used with threading to loop certain effects
 	global do_run
 	r = randrange(0,255)
 	g = randrange(0,255)
 	b  = randrange(0,255)
-	pickfunc = randrange(0,1)
 	while do_run == True:
 		if pickfunc == 1:
 			ws.running_on_chain(ws.pixels,(r,g,b),(255 -r ,255-g,255-b),5,0.01)
 		if pickfunc == 0:
-			ws.rainbow_cycle(ws.pixels,0.005)
+			ws.rainbow_cycle(ws.pixels,0.0035)
 		        if do_run == False:
 					if last_status !="free":
 						print("setting back leds")
@@ -70,10 +69,12 @@ def on_message(client, userdata, msg):
 		### since no payload is transmitted here we create the wanted json object in this function
 
 		ursprung = json.loads(msg.payload)
-		print(ursprung["siteId"])
+		pickfunc = randrange(0,1)
+		print("source: "ursprung["siteId"])
+		print("func to call: "+str(pickfunc))
 		if do_run != True:
 			do_run = True
-			t = threading.Thread(target=loopfunc,args=("testing arg",)).start()
+			t = threading.Thread(target=loopfunc,args=("testing arg",pickfunc,)).start()
 			# client.publish("HomA/ledstrip1/set_status",current_status)
 			# set_leds_to_input(payload)
 	if msg.topic == "hermes/hotword/toggleOn":
