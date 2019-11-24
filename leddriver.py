@@ -73,6 +73,7 @@ def on_message(client, userdata, msg):
 		# print("last know status was "+ last_status)
 		if "stop" in msg.payload:
 			do_run = False
+			print("Thread stop recieved")
 	if msg.topic == "HomA/ledstrip1/get_status" :
 		global current_status
 		if msg.payload != "get":
