@@ -91,7 +91,10 @@ def on_message(client, userdata, msg):
 def set_leds_to_input(sentpayload):
 	print ("in set leds to input")
 	do_run == False
-	t2.join()
+	try:
+		t2.join()
+	except:
+		pass
 	obj = json.loads(sentpayload)	
 	if obj["function"] == "lightning":
 		print("starting function lightning")
