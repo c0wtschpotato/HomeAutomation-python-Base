@@ -50,7 +50,7 @@ def loop_animation():
 	do_run = True
 	while do_run == True:
 		ws.rainbow_cycle(ws.pixels,0.05)
-
+	
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
     client.subscribe("HomA/ledstrip1/get_status")## for internal comm
@@ -90,7 +90,7 @@ def on_message(client, userdata, msg):
 		print("func to call: "+str(pickfunc))
 		if do_run != True:
 			do_run = True
-			t = threading.Thread(target=loop_animation,args=("None",)).start()
+			t = threading.Thread(target=loopfunc,args=("testing arg",pickfunc,)).start()
 			# client.publish("HomA/ledstrip1/set_status",current_status)
 			# set_leds_to_input(payload)
 	if msg.topic == "hermes/hotword/toggleOn":
@@ -129,8 +129,7 @@ def set_leds_to_input(sentpayload):
 		print("starting ranbow cycle")
 		# t.join()
 		do_run = True
-		t2 = threading.Thread(target=loopfunc,args=("testing arg",0,0.05)).start()
-
+		t2 =  threading.Thread(target=loop_animation,args=("None",)).start()
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
