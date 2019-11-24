@@ -109,22 +109,6 @@ def set_leds_to_input(sentpayload):
 	print ("in set leds to input")
 	global do_run
 	global t
-	if sentpayload == "stop":
-		do_run = False
-		try:
-			t.join()
-		except:
-			print("could not join Thread 1")
-		try:
-			t2.join()
-		except:
-			print("could not join Thread 2")
-
-	do_run == False
-	try:
-		t2.join()
-	except:
-		pass
 	obj = json.loads(sentpayload)	
 	if obj["function"] == "lightning":
 		print("starting function lightning")
@@ -134,22 +118,13 @@ def set_leds_to_input(sentpayload):
 		ws.running_on_chain(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])),(int(obj["runningcolor"]["r"]),int(obj["runningcolor"]["g"]),int(obj["runningcolor"]["b"])),int(obj["number_of_running"]),float(obj["sleep_time"]))
 
 	if obj["function"] == "setalltocolor":
-		try:
-			t.join()
-		except:
-			pass
 		ws.setalltocolor(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])))
 	if obj["function"] == "rainbow_colors":
 		print("starting ranbow cycle")
-		do_run = False
-		t.join()
-		do_run = True
-		# t2 =  threading.Thread(target=loop_animation,args=()).start()
-		while do_run == True:
-			for i in range(0,20):
-				ws.rainbow_cycle(ws.pixels,0.05)
-				if do_run == False:
-					return
+		for i in range(0,20):
+			ws.rainbow_cycle(ws.pixels,0.05)
+			if do_run == False:
+				return
 
 client = mqtt.Client()
 client.on_connect = on_connect
