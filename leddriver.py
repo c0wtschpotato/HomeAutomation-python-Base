@@ -42,14 +42,10 @@ def loopfunc(input_payload,pickfunc,opt = 0.0035):###function used with threadin
 def loop_animation():
 	global do_run
 	global t
-	do_run = False
-	try:
-		t.join()
-	except:
-		print ("failed to join t1")
-	do_run = True
-	while do_run == True:
+	for i in range(0,20):
 		ws.rainbow_cycle(ws.pixels,0.05)
+		if do_run == False:
+			return
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
@@ -80,9 +76,6 @@ def on_message(client, userdata, msg):
 			client.publish(msg.topic,current_status)
 	if msg.topic =='hermes/hotword/default/detected':
 		global current_status
-
-		### since no payload is transmitted here we create the wanted json object in this function
-
 		ursprung = json.loads(msg.payload)
 		pickfunc = randrange(0,2)
 		print("source: "+ursprung["siteId"])
@@ -121,11 +114,7 @@ def set_leds_to_input(sentpayload):
 		ws.setalltocolor(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])))
 	if obj["function"] == "rainbow_colors":
 		print("starting ranbow cycle")
-		for i in range(0,20):
-			ws.rainbow_cycle(ws.pixels,0.05)
-			if do_run == False:
-				return
-
+		ws.rainbow_cycle(ws.pixels,0.05)
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
