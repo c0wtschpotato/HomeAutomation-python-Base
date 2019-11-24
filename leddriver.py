@@ -29,10 +29,11 @@ def loopfunc(input_payload,pickfunc,opt = 0.0035):###function used with threadin
 			ws.rainbow_cycle(ws.pixels,opt)
 		if do_run == False:
 			if last_status !="free":
-				print("setting back leds")
-				print(last_status)
+				
 				# time.sleep(1)### wait a second to reset status
 				if not "rainbow_colors" in last_status:
+					print("setting back leds")
+					print(last_status)
 					set_leds_to_input(last_status)
 				return
 			elif last_status == None:
