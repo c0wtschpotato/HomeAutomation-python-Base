@@ -94,7 +94,7 @@ def on_message(client, userdata, msg):
 			# set_leds_to_input(payload)
 	if msg.topic == "hermes/hotword/toggleOn":
 		global current_status
-
+		print("toggleon activated, terminating threads")
 		do_run = False
 		# client.publish("HomA/ledstrip1/set_status",current_status)		
 		t.join()
