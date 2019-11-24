@@ -90,6 +90,7 @@ def on_message(client, userdata, msg):
 
 def set_leds_to_input(sentpayload):
 	print ("in set leds to input")
+	global do_run
 	do_run == False
 	try:
 		t2.join()
