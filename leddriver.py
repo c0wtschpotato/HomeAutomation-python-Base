@@ -16,12 +16,12 @@ PORT = 1883
 current_status =""## init empty
 last_status = None
 ##empty, saves current to last before changing current
-
+t = "emptythread"
 def loopfunc(input_payload,pickfunc):###function used with threading to loop certain effects
 	global do_run
-	r = randrange(0,255)
-	g = randrange(0,255)
-	b  = randrange(0,255)
+	r = randrange(120,255)
+	g = randrange(120,255)
+	b  = randrange(120,255)
 	while do_run == True:
 		if pickfunc == 1:
 			ws.running_on_chain(ws.pixels,(r,g,b),(255 -r ,255-g,255-b),5,0.01)
@@ -48,6 +48,7 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
 	global do_run
+	global t
 	if msg.topic == "HomA/ledstrip1/set_status":
 		global current_status
 		global last_status
@@ -108,7 +109,7 @@ def set_leds_to_input(sentpayload):
 		ws.setalltocolor(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])))
 	if obj["function"] == "rainbow_colors":
 		print("starting ranbow cycle")
-		t1.join()
+		t.join()
 		do_run = True
 		t2 = threading.Thread(target=loopfunc,args=("testing arg",0)).start()
 
