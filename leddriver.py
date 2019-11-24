@@ -71,9 +71,6 @@ def on_message(client, userdata, msg):
 		last_status = current_status
 		set_leds_to_input(current_status)
 		# print("last know status was "+ last_status)
-		if "stop" in msg.payload:
-			do_run = False
-			print("Thread stop recieved")
 	if msg.topic == "HomA/ledstrip1/get_status" :
 		global current_status
 		if msg.payload != "get":
@@ -106,6 +103,16 @@ def on_message(client, userdata, msg):
 
 def set_leds_to_input(sentpayload):
 	print ("in set leds to input")
+	if sentpayload == "stop":
+		do_run = False
+		try:
+			t.join()
+		except:
+			print("could not join Thread 1")
+		try:
+			t2.join()
+		except:
+			print("could not join Thread 2")
 	global do_run
 	global t
 	do_run == False
