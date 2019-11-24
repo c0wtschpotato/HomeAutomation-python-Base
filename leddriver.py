@@ -71,7 +71,8 @@ def on_message(client, userdata, msg):
 		last_status = current_status
 		set_leds_to_input(current_status)
 		# print("last know status was "+ last_status)
-		
+		if "stop" in msg.payload:
+			do_run = False
 	if msg.topic == "HomA/ledstrip1/get_status" :
 		global current_status
 		if msg.payload != "get":
@@ -127,9 +128,12 @@ def set_leds_to_input(sentpayload):
 		ws.setalltocolor(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])))
 	if obj["function"] == "rainbow_colors":
 		print("starting ranbow cycle")
-		# t.join()
-		do_run = True
-		t2 =  threading.Thread(target=loop_animation,args=()).start()
+		# # t.join()
+		# do_run = True
+		# t2 =  threading.Thread(target=loop_animation,args=()).start()
+		while do_run == True:
+			ws.rainbow_cycle(ws.pixels,0.05)
+
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
