@@ -32,7 +32,8 @@ def loopfunc(input_payload,pickfunc,opt = 0.0035):###function used with threadin
 				print("setting back leds")
 				print(last_status)
 				# time.sleep(1)### wait a second to reset status
-				set_leds_to_input(last_status)
+				if not "rainbow_cycle" in last_status:
+					set_leds_to_input(last_status)
 				return
 			elif last_status == None:
 				return
@@ -107,6 +108,7 @@ def set_leds_to_input(sentpayload):
 		ws.running_on_chain(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])),(int(obj["runningcolor"]["r"]),int(obj["runningcolor"]["g"]),int(obj["runningcolor"]["b"])),int(obj["number_of_running"]),float(obj["sleep_time"]))
 
 	if obj["function"] == "setalltocolor":
+		t.join
 		ws.setalltocolor(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])))
 	if obj["function"] == "rainbow_colors":
 		print("starting ranbow cycle")
