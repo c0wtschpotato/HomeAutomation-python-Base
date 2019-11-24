@@ -98,6 +98,10 @@ def on_message(client, userdata, msg):
 		do_run = False
 		# client.publish("HomA/ledstrip1/set_status",current_status)		
 		t.join()
+		try:
+			t2.join()
+		except:
+			print("could not join t2 after toggleOn")
 		
 	
 
