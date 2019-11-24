@@ -114,7 +114,9 @@ def set_leds_to_input(sentpayload):
 		ws.setalltocolor(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])))
 	if obj["function"] == "rainbow_colors":
 		print("starting ranbow cycle")
-
+		do_run = False
+		t.join()
+		do_run = True
 		AnimationThread = threading.Tread(target = loop_animation,args=()).start()
 client = mqtt.Client()
 client.on_connect = on_connect
