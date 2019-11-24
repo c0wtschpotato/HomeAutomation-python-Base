@@ -89,12 +89,6 @@ def on_message(client, userdata, msg):
 		global current_status
 		print("toggleon activated, terminating threads")
 		do_run = False
-		# client.publish("HomA/ledstrip1/set_status",current_status)		
-		
-		try:
-			t2.join()
-		except:
-			print("could not join t2 after toggleOn")
 		t.join()
 	
 
