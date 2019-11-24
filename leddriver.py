@@ -39,6 +39,18 @@ def loopfunc(input_payload,pickfunc,opt = 0.0035):###function used with threadin
 				return
 	return
 
+def loop_animation():
+	global do_run
+	global t
+	do_run = False
+	try:
+		t.join()
+	except:
+		print ("failed to join t1")
+	do_run = True
+	while do_run == True:
+		ws.rainbow_cycle(ws.pixels,0.05)
+
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
     client.subscribe("HomA/ledstrip1/get_status")## for internal comm
@@ -78,7 +90,7 @@ def on_message(client, userdata, msg):
 		print("func to call: "+str(pickfunc))
 		if do_run != True:
 			do_run = True
-			t = threading.Thread(target=loopfunc,args=("testing arg",pickfunc,)).start()
+			t = threading.Thread(target=loop_animation,args=("None",)).start()
 			# client.publish("HomA/ledstrip1/set_status",current_status)
 			# set_leds_to_input(payload)
 	if msg.topic == "hermes/hotword/toggleOn":
