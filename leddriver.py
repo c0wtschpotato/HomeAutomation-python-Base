@@ -103,6 +103,8 @@ def on_message(client, userdata, msg):
 
 def set_leds_to_input(sentpayload):
 	print ("in set leds to input")
+	global do_run
+	global t
 	if sentpayload == "stop":
 		do_run = False
 		try:
@@ -113,8 +115,7 @@ def set_leds_to_input(sentpayload):
 			t2.join()
 		except:
 			print("could not join Thread 2")
-	global do_run
-	global t
+
 	do_run == False
 	try:
 		t2.join()
