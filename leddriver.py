@@ -90,6 +90,8 @@ def on_message(client, userdata, msg):
 
 def set_leds_to_input(sentpayload):
 	print ("in set leds to input")
+	do_run == False
+	t2.join()
 	obj = json.loads(sentpayload)	
 	if obj["function"] == "lightning":
 		print("starting function lightning")
@@ -101,7 +103,7 @@ def set_leds_to_input(sentpayload):
 	if obj["function"] == "setalltocolor":
 		ws.setalltocolor(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])))
 	if obj["function"] == "rainbow_colors":
-		ws.rainbow_colors(ws.pixels,0.2)
+		t2 = threading.Thread(target=loopfunc,args=("testing arg",0))
 
 client = mqtt.Client()
 client.on_connect = on_connect
