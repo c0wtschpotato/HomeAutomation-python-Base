@@ -19,9 +19,9 @@ last_status = None
 t = "emptythread"
 def loopfunc(input_payload,pickfunc,opt = 0.0035):###function used with threading to loop certain effects
 	global do_run
-	r = randrange(120,255)
-	g = randrange(120,255)
-	b  = randrange(120,255)
+	r = randrange(0,120)
+	g = randrange(0,255)
+	b  = randrange(0,255)
 	while do_run == True:
 		if pickfunc == 1:
 			ws.running_on_chain(ws.pixels,(r,g,b),(255 -r ,255-g,255-b),5,0.01)
@@ -145,7 +145,10 @@ def set_leds_to_input(sentpayload):
 		# do_run = True
 		# t2 =  threading.Thread(target=loop_animation,args=()).start()
 		while do_run == True:
-			ws.rainbow_cycle(ws.pixels,0.05)
+			for i in range(0,20):
+				ws.rainbow_cycle(ws.pixels,0.05)
+				if do_run == False:
+					return
 
 client = mqtt.Client()
 client.on_connect = on_connect
