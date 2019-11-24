@@ -17,7 +17,7 @@ current_status =""## init empty
 last_status = None
 ##empty, saves current to last before changing current
 t = "emptythread"
-def loopfunc(input_payload,pickfunc):###function used with threading to loop certain effects
+def loopfunc(input_payload,pickfunc,opt = 0.0035):###function used with threading to loop certain effects
 	global do_run
 	r = randrange(120,255)
 	g = randrange(120,255)
@@ -26,7 +26,7 @@ def loopfunc(input_payload,pickfunc):###function used with threading to loop cer
 		if pickfunc == 1:
 			ws.running_on_chain(ws.pixels,(r,g,b),(255 -r ,255-g,255-b),5,0.01)
 		if pickfunc == 0:
-			ws.rainbow_cycle(ws.pixels,0.0035)
+			ws.rainbow_cycle(ws.pixels,opt)
 		if do_run == False:
 			if last_status !="free":
 				print("setting back leds")
@@ -112,7 +112,7 @@ def set_leds_to_input(sentpayload):
 		print("starting ranbow cycle")
 		# t.join()
 		do_run = True
-		t2 = threading.Thread(target=loopfunc,args=("testing arg",0)).start()
+		t2 = threading.Thread(target=loopfunc,args=("testing arg",0,0.05)).start()
 
 client = mqtt.Client()
 client.on_connect = on_connect
