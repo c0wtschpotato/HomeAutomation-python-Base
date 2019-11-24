@@ -129,7 +129,7 @@ def set_leds_to_input(sentpayload):
 		print("starting ranbow cycle")
 		# t.join()
 		do_run = True
-		t2 =  threading.Thread(target=loop_animation,args=(,)).start()
+		t2 =  threading.Thread(target=loop_animation,args=()).start()
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
