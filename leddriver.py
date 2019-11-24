@@ -32,7 +32,7 @@ def loopfunc(input_payload,pickfunc,opt = 0.0035):###function used with threadin
 				print("setting back leds")
 				print(last_status)
 				# time.sleep(1)### wait a second to reset status
-				if not "rainbow_cycle" in last_status:
+				if not "rainbow_colors" in last_status:
 					set_leds_to_input(last_status)
 				return
 			elif last_status == None:
@@ -109,7 +109,10 @@ def set_leds_to_input(sentpayload):
 	if obj["function"] == "rainbow_colors":
 		print("starting ranbow cycle")
 		do_run = False
-		t.join()
+		try: 
+			t.join()
+		except:
+			pass
 		do_run = True
 		AnimationThread = threading.Tread(target = loop_animation,args=()).start()
 client = mqtt.Client()
