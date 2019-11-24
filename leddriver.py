@@ -141,8 +141,9 @@ def set_leds_to_input(sentpayload):
 		ws.setalltocolor(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])))
 	if obj["function"] == "rainbow_colors":
 		print("starting ranbow cycle")
-		# # t.join()
-		# do_run = True
+		do_run = False
+		t.join()
+		do_run = True
 		# t2 =  threading.Thread(target=loop_animation,args=()).start()
 		while do_run == True:
 			for i in range(0,20):
