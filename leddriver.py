@@ -4,7 +4,9 @@ import ws2801effects as ws
 import json
 import threading
 from random import randrange
-import time
+import time,configparser
+cfgpath = "/home/pi/HomeAutomation-python-Base/led.ini"
+config = configparser.ConfigParser()
 ############################################################
 ######if all goes wrong, restart snips skil server##########
 ######before starting all over again, fucks shit up#########
@@ -41,8 +43,8 @@ def loopfunc(input_payload,pickfunc,opt = 0.0035):###function used with threadin
 	return
 
 def loop_animation():
-	global do_run
-	global t
+	cfg = config.read(os.path.join(os.getcwd(), cfgpath))
+	print(cfg["loop"]["func"])
 	for i in range(0,20):
 		ws.rainbow_cycle(ws.pixels,0.05)
 		if do_run == False:
@@ -115,7 +117,7 @@ def set_leds_to_input(sentpayload):
 		except:
 			pass
 		do_run = True
-		AnimationThread = threading.Tread(target = loop_animation,args=()).start()
+		AnimationThread = threading.Thread(target = loop_animation,args=()).start()
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
