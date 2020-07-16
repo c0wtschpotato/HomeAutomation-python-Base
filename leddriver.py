@@ -6,6 +6,8 @@ import threading
 from random import randrange
 import time,configparser
 cfgpath = "/home/pi/HomeAutomation-python-Base/led.ini"
+inipath = "/home/pi/HomeAutomation-python-Base/cfg.ini"
+
 config = configparser.ConfigParser()
 ############################################################
 ######if all goes wrong, restart snips skil server##########
@@ -57,6 +59,7 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("hermes/hotword/default/detected")##gets hermes action from snips and starts led strip
     client.subscribe("hermes/hotword/toggleOn")
     client.subscribe("c0wtschpotato:PCcontrol")
+    client.subscribe("HomA/Philips/set_status")
 
 def on_message(client, userdata, msg):
 	global do_run
@@ -93,7 +96,15 @@ def on_message(client, userdata, msg):
 		print("toggleon activated, terminating threads")
 		do_run = False
 		t.join()
-	
+
+	if msg.topic == "HomA/Philips/set_status":
+		obj = json.loads(msg.payload)
+		cfg = config.read(os.path.join(os.getcwd(), inipath))
+		print("MQTT Philips "+msg.payload)
+		cfg['philips']['vol_up'] = '1'
+
+
+		
 
 def set_leds_to_input(sentpayload):
 	print ("in set leds to input")
