@@ -5,7 +5,7 @@ import paho.mqtt.client as mqtt
 import os
 import configparser, time, json
 
-HOST = "192.168.1.107"
+HOST = "localhost"
 PORT = 1883
 cfgpath = "/var/lib/snips/skills/Snips-HomA/cfg.ini"
 config = configparser.ConfigParser()
@@ -24,8 +24,10 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("HomA/pc/cmd")
     client.subscribe("HomA/HTS/cmd")
     client.subscribe("HomA/433/cmd")
+    print("subscribed to all Channels")
 
 def on_message(client, userdata, msg):
+	print("Message Inc")
 	obj = msg.jsonloads(msg.payload)
 	if msg.topic == 'hermes/hotword/default/detected':
 		print("Wakeword detected!")
