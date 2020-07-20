@@ -3,7 +3,7 @@
 # -*- coding: utf-8 -*-
 import paho.mqtt.client as mqtt
 import os
-import configparser, time
+import configparser, time, json
 
 HOST = 'localhost'
 PORT = 1883
@@ -26,17 +26,15 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("HomA/433/cmd")
 
 def on_message(client, userdata, msg):
+	obj = msg.jsonloads(msg.payload)
     if msg.topic == 'hermes/hotword/default/detected':
         print("Wakeword detected!")
-        global do_run
-        do_run = True
-        client.publish("HomA/ledstrip1/set_status",wakewordasjson)
-        #t = threading.Thread(target=loopfunc,args=()).start()
+    
     elif msg.topic == "hermes/hotword/toggleOn":
         print("Finished listening")
-        client.publish("HomA/ledstrip1/set_status",settonormal)
-        global do_run
-        do_run = False
+    elif msg.topic == "HomA/433/cmd":
+    	print("433 MHZ: "+msg.payload)
+
 
                                 # config = configparser.ConfigParser()
                                 # config.read(os.path.join(os.getcwd(), cfgpath))
