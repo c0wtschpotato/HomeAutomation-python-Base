@@ -47,7 +47,16 @@ def rainbow_cycle(pixels, wait=0.005):
         pixels.show()
         if wait > 0:
             time.sleep(wait)
- 
+
+def rainbow_slow(pixels, wait=0.0005):
+    for j in range(256): # one cycle of all 256 colors in the wheel
+        for i in range(pixels.count()):
+            pixels.set_pixel(i, wheel(((i * 256 // pixels.count()) + j) % 256) )
+        pixels.show()
+        if wait > 0:
+            time.sleep(wait)
+
+
 def rainbow_colors(pixels, wait=0.05):
     for j in range(256): # one cycle of all 256 colors in the wheel
         for i in range(pixels.count()):
