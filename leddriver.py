@@ -111,7 +111,7 @@ def on_message(client, userdata, msg):
 		
 
 def set_leds_to_input(sentpayload):
-	print ("in set leds to input with" + sentpayload.function)
+	print ("in set leds to input with" + sentpayload)
 	global do_run
 	global t
 
