@@ -27,8 +27,8 @@ def on_connect(client, userdata, flags, rc):
     print("subscribed to all Channels")
 
 def on_message(client, userdata, msg):
-	print("Message Inc "+msg)
-	obj = msg.jsonloads(msg.payload)
+	print("Message Inc "+msg.topic)
+	# obj = msg.jsonloads(msg.payload)
 	if msg.topic == 'hermes/hotword/default/detected':
 		print("Wakeword detected!")
 	elif msg.topic == "hermes/hotword/toggleOn":
@@ -49,7 +49,6 @@ def on_message(client, userdata, msg):
 
 client = mqtt.Client()
 client.on_connect = on_connect
-do_run = True
 client.on_message = on_message
-client.connect(HOST, PORT, 60)
+client.connect(HOST, 1883, 60)
 client.loop_forever()
