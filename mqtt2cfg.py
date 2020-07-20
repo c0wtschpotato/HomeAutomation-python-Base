@@ -18,9 +18,9 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("hermes/hotword/toggleOn")
     client.subscribe("HomA/ledstrip1/get_status")
     client.subscribe("HomA/ledstrip1/set_status")
-	client.subscribe("HomA/pc/cmd")
-	client.subscribe("HomA/HTS/cmd")
-	client.subscribe("HomA/433/cmd")
+    client.subscribe("HomA/pc/cmd")
+    client.subscribe("HomA/HTS/cmd")
+    client.subscribe("HomA/433/cmd")
 
 def on_message(client, userdata, msg):
     if msg.topic == 'hermes/hotword/default/detected':
