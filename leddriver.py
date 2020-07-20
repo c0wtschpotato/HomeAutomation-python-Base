@@ -116,6 +116,11 @@ def set_leds_to_input(sentpayload):
 	global t
 
 	obj = json.loads(sentpayload)	
+
+	if obj ["function"] = "rainbow_slow":
+		print("starting rainbow_slow")
+		ws.rainbow_slow(ws.pixels,(int(obj["sleep_time"])))
+		print("cycle done")
 	if obj["function"] == "lightning":
 		print("starting function lightning")
 		ws.lightning(ws.pixels)
