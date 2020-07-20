@@ -119,7 +119,7 @@ def set_leds_to_input(sentpayload):
 
 	if obj ["function"] == "rainbow_slow":
 		print("starting rainbow_slow")
-		ws.rainbow_slow(ws.pixels,(int(obj["sleep_time"])))
+		ws.rainbow_slow(ws.pixels)
 		print("cycle done")
 	if obj["function"] == "lightning":
 		print("starting function lightning")
