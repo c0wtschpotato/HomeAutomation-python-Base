@@ -27,14 +27,14 @@ def on_connect(client, userdata, flags, rc):
     print("subscribed to all Channels")
 
 def on_message(client, userdata, msg):
-	print("Message Inc "+msg)
+	print("Message Inc "+msg.topic)
 	# obj = msg.jsonloads(msg.payload)
 	if msg.topic == 'hermes/hotword/default/detected':
 		print("Wakeword detected!")
 	elif msg.topic == "hermes/hotword/toggleOn":
 		print("Finished listening")
 	elif msg.topic == "HomA/433/cmd":
-		print("433 MHZ: "+msg)
+		print("433 MHZ: "+str(msg.payload))
 
 
                                 # config = configparser.ConfigParser()
