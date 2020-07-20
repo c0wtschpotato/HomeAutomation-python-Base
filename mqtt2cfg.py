@@ -5,7 +5,7 @@ import paho.mqtt.client as mqtt
 import os
 import configparser, time, json
 
-HOST = 'localhost'
+HOST = 192.168.1.107
 PORT = 1883
 cfgpath = "/var/lib/snips/skills/Snips-HomA/cfg.ini"
 config = configparser.ConfigParser()
