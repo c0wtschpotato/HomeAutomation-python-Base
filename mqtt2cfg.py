@@ -27,7 +27,7 @@ def on_connect(client, userdata, flags, rc):
     print("subscribed to all Channels")
 
 def on_message(client, userdata, msg):
-	print("Message Inc")
+	print("Message Inc "+msg)
 	obj = msg.jsonloads(msg.payload)
 	if msg.topic == 'hermes/hotword/default/detected':
 		print("Wakeword detected!")
