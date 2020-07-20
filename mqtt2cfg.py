@@ -28,7 +28,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
 	obj = msg.jsonloads(msg.payload)
     if msg.topic == 'hermes/hotword/default/detected':
-        print("Wakeword detected!")
+    	print("Wakeword detected!")
     
     elif msg.topic == "hermes/hotword/toggleOn":
         print("Finished listening")
