@@ -107,9 +107,10 @@ def on_message(client, userdata, msg):
 		
 
 def set_leds_to_input(sentpayload):
-	print ("in set leds to input")
+	print ("in set leds to input with" + sentpayload.function)
 	global do_run
 	global t
+
 	obj = json.loads(sentpayload)	
 	if obj["function"] == "lightning":
 		print("starting function lightning")
