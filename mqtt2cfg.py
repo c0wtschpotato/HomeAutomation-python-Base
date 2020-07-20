@@ -34,7 +34,7 @@ def on_message(client, userdata, msg):
 	elif msg.topic == "hermes/hotword/toggleOn":
 		print("Finished listening")
 	elif msg.topic == "HomA/433/cmd":
-		print("433 MHZ: "+msg.payload)
+		print("433 MHZ: "+msg)
 
 
                                 # config = configparser.ConfigParser()
