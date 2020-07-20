@@ -35,14 +35,14 @@ def on_message(client, userdata, msg):
         global do_run
         do_run = False
 
-                                config = configparser.ConfigParser()
-                                config.read(os.path.join(os.getcwd(), cfgpath))
-                                config['philips']['vol_up'] = '0'
-                                config['philips']['vol_down'] = '0'     
-                                config['couchled']['brightness_up'] = '0'
-                                config['couchled']['brightness_down'] = '0'             
-                                with open(cfgpath, 'w') as configfile:
-                                        config.write(configfile)
+                                # config = configparser.ConfigParser()
+                                # config.read(os.path.join(os.getcwd(), cfgpath))
+                                # config['philips']['vol_up'] = '0'
+                                # config['philips']['vol_down'] = '0'     
+                                # config['couchled']['brightness_up'] = '0'
+                                # config['couchled']['brightness_down'] = '0'             
+                                # with open(cfgpath, 'w') as configfile:
+                                #         config.write(configfile)
 
 
 client = mqtt.Client()
