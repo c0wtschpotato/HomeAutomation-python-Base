@@ -2,6 +2,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import paho.mqtt.client as mqtt
+import os
+import configparser, time
+
 HOST = 'localhost'
 PORT = 1883
 cfgpath = "/var/lib/snips/skills/Snips-HomA/cfg.ini"
