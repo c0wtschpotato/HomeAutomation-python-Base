@@ -51,7 +51,7 @@ class HTS():
 		print("switching " + str(i) +" times")
 		for j in range(0,i):
 			print("swtich "+str(j+1))
-			os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips-switch.source")
+			os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips.switch")
 			time.sleep(1)
 		
 		
