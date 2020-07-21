@@ -74,7 +74,8 @@ class HTS():
 				j = i
 				print(" reached Channel 6 so its 0")
 			if self.channel == int(targetchannel):
-				self.channelname == self.channelnameS[self.channel]
+				self.channelname == self.channelnameS[int(self.channel)]
+				print("Selfchannel is targetchannel")
 				break
 			time.sleep(1)
 		
