@@ -34,9 +34,7 @@ mhz5 = MHZ("11001","5","0","unused")
 class HTS():
 	"""docstring for ClassName"""
 	# rmSendPath = "sudo python /home/pi/python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --send "
-	
 	# os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-up.vol_change")
-
 	def __init__(self):
 		self.name = "Samsung Home Theater"
 		self.channel = "0"
@@ -53,4 +51,7 @@ class HTS():
 		#os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-switch.source")
 		# print("switching " + str(i) +" times")
 
-HTS()
+hts = HTS()
+
+
+
