@@ -68,7 +68,7 @@ class HTS():
 			# print("channel: "+str(self.channels[j+1]))
 			print("switched "+ str(j+1)+ " times")
 			self.channel = int(self.channel)+1
-			if self.channel <= 6:
+			if self.channel >= 6:
 				self.channel = 0
 				j = i
 				print(" reached Channel 6 so its 0")
