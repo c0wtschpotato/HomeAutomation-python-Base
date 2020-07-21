@@ -35,19 +35,22 @@ class HTS():
 	"""docstring for ClassName"""
 	rmSendPath = "sudo python /home/pi/python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --send "
 	
-	os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-up.vol_change")
+	# os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-up.vol_change")
 
-	def __init__(self, name):
+	def __init__(self):
 		self.name = "Samsung Home Theater"
 		self.channel = "0"
+		self.sendPath = "sudo python /home/pi/python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --send "
 
-	def volup():
+	def volup(self):
 		os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-up.vol_change")
 
-	def voldown():
+	def voldown(self):
 		os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-down.vol_change")
 
-	def channel(targetchannel):#0 hdmi, 1 fm, 2 bt, 3 apps, 4bd in, 5 aux
+	def channel(self,targetchannel):#0 hdmi, 1 fm, 2 bt, 3 apps, 4bd in, 5 aux
 		i = abs(int(self.channel) - int(targetchannel))
 		#os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-switch.source")
 		# print("switching " + str(i) +" times")
+
+HTS()
