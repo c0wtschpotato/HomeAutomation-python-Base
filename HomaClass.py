@@ -72,7 +72,7 @@ class HTS():
 				self.channel = 0
 				j = i
 				print(" reached Channel 6 so its 0")
-			self.channelname = self.channels[j+1]
+			# self.channelname = self.channels[j+1]
 			os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips.switch")
 			time.sleep(1)
 		
