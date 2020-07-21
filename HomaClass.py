@@ -48,7 +48,9 @@ class HTS():
 
 	def channel(self,targetchannel):#0 hdmi, 1 fm, 2 bt, 3 apps, 4bd in, 5 aux
 		i = abs(int(self.channel) - int(targetchannel))
-		#os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-switch.source")
+		for j in range(0,i):
+		os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-switch.source")
+		time.sleep(0.2)
 		# print("switching " + str(i) +" times")
 
 hts = HTS()
