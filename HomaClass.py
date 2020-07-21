@@ -49,25 +49,25 @@ class HTS():
 		os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips-down.vol_change")
 
 	def targetchannel(self,targetchannel):#0 hdmi, 1 fm, 2 bt, 3 apps, 4bd in, 5 aux
-		if targetchannel == "hdmi":
-			targetchannel = 0
-		if targetchannel == "fm":
-			targetchannel = 1
-		if targetchannel == "bt":
-			targetchannel = 2
-		if targetchannel == "apps":
-			targetchannel = 3
-		if targetchannel == "bd":
-			targetchannel = 4
-		if targetchannel == "aux":
-			targetchannel = 5
+		if targetchannel == "HDMI":
+			targetchannel = self.channels["HDMI"]
+		if targetchannel == "FM":
+			targetchannel = self.channels["FM"]
+		if targetchannel == "BT":
+			targetchannel = self.channels["BT"]
+		if targetchannel == "APPS":
+			targetchannel = self.channels["APPS"]
+		if targetchannel == "BD":
+			targetchannel = self.channels["BD"]
+		if targetchannel == "AUX":
+			targetchannel = self.channels["AUX"]
 
 		i = abs(int(self.channel) - int(targetchannel))
 		print("switching " + str(i) +" times")
 		self.channel = str(targetchannel)
 		for j in range(0,i):
 			print("swtich "+str(j+1))
-			self.channelname = self.channels[j]
+			# self.channelname = self.channels[j]
 			os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips.switch")
 			time.sleep(1)
 		
