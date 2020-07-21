@@ -39,6 +39,15 @@ class HTS():
 
 	def __init__(self, name):
 		self.name = "Samsung Home Theater"
+		self.channel = "0"
 
-		
-		
+	def volup():
+		os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-up.vol_change")
+
+	def voldown():
+		os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-down.vol_change")
+
+	def channel(targetchannel):#0 hdmi, 1 fm, 2 bt, 3 apps, 4bd in, 5 aux
+		i = abs(int(self.channel) - int(targetchannel))
+		#os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-switch.source")
+		# print("switching " + str(i) +" times")
