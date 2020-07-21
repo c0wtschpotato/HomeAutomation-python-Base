@@ -66,7 +66,7 @@ class HTS():
 		print("switching " + str(i) +" times")
 		self.channel = str(targetchannel)
 		for j in range(0,i):
-			print("channel: "+str(self.channels[j+1]))
+			# print("channel: "+str(self.channels[j+1]))
 			self.channel = int(self.channel)+1
 			if self.channel <= 6:
 				self.channel = 0
