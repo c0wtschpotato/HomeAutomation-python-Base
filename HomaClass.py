@@ -50,7 +50,7 @@ class HTS():
 		i = abs(int(self.channel) - int(targetchannel))
 		print("switching " + str(i) +" times")
 		for j in range(0,i):
-			os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-switch.source")
+			os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips-switch.source")
 			time.sleep(0.2)
 		
 		
