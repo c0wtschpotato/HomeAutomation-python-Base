@@ -43,10 +43,10 @@ class HTS():
 		self.sendPath = "sudo python /home/pi/python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --send "
 
 	def volup(self):
-		os.system(self.SendPath+"@/home/pi/python-broadlink/cli/philips-up.vol_change")
+		os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips-up.vol_change")
 
 	def voldown(self):
-		os.system(self.SendPath+"@/home/pi/python-broadlink/cli/philips-down.vol_change")
+		os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips-down.vol_change")
 
 	def channel(self,targetchannel):#0 hdmi, 1 fm, 2 bt, 3 apps, 4bd in, 5 aux
 		i = abs(int(self.channel) - int(targetchannel))
