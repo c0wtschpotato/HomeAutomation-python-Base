@@ -46,7 +46,7 @@ class HTS():
 	def voldown(self):
 		os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips-down.vol_change")
 
-	def channel(self,targetchannel):#0 hdmi, 1 fm, 2 bt, 3 apps, 4bd in, 5 aux
+	def targetchannel(self,targetchannel):#0 hdmi, 1 fm, 2 bt, 3 apps, 4bd in, 5 aux
 		# i = abs(int(self.channel) - int(targetchannel))
 		# for j in range(0,i):
 			# os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-switch.source")
