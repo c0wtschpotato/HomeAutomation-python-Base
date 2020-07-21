@@ -37,7 +37,7 @@ class HTS():
 	# os.system(rmSendPath+"@/home/pi/python-broadlink/cli/philips-up.vol_change")
 	def __init__(self):
 		self.name = "Samsung Home Theater"
-		self.channel = "0"
+		self.channel = 0
 		self.channelname = "HDMI"
 		self.channels = {"HDMI":0,"FM":1,"BT":2,"APPS":3,"BD":4,"AUX":5}
 		self.sendPath = "sudo python /home/pi/python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --send "
@@ -66,8 +66,13 @@ class HTS():
 		print("switching " + str(i) +" times")
 		self.channel = str(targetchannel)
 		for j in range(0,i):
-			print("swtich "+str(j+1))
-			# self.channelname = self.channels[j]
+			print("channel: "+str(self.channels[j+1]))
+			self.channel = int(self.channel)+1
+			if self.channel <= 6:
+				self.channel = 0
+				j = i
+				print(" reached Channel 6 so its 0")
+			self.channelname = self.channels[j+1]
 			os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips.switch")
 			time.sleep(1)
 		
