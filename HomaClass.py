@@ -40,6 +40,7 @@ class HTS():
 		self.channel = 0
 		self.channelname = "HDMI"
 		self.channels = {"HDMI":0,"FM":1,"BT":2,"APPS":3,"BD":4,"AUX":5}
+		self.channelnameS = ["HDMI", "FM", "BT","APPS","BD","AUX"]
 		self.sendPath = "sudo python /home/pi/python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --send "
 
 	def volup(self):
@@ -73,7 +74,7 @@ class HTS():
 				j = i
 				print(" reached Channel 6 so its 0")
 			if self.channel == int(targetchannel):
-				self.channelname == self.channels[self.channel]
+				self.channelname == self.channelnameS[self.channel]
 				break
 			time.sleep(1)
 		
