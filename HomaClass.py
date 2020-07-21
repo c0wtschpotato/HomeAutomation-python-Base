@@ -66,14 +66,16 @@ class HTS():
 		print("switching " + str(i) +" times")
 		for j in range(0,i):
 			# print("channel: "+str(self.channels[j+1]))
-			print("switched "+ str(j+1)+ " times")
+			
 			self.channel = int(self.channel)+1
+			print("switched "+ str(j+1)+ " times. Now on " + str(self.channel))
+			os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips.switch")
 			if self.channel >= 6:
 				self.channel = 0
 				j = i
 				print(" reached Channel 6 so its 0")
 			# self.channelname = self.channels[j+1]
-			os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips.switch")
+			
 			time.sleep(1)
 		
 		
