@@ -1,5 +1,6 @@
 import os
 import configparser, time, json, HomaClass as home
+from collections import namedtuple
 ##learnfile sudo python python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --learn --learnfile python-broadlink/cli/philips-up.vol_change
 
 
@@ -134,8 +135,8 @@ def on_message(client, userdata, msg):
         if msg.topic == "HomA/hts":
                 print("Message on HTS:")
                 print(json.loads(msg.payload))
-                erhalten = Recieved(json.loads(msg.payload))
-                print(erhalten.__dict__)
+                erhalten = json.loads(msg.payload, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
+                print(erhalten)
 
 
 
