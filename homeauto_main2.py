@@ -1,5 +1,5 @@
 import os
-import configparser, time, HomaClass as home
+import configparser, time, json, HomaClass as home
 ##learnfile sudo python python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --learn --learnfile python-broadlink/cli/philips-up.vol_change
 
 
@@ -34,6 +34,11 @@ def on_connect(client, userdata, flags, rc):
         client.subscribe("HomA/ledstrip1/get_status")
         client.subscribe("HomA/ledstrip1/set_status")
         client.subscribe("HomA/test")
+        client.subscribe("HomA/hts/cmd")
+        client.subscribe("HomA/status")
+        client.subscribe("HomA/mhz/cmd")
+        client.subscribe("HomA/pc/cmd")
+
 
 def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type and way to proceed
         
@@ -113,6 +118,10 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
 def on_message(client, userdata, msg):
         print(msg.payload)
         print(str(home.hts.volume))
+        if msg.topic == "HomA/status":
+                print("Status request for "+str(msg.payload))
+                if msg.payload == "hts":
+                        client.publish("HomA/status",json.loads(homa.hts.__dict__))
 
 
 client.on_connect = on_connect
