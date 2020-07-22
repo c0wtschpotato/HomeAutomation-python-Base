@@ -121,7 +121,12 @@ def on_message(client, userdata, msg):
                 print("Status request for "+str(msg.payload.name))
                 if msg.payload == "hts":
                         print("sending status: ")
-                        client.publish("HomA/status",json.dumps(home.hts.__dict__))
+                        client.publish("HomA/hts",json.dumps(home.hts.__dict__))
+
+
+        if msg.topic == "HomA/hts":
+                print("Message on HTS:")
+                print(json.loads(msg.payload))
 
 
 
