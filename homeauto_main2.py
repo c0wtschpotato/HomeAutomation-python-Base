@@ -115,6 +115,13 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
         global initcfg
         initcfg.read(cfgpath)
 
+
+class Recieved(object):
+    def __init__(self, data):
+            self.__dict__ = json.loads(data)
+
+
+
 def on_message(client, userdata, msg):
         print(msg.payload)
         if msg.topic == "HomA/status":
@@ -127,7 +134,7 @@ def on_message(client, userdata, msg):
         if msg.topic == "HomA/hts":
                 print("Message on HTS:")
                 print(json.loads(msg.payload))
-                print("Example: "+msg.payload.volume)
+                print("Example: "+Recieved(msg.payload))
 
 
 
