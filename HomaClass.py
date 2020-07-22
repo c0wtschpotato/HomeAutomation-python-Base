@@ -75,7 +75,7 @@ class HTS():
 				print(" reached Channel 6 so its 0")
 			if self.channel == int(targetchannel):
 				print("channelname was "+str(self.channelname))
-				self.channelname = str(self.channelNameS[self.channel])
+				self.channelname = str(self.channelnameS[self.channel])
 
 				print("and now is "+ str(self.channelname))
 				break
