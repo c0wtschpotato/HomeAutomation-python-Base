@@ -121,6 +121,8 @@ class Recieved(object):
     def __init__(self, data):
             self.__dict__ = json.loads(data)
 
+def msgToClass(msg):
+        return json.loads(msg.payload, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
 
 
 def on_message(client, userdata, msg):
@@ -135,10 +137,9 @@ def on_message(client, userdata, msg):
         if msg.topic == "HomA/hts":
                 print("Message on HTS:")
                 # print(json.loads(msg.payload))
-                erhalten = json.loads(msg.payload, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
-
-                print("erhalten in object umgewandelt:")
+                erhalten = msgToClass(msg.payload)
                 print(erhalten.__dict__)
+                print("Volume: "+ str(erhalten.volume)
 
 
 
