@@ -112,7 +112,7 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
 
 def on_message(client, userdata, msg):
         print(msg.payload)
-        print(home.hts.volume)
+        print(str(home.hts.volume))
 
 
 client.on_connect = on_connect
