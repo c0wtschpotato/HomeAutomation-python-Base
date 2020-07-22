@@ -33,6 +33,7 @@ def on_connect(client, userdata, flags, rc):
         client.subscribe("hermes/hotword/toggleOn")
         client.subscribe("HomA/ledstrip1/get_status")
         client.subscribe("HomA/ledstrip1/set_status")
+        client.subscribe("HomA/test")
 
 def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type and way to proceed
         
