@@ -33,9 +33,9 @@ mhz5 = MHZ("11001","5","0","unused")
 
 
 class mhzgrp():
-	def __init__(self)
+	def __init__(self):
 	self.all = [mhz1,mhz2,mhz3,mhz4,mhz5]
-	
+
 
 class HTS():
 	"""docstring for ClassName"""
