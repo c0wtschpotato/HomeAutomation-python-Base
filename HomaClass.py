@@ -63,7 +63,7 @@ class HTS():
 		if targetchannel == "AUX":
 			targetchannel = self.channels["AUX"]
 
-		i = abs(int(self.channel) - int(targetchannel))
+		i = 5
 		print("switching " + str(i) +" times")
 		for j in range(0,i):
 			self.channel = int(self.channel)+1
