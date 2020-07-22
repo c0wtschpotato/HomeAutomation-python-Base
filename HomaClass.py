@@ -59,6 +59,19 @@ class HTS():
 		os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips-down.vol_change")
 		self.volume = self.volume -1
 
+	def targetvol(self,targetvolume):
+		diff = int(targetvolume)-self.volume
+		if diff > 0:
+			for i in range(0,diff-1):
+				self.volup()
+				time.sleep(1)
+		elif diff<0:
+			for i in range(0,diff-1):
+				self.voldown()
+				time.sleep(1)
+		elif diff == 0:
+			print("targetvolume is currentvolume")
+
 	def targetchannel(self,targetchannel):#0 hdmi, 1 fm, 2 bt, 3 apps, 4bd in, 5 aux
 		if targetchannel == "HDMI":
 			targetchannel = self.channels["HDMI"]
