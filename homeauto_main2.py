@@ -139,7 +139,7 @@ def on_message(client, userdata, msg):
                 # print(json.loads(msg.payload))
                 erhalten = msgToClass(msg.payload)
                 print(erhalten.__dict__)
-                print("Volume: "+ str(erhalten.volume)
+                print("Volume: "+ str(erhalten.volume))
 
 
 
