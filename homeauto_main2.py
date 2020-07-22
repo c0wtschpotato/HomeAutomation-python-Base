@@ -122,7 +122,7 @@ class Recieved(object):
             self.__dict__ = json.loads(data)
 
 def msgToClass(msg):
-        zuruck = json.loads(msg.payload, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
+        zuruck = json.loads(msg, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
         return zuruck
 
 
