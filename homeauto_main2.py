@@ -36,6 +36,7 @@ def on_connect(client, userdata, flags, rc):
         client.subscribe("HomA/ledstrip1/set_status")
         client.subscribe("HomA/test")
         client.subscribe("HomA/hts")
+        client.subscribe("HomA/hts/cmd")
         client.subscribe("HomA/status")
         client.subscribe("HomA/mhz")
         client.subscribe("HomA/pc")
@@ -132,20 +133,25 @@ def on_message(client, userdata, msg):
                 print("Status request for "+str(msg.payload))
                 if msg.payload == "hts":
                         print("sending status: ")
-                        client.publish("HomA/hts",json.dumps(home.hts.__dict__))
+                        client.publish("HomA/"+str(msg.payload),json.dumps(home.hts.__dict__))
 
 
-        if msg.topic == "HomA/hts":
-                print("Message on HTS:")
-                # print(json.loads(msg.payload))
-                erhalten = msgToClass(msg.payload)
-                print("Volume: "+ str(erhalten.volume))
-                time.sleep(2)
-                home.hts.volume = 16
-                client.publish("HomA/status","hts")
-                time.sleep(10)
+        if msg.topic == "HomA/hts/cmd":
+                print("Command on HTS:")
+                if msg.payload == "volup":
+                    home.hts.volup()
+                if msg.payload == "voldown":
+                    home.hts.voldown()
+                if msg.payload == "voldown":
+                    home.hts.targetvolume(10)
 
+        if msg.topic == "HomA/mhz":
+                print("Message on MHZ:")
+                got = msgToClass(msg.payload)
 
+        if msg.topic == "HomA/pc":
+                print("Message on PC:")
+                got = msgToClass(msg.payload)
 
 client.on_connect = on_connect
 client.on_message = on_message
