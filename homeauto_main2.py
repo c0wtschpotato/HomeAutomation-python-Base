@@ -117,11 +117,10 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
 
 def on_message(client, userdata, msg):
         print(msg.payload)
-        print(str(home.hts.volume))
         if msg.topic == "HomA/status":
                 print("Status request for "+str(msg.payload))
                 if msg.payload == "hts":
-                        print("sending status: "+json.loads(homa.hts.__dict__))
+                        print("sending status: "+json.loads(homa.hts))
                         client.publish("HomA/status",json.loads(homa.hts.__dict__))
 
 
