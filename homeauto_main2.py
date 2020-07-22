@@ -121,8 +121,8 @@ def on_message(client, userdata, msg):
                 print("Status request for "+str(msg.payload))
                 if msg.payload == "hts":
                         print("sending status: ")
-                        print(homa.hts.__dict__)
-                        client.publish("HomA/status",json.loads(homa.hts.__dict__))
+                        print(home.hts.__dict__)
+                        client.publish("HomA/status",json.loads(home.hts.__dict__))
 
 
 client.on_connect = on_connect
