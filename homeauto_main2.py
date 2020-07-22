@@ -110,10 +110,7 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
         initcfg.read(cfgpath)
 
 def on_message(client, userdata, msg):
-
-    if msg.topic == "hermes/test":
-        print("msg on Testchannel")
-        
+        print(msg.payload)
 
 
 
