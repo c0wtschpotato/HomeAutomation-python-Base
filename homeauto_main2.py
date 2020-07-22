@@ -138,7 +138,7 @@ def on_message(client, userdata, msg):
                 erhalten = json.loads(msg.payload, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
 
                 print("erhalten in object umgewandelt:")
-                print(erhalten)
+                print(erhalten.volume)
 
 
 
