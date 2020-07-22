@@ -49,6 +49,7 @@ class HTS():
 		self.channelnameS = ["HDMI", "FM", "BT","APPS","BD","AUX"]
 		self.sendPath = "sudo python /home/pi/python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --send "
 		self.volume = 15
+		self.power = 1
 
 
 	def volup(self):
@@ -59,18 +60,28 @@ class HTS():
 		os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips-down.vol_change")
 		self.volume = self.volume -1
 
-	def targetvol(self,targetvolume):
+	def power(self):
+		os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips-0.power")
+		if self.power == 1:
+			self.power = 0
+		elif self.power ==1:
+			self.power = 0
+		print("power changed to "+str(self.power))
+
+	def targetvolume(self,targetvolume):
 		diff = int(targetvolume)-self.volume
 		if diff > 0:
-			for i in range(0,diff-1):
+			for i in range(0,diff):
 				self.volup()
 				time.sleep(1)
 		elif diff<0:
-			for i in range(0,diff-1):
+			for i in range(0,diff):
 				self.voldown()
+
 				time.sleep(1)
 		elif diff == 0:
 			print("targetvolume is currentvolume")
+		print("Volume changed to "+str(self.volume))
 
 	def targetchannel(self,targetchannel):#0 hdmi, 1 fm, 2 bt, 3 apps, 4bd in, 5 aux
 		if targetchannel == "HDMI":
