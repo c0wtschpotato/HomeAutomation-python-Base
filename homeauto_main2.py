@@ -122,7 +122,8 @@ class Recieved(object):
             self.__dict__ = json.loads(data)
 
 def msgToClass(msg):
-        return json.loads(msg.payload, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
+        zuruck = json.loads(msg.payload, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
+        return zuruck
 
 
 def on_message(client, userdata, msg):
