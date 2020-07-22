@@ -142,7 +142,7 @@ def on_message(client, userdata, msg):
                     home.hts.volup()
                 if msg.payload == "voldown":
                     home.hts.voldown()
-                if msg.payload == "voldown":
+                if msg.payload == "targetvolume":
                     home.hts.targetvolume(10)
 
         if msg.topic == "HomA/mhz":
