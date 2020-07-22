@@ -7,9 +7,6 @@ import paho.mqtt.client as mqtt
 HOST = 'localhost'
 PORT = 1883
 client = mqtt.Client()
-client.on_connect = on_connect
-client.on_message = on_message
-client.connect(HOST, PORT, 60)
 
 cfgpath = "/var/lib/snips/skills/Snips-HomA/cfg.ini"
 config = configparser.ConfigParser()
@@ -120,6 +117,9 @@ def on_message(client, userdata, msg):
 
 
 
+client.on_connect = on_connect
+client.on_message = on_message
+client.connect(HOST, PORT, 60)
 
 client.loop_forever()
 
