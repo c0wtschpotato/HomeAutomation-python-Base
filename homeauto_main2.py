@@ -136,6 +136,8 @@ def on_message(client, userdata, msg):
                 print("Message on HTS:")
                 # print(json.loads(msg.payload))
                 erhalten = json.loads(msg.payload, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
+
+                print("erhalten in object umgewandelt:")
                 print(erhalten)
 
 
