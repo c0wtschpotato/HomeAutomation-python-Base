@@ -127,6 +127,7 @@ def on_message(client, userdata, msg):
         if msg.topic == "HomA/hts":
                 print("Message on HTS:")
                 print(json.loads(msg.payload))
+                print("Example: "+msg.payload.volume)
 
 
 
