@@ -1,7 +1,16 @@
 import os
-import configparser, time
-
+import configparser, time, HomaClass
 ##learnfile sudo python python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --learn --learnfile python-broadlink/cli/philips-up.vol_change
+
+
+import paho.mqtt.client as mqtt
+HOST = 'localhost'
+PORT = 1883
+client = mqtt.Client()
+client.on_connect = on_connect
+do_run = True
+client.on_message = on_message
+client.connect(HOST, PORT, 60)
 
 cfgpath = "/var/lib/snips/skills/Snips-HomA/cfg.ini"
 config = configparser.ConfigParser()
