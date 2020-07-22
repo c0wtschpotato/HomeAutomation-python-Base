@@ -55,10 +55,12 @@ class HTS():
 	def volup(self):
 		os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips-up.vol_change")
 		self.volume = self.volume +1
+		print("Volume changed to "+str(self.volume))
 
 	def voldown(self):
 		os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips-down.vol_change")
 		self.volume = self.volume -1
+		print("Volume changed to "+str(self.volume))
 
 	def power(self):
 		os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips-0.power")
@@ -75,9 +77,8 @@ class HTS():
 				self.volup()
 				time.sleep(1)
 		elif diff<0:
-			for i in range(0,diff):
+			for i in range(0,abs(diff)):
 				self.voldown()
-
 				time.sleep(1)
 		elif diff == 0:
 			print("targetvolume is currentvolume")
