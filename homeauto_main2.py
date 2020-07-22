@@ -135,7 +135,7 @@ def on_message(client, userdata, msg):
                 print("Message on HTS:")
                 print(json.loads(msg.payload))
                 erhalten = Recieved(json.loads(msg.payload))
-                print(erhalten)
+                print(erhalten.__dict__)
 
 
 
