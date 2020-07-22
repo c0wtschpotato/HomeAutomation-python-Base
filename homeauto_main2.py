@@ -139,8 +139,11 @@ def on_message(client, userdata, msg):
                 print("Message on HTS:")
                 # print(json.loads(msg.payload))
                 erhalten = msgToClass(msg.payload)
-                print(erhalten.__dict__)
                 print("Volume: "+ str(erhalten.volume))
+                time.sleep(2)
+                home.hts.volume = 16
+                client.publish("HomA/status","hts")
+                time.sleep(10)
 
 
 
