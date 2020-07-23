@@ -147,7 +147,7 @@ def on_message(client, userdata, msg):
                     home.hts.voldown()
                 if rec.cmd == "targetvolume":
                     print("davor")
-                    print("key: "+str(rec.key))
+                    # print("key: "+str(rec.key))
                     print("danach")
                     home.hts.targetvolume(rec.key)
 
