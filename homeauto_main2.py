@@ -142,9 +142,9 @@ def on_message(client, userdata, msg):
                 print(rec.cmd)
                 if rec.cmd == "volup": 
                     home.hts.volup()
-                if rec.payload == "voldown":
+                if rec.cmd == "voldown":
                     home.hts.voldown()
-                if rec.payload == "targetvolume":
+                if rec.cmd == "targetvolume":
                     home.hts.targetvolume(rec.volume)
 
         if msg.topic == "HomA/mhz":
