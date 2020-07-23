@@ -146,6 +146,7 @@ def on_message(client, userdata, msg):
                 if rec.cmd == "voldown":
                     home.hts.voldown()
                 if rec.cmd == "targetvolume":
+                    print("key: "+str(rec.key))
                     home.hts.targetvolume(rec.key)
 
         if msg.topic == "HomA/mhz":
