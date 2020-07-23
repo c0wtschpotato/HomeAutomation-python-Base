@@ -149,11 +149,11 @@ def on_message(client, userdata, msg):
 
         if msg.topic == "HomA/mhz":
                 print("Message on MHZ:")
-                got = msgToClass(msg.payload)
+               
 
         if msg.topic == "HomA/pc":
                 print("Message on PC:")
-                got = msgToClass(msg.payload)
+                
 
 client.on_connect = on_connect
 client.on_message = on_message

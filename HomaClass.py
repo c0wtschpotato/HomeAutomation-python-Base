@@ -75,11 +75,11 @@ class HTS():
 		if diff > 0:
 			for i in range(0,diff):
 				self.volup()
-				time.sleep(1)
+				time.sleep(0.5)
 		elif diff<0:
 			for i in range(0,abs(diff)):
 				self.voldown()
-				time.sleep(1)
+				time.sleep(0.5)
 		elif diff == 0:
 			print("targetvolume is currentvolume")
 		print("Volume changed to "+str(self.volume))
