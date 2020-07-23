@@ -139,14 +139,14 @@ def on_message(client, userdata, msg):
 
 
         if msg.topic == "HomA/hts/cmd":#### 
-            print ("in HTS")
+            
                 print(rec.cmd)
                 if rec.cmd == "volup": 
                     home.hts.volup()
                 if rec.cmd == "voldown":
                     home.hts.voldown()
                 if rec.cmd == "targetvolume":
-                    home.hts.targetvolume(rec.volume)
+                    home.hts.targetvolume(rec.key)
 
         if msg.topic == "HomA/mhz":
                 print("Message on MHZ:")
