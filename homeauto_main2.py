@@ -136,7 +136,7 @@ def on_message(client, userdata, msg):
                         client.publish("HomA/"+str(msg.payload),json.dumps(home.hts.__dict__))
 
 
-        if msg.topic == "HomA/hts/cmd":
+        if msg.topic == "HomA/hts/cmd":#### needs more than one parameter, send JSON {"CMD":"value"} and change class to get {"VOLUP":"byAmount"}
                 print("Command on HTS:")
                 if msg.payload == "volup":
                     home.hts.volup()
