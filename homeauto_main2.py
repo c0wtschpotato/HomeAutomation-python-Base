@@ -129,7 +129,7 @@ def msgToClass(msg):
 
 def on_message(client, userdata, msg):
         print(msg.payload)
-        rec = Recieved(msg.payload)
+        # rec = Recieved(msg.payload)
         if msg.topic == "HomA/status":
                 print("Status request for "+str(msg.payload))
                 if msg.payload == "hts":
@@ -139,8 +139,9 @@ def on_message(client, userdata, msg):
 
         if msg.topic == "HomA/hts/cmd":#### needs more than one parameter, send JSON {"CMD":"value"} and change class to get {"VOLUP":"byAmount"}
                 print("Command on HTS:")
+                print("got rec "+str(rec[0]))
                 if rec[0] == "volup":
-                    print("got rec "+str(rec[0]))
+
                     home.hts.volup()
                 if msg.payload == "voldown":
                     home.hts.voldown()
