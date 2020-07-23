@@ -139,7 +139,7 @@ def on_message(client, userdata, msg):
 
         if msg.topic == "HomA/hts/cmd":#### needs more than one parameter, send JSON {"CMD":"value"} and change class to get {"VOLUP":"byAmount"}
                 print("Command on HTS:")
-                print("got rec "+str(rec))
+                print("got rec "+type(str(rec)))
                 if rec[0] == "volup":
 
                     home.hts.volup()
