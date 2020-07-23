@@ -149,7 +149,7 @@ def on_message(client, userdata, msg):
                     print("davor")
                     # print("key: "+str(rec.key))
                     print("danach")
-                    home.hts.targetvolume(rec.volume)
+                    home.hts.targetvolume(rec.key)
 
         if msg.topic == "HomA/mhz":
                 print("Message on MHZ:")
