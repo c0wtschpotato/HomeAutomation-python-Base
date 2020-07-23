@@ -139,6 +139,7 @@ def on_message(client, userdata, msg):
 
 
         if msg.topic == "HomA/hts/cmd":#### 
+            print ("in HTS")
                 print(rec.cmd)
                 if rec.cmd == "volup": 
                     home.hts.volup()
