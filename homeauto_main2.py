@@ -128,8 +128,9 @@ def msgToClass(msg):
 
 
 def on_message(client, userdata, msg):
-        print(msg.payload)
+        # print(msg.payload)
         rec = Recieved(msg.payload)
+        print("Command on "+ str(msg.topic))
         if msg.topic == "HomA/status":
                 print("Status request for "+str(msg.payload))
                 if msg.payload == "hts":
@@ -137,18 +138,14 @@ def on_message(client, userdata, msg):
                         client.publish("HomA/"+str(msg.payload),json.dumps(home.hts.__dict__))
 
 
-        if msg.topic == "HomA/hts/cmd":#### needs more than one parameter, send JSON {"CMD":"value"} and change class to get {"VOLUP":"byAmount"}
-                print("Command on HTS:")
-                
-                print("got rec "+str(rec.volup))
-                print(rec.volup)
-                if rec[0] == "volup":
-
+        if msg.topic == "HomA/hts/cmd":#### 
+                print(rec.cmd)
+                if rec.cmd == "volup": 
                     home.hts.volup()
-                if msg.payload == "voldown":
+                if rec.payload == "voldown":
                     home.hts.voldown()
-                if msg.payload == "targetvolume":
-                    home.hts.targetvolume(10)
+                if rec.payload == "targetvolume":
+                    home.hts.targetvolume(rec.volume)
 
         if msg.topic == "HomA/mhz":
                 print("Message on MHZ:")
