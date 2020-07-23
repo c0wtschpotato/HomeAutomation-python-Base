@@ -129,7 +129,7 @@ def msgToClass(msg):
 
 def on_message(client, userdata, msg):
         print(msg.payload)
-        rec = Recieved(msg.payload)
+        # rec = Recieved(msg.payload)
         if msg.topic == "HomA/status":
                 print("Status request for "+str(msg.payload))
                 if msg.payload == "hts":
