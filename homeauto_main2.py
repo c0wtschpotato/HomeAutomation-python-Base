@@ -38,6 +38,7 @@ def on_connect(client, userdata, flags, rc):
         client.subscribe("HomA/hts")
         client.subscribe("HomA/hts/cmd")
         client.subscribe("HomA/status")
+        client.subscribe("HomA/mhz/cmd")
         client.subscribe("HomA/mhz")
         client.subscribe("HomA/pc")
 
