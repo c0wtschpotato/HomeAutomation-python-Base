@@ -128,7 +128,7 @@ def msgToClass(msg):
 
 
 def on_message(client, userdata, msg):
-        # print(msg.payload)
+        print(msg.payload)
         rec = Recieved(msg.payload)
         print("Command on "+ str(msg.topic)+" "+str(rec.cmd))
         if msg.topic == "HomA/status":
