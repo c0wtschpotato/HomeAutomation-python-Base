@@ -60,6 +60,9 @@ class HTS():
 	def voldown(self):
 		os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips-down.vol_change")
 		self.volume = self.volume -1
+		if self.volume <= 0:
+			self.volume = 0
+			
 		print("Volume changed to "+str(self.volume))
 
 	def powerswitch(self):
