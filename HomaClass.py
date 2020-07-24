@@ -62,7 +62,7 @@ class HTS():
 		self.volume = self.volume -1
 		print("Volume changed to "+str(self.volume))
 
-	def powerswith(self):
+	def powerswitch(self):
 		os.system(self.sendPath+"@/home/pi/python-broadlink/cli/philips-0.power")
 		if self.power == 1:
 			self.power = 0
