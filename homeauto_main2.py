@@ -130,7 +130,7 @@ def msgToClass(msg):
 def on_message(client, userdata, msg):
         # print(msg.payload)
         rec = Recieved(msg.payload)
-        print("Command on "+ str(msg.topic))
+        print("Command on "+ str(msg.topic)+" "+str(rec.cmd))
         if msg.topic == "HomA/status":
                 print("Status request for "+str(msg.payload))
                 if msg.payload == "hts":
@@ -148,10 +148,22 @@ def on_message(client, userdata, msg):
                     home.hts.targetvolume(rec.key)
                 if rec.cmd == "power":
                     home.hts.power()
-                
+                if rec.cmd == "targetchannel":
+                    home.hts.targetchannel(rec.key)
 
-        if msg.topic == "HomA/mhz":
-                print("Message on MHZ:")
+        if msg.topic == "HomA/mhz/cmd":
+            if rec.cmd == "mhz1":
+                home.mhz1.set(rec.key)
+            if rec.cmd == "mhz2":
+                home.mhz2.set(rec.key)
+            if rec.cmd == "mhz3":
+                home.mhz3.set(rec.key)
+            if rec.cmd == "mhz4":
+                home.mhz4.set(rec.key)
+            if rec.cmd == "mhz5":
+                home.mhz5.set(rec.key)
+
+
                
 
         if msg.topic == "HomA/pc":
