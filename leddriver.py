@@ -71,8 +71,11 @@ def on_message(client, userdata, msg):
 		current_status = msg.payload
 		# client.publish("HomA/ledstrip1",current_status)###?! wtf
 		last_status = current_status
+		print("setting LEDs to input"+"\n")
 		set_leds_to_input(current_status)
+		print("Done"+"\n")
 		# print("last know status was "+ last_status)
+
 	if msg.topic == "HomA/ledstrip1/get_status" :
 		global current_status
 		if msg.payload != "get":
@@ -80,6 +83,7 @@ def on_message(client, userdata, msg):
 		elif msg.payload =="get":
 			print("published status "+current_status)
 			client.publish(msg.topic,current_status)
+
 	if msg.topic =='hermes/hotword/default/detected':
 		global current_status
 		ursprung = json.loads(msg.payload)
@@ -107,10 +111,16 @@ def on_message(client, userdata, msg):
 		
 
 def set_leds_to_input(sentpayload):
-	print ("in set leds to input")
+	print ("in set leds to input with" + sentpayload)
 	global do_run
 	global t
+
 	obj = json.loads(sentpayload)	
+
+	if obj ["function"] == "rainbow_slow":
+		print("starting rainbow_slow")
+		ws.rainbow_slow(ws.pixels)
+		print("cycle done")
 	if obj["function"] == "lightning":
 		print("starting function lightning")
 		ws.lightning(ws.pixels)
@@ -120,8 +130,10 @@ def set_leds_to_input(sentpayload):
 
 	if obj["function"] == "setalltocolor":
 		ws.setalltocolor(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])))
+
 	if obj["function"] == "rainbow_colors":
 		print("starting ranbow cycle")
+		ws.rainbow_cycle(ws.pixels)
 		do_run = False
 		try: 
 			t.join()

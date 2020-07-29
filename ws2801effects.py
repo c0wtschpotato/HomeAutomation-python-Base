@@ -8,7 +8,7 @@ import Adafruit_GPIO.SPI as SPI
 from random import randrange
  
 # Configure the count of pixels:
-PIXEL_COUNT = 100
+PIXEL_COUNT = 50
  
 # Alternatively specify a hardware SPI connection on /dev/spidev0.0:
 SPI_PORT   = 0
@@ -47,7 +47,16 @@ def rainbow_cycle(pixels, wait=0.005):
         pixels.show()
         if wait > 0:
             time.sleep(wait)
- 
+
+def rainbow_slow(pixels, wait=0.05):
+    for j in range(256): # one cycle of all 256 colors in the wheel
+        for i in range(pixels.count()):
+            pixels.set_pixel(i, wheel(((i * 256 // pixels.count()) + j) % 256) )
+        pixels.show()
+        if wait > 0:
+            time.sleep(wait)
+
+
 def rainbow_colors(pixels, wait=0.05):
     for j in range(256): # one cycle of all 256 colors in the wheel
         for i in range(pixels.count()):

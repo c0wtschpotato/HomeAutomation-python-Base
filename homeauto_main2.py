@@ -1,11 +1,13 @@
 import os
-import configparser, time, HomaClass
+import configparser, time, json, HomaClass as home
+from collections import namedtuple
 ##learnfile sudo python python-broadlink/cli/./broadlink_cli --type 0x2737 --host 192.168.1.104 --mac 65c55834ea34 --learn --learnfile python-broadlink/cli/philips-up.vol_change
 
 
 import paho.mqtt.client as mqtt
 HOST = 'localhost'
 PORT = 1883
+client = mqtt.Client()
 
 cfgpath = "/var/lib/snips/skills/Snips-HomA/cfg.ini"
 config = configparser.ConfigParser()
@@ -26,6 +28,19 @@ def cfgcompare():##Reads cfg for changes to apply
                                 print(key+" changed from "+initcfg[section][key]+ " to "+  config[section][key] )
                                 decidemethod(config[section]['type'],initcfg[section],key,config[section][key])
                                 
+def on_connect(client, userdata, flags, rc):
+        print("Connected to {0} with result code {1}".format(HOST, rc))
+        client.subscribe("hermes/hotword/default/detected")
+        client.subscribe("hermes/hotword/toggleOn")
+        client.subscribe("HomA/ledstrip1/get_status")
+        client.subscribe("HomA/ledstrip1/set_status")
+        client.subscribe("HomA/test")
+        client.subscribe("HomA/hts")
+        client.subscribe("HomA/hts/cmd")
+        client.subscribe("HomA/status")
+        client.subscribe("HomA/mhz/cmd")
+        client.subscribe("HomA/mhz")
+        client.subscribe("HomA/pc")
 
 
 def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type and way to proceed
@@ -102,10 +117,65 @@ def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type an
         # if type == "software":
         global initcfg
         initcfg.read(cfgpath)
-while True:
 
 
-        cfgcompare()
+class Recieved(object):
+    def __init__(self, data):
+            self.__dict__ = json.loads(data)
+
+def msgToClass(msg):
+        zuruck = json.loads(msg, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
+        return zuruck
+
+
+def on_message(client, userdata, msg):
+        print(msg.payload)
+        rec = Recieved(msg.payload)
+        print("Command on "+ str(msg.topic)+" "+str(rec.cmd))
+        if msg.topic == "HomA/status":
+                print("Status request for "+str(msg.payload))
+                if msg.payload == "hts":
+                        print("sending status: ")
+                        client.publish("HomA/"+str(msg.payload),json.dumps(home.hts.__dict__))
+
+
+        if msg.topic == "HomA/hts/cmd":#### 
+            
+                if rec.cmd == "volup": 
+                    home.hts.volup()
+                if rec.cmd == "voldown":
+                    home.hts.voldown()
+                if rec.cmd == "targetvolume":
+                    home.hts.targetvolume(rec.key)
+                if rec.cmd == "power":
+                    home.hts.power()
+                if rec.cmd == "targetchannel":
+                    home.hts.targetchannel(rec.key)
+
+        if msg.topic == "HomA/mhz/cmd":
+            if rec.cmd == "mhz1":
+                home.mhz1.set(rec.key)
+            if rec.cmd == "mhz2":
+                home.mhz2.set(rec.key)
+            if rec.cmd == "mhz3":
+                home.mhz3.set(rec.key)
+            if rec.cmd == "mhz4":
+                home.mhz4.set(rec.key)
+            if rec.cmd == "mhz5":
+                home.mhz5.set(rec.key)
+
+
+               
+
+        if msg.topic == "HomA/pc":
+                print("Message on PC:")
+                
+
+client.on_connect = on_connect
+client.on_message = on_message
+client.connect(HOST, PORT, 60)
+
+client.loop_forever()
 
 
 
