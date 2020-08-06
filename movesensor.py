@@ -9,7 +9,7 @@ import paho.mqtt.client as mqtt
 ##Simply reads GPIO for movement and activates Screen
 # RPi.GPIO Layout verwenden (wie Pin-Nummern)
 GPIO.setmode(GPIO.BOARD)
-
+HOST = "192.168.1.107"
 # Pin 18 (GPIO 24) auf Input setzen
 GPIO.setup(16, GPIO.IN)
 low_count = 0
