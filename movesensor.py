@@ -37,7 +37,6 @@ while 1:
     #GPIO.output(11, GPIO.HIGH)
     print(str(time.strftime("%H:%M:%S", time.localtime())))
     # Warte 100 ms
-    o
     time.sleep(0.1)
     low_count = 0
     high_count = high_count +1
@@ -50,7 +49,7 @@ while 1:
     time.sleep(0.1)
   if GPIO.input(16) == GPIO.LOW:
                 low_count = low_count +1
-                print("screen off "+str(low_count))
+                print(str(time.strftime("%H:%M:%S", time.localtime()))+" "+str(low_count))
                 #os.system("vcgencmd display_power 0")
                 time.sleep(0.1)
                 if low_count >= 300:
