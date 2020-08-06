@@ -52,8 +52,9 @@ while 1:
                 time.sleep(0.1)
                 if low_count >= 300:
                         client.publish("HomA/kitchen/move",0)
+                        os.system("vcgencmd display_power 0")
                         while GPIO.input(16) == GPIO.LOW:
-                                os.system("vcgencmd display_power 0")
+                                
                                 high_count = 0
                                 print("sleeping")
                                 time.sleep(0.5)
