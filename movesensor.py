@@ -42,7 +42,7 @@ while 1:
         #### What to do once a Movement is recognized, on exact number so only triggered once for movement
         os.system("vcgencmd display_power 1")
         client.publish("HomA/kitchen/move",1)
-        os.system("sudo fswebcam -r 1280x720 --no-banner "+str(time.strftime("%H:%M:%S", time.localtime()))+"image.jpg")
+        os.system("sudo fswebcam -r 1280x720 --no-banner /pictures"+str(time.strftime("%H:%M:%S", time.localtime()))+"image.jpg")
     # Warte 100 ms
     time.sleep(0.1)
   if GPIO.input(16) == GPIO.LOW:
