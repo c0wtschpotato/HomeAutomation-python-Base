@@ -6,9 +6,6 @@ import time,os
 import RPi.GPIO as GPIO
 import paho.mqtt.client as mqtt
 
-client = mqtt.Client()
-client.on_connect = on_connect
-client.connect(HOST, 1883, 60)
 ##Simply reads GPIO for movement and activates Screen
 # RPi.GPIO Layout verwenden (wie Pin-Nummern)
 GPIO.setmode(GPIO.BOARD)
@@ -27,6 +24,11 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("hermes/hotword/toggleOn")
     client.subscribe("c0wtschpotato:PCcontrol")
     client.subscribe("HomA/Philips/set_status")
+
+
+client = mqtt.Client()
+client.on_connect = on_connect
+client.connect(HOST, 1883, 60)
 # Dauersschleife
 while 1:
 
