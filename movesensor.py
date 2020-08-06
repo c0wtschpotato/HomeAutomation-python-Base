@@ -1,4 +1,7 @@
 
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 import time,os
 import RPi.GPIO as GPIO
 import paho.mqtt.client as mqtt
