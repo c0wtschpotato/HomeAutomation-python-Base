@@ -39,7 +39,7 @@ while 1:
     if high_count == 5:
         #### What to do once a Movement is recognized, on exact number so only triggered once for movement
         client.publish("HomA/kitchen/move",1)
-        os.system("fswebcam -r 1280x720 --no-banner "+str(time.strftime("%H:%M:%S", time.localtime())+"image.jpg")
+        os.system("sudo fswebcam -r 1280x720 --no-banner "+str(time.strftime("%H:%M:%S", time.localtime()))+"image.jpg")
     # Warte 100 ms
     time.sleep(0.1)
   if GPIO.input(16) == GPIO.LOW:
