@@ -2,7 +2,7 @@
 
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import time,os
+import time,os, datetime
 import RPi.GPIO as GPIO
 import paho.mqtt.client as mqtt
 
@@ -38,16 +38,16 @@ while 1:
     time.sleep(0.1)
     low_count = 0
     high_count = high_count +1
-    if high_count in range(5,500,10): 
+    if high_count in range(0,500,10): 
         #### What to do once a Movement is recognized, on exact number so only triggered once for movement
         os.system("vcgencmd display_power 1")
         client.publish("HomA/kitchen/move",1)
-        os.system("sudo fswebcam -r 1280x720 --no-banner /home/pi/HomeAutomation-python-Bas/pictures"+str(time.strftime("%H:%M:%S", time.localtime()))+"image.jpg")
+        os.system("sudo fswebcam -r 1280x720 --no-banner /home/pi/HomeAutomation-python-Base/pictures/"+str(time.strftime("%H:%M:%S", time.localtime()))+"image.jpg")
     # Warte 100 ms
     time.sleep(0.1)
   if GPIO.input(16) == GPIO.LOW:
                 low_count = low_count +1
-                print(str(time.strftime("%H:%M:%S", time.localtime()))+" "+str(low_count))
+                print(str(datetime.strftime("%d-%m-%Y/%H:%M:%S", time.localtime()))+" "+str(low_count))
                 #os.system("vcgencmd display_power 0")
                 time.sleep(0.1)
                 if low_count >= 300:
@@ -58,3 +58,7 @@ while 1:
                                 high_count = 0
                                 print("sleeping")
                                 time.sleep(0.5)
+
+
+
+
