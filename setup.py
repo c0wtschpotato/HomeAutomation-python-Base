@@ -7,6 +7,9 @@
 
 
 import os
+import configparser, time, json
+config = configparser.ConfigParser()
+cfgpath = "/home/pi/HomeAutomation-python-Base/LED.cfg"
 
 print ("installing depencies")
 os.system("sudo apt-get install libzbar-dev libzbar0 libffi-dev libssl-dev wiringpi python-pip")
@@ -30,3 +33,9 @@ print("cloning raspberry-remote")
 os.system("sudo git clone git://github.com/xkonni/raspberry-remote.git")
 print("making send")
 os.system("sudo /home/pi/raspberry-remote/./make send")
+PixelCount = input("How many LEDs are on the strip?")
+config['LED']["PixelCount"] = PixelCount
+stripcount = input("Give the Strip a Number")
+config['LED']["Stripcount"] = stripcount
+ with open(cfgpath, 'w') as configfile:
+ 	config.write(configfile)
