@@ -50,7 +50,7 @@ while 1:
     time.sleep(0.1)
   if GPIO.input(16) == GPIO.LOW:
                 low_count = low_count +1
-                print(str(datetime.now().strftime("%d-%m-%Y %H:%M:%S")+" at Lowcount "+str(low_count))
+                print(str(datetime.now().strftime("%d-%m-%Y %H:%M:%S")+" at Lowcount "+str(low_count)))
                 #os.system("vcgencmd display_power 0")
                 time.sleep(0.1)
                 if low_count >= 300:
