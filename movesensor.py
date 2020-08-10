@@ -42,7 +42,7 @@ while 1:
     time.sleep(0.1)
     low_count = 0
     high_count = high_count +1
-    if high_count in range(0,500,10): 
+    if high_count in range(50,500,10): 
         #### What to do once a Movement is recognized, on exact number so only triggered once for movement
         os.system("vcgencmd display_power 1")
         client.publish("HomA/kitchen/move",1)
