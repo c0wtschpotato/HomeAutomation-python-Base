@@ -6,9 +6,11 @@ import RPi.GPIO as GPIO
 import Adafruit_WS2801
 import Adafruit_GPIO.SPI as SPI
 from random import randrange
- 
+import configparser
+cfgpath = "/home/pi/HomeAutomation-python-Base/LED.cfg"
+initcfg.read(cfgpath)
 # Configure the count of pixels:
-PIXEL_COUNT = 50
+PIXEL_COUNT = config["LED"]["PixelCount"]
  
 # Alternatively specify a hardware SPI connection on /dev/spidev0.0:
 SPI_PORT   = 0
