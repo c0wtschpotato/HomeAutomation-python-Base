@@ -27,6 +27,7 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("hermes/hotword/toggleOn")
     client.subscribe("c0wtschpotato:PCcontrol")
     client.subscribe("HomA/Philips/set_status")
+    client.subscribe("HomA/kitchen/move")
 
 
 client = mqtt.Client()
@@ -60,7 +61,7 @@ while 1:
                         while GPIO.input(16) == GPIO.LOW:
                                 
                                 high_count = 0
-                                print("sleeping sine "+sleep_start)
+                                print("sleeping since "+sleep_start)
                                 time.sleep(0.5)
 
 
