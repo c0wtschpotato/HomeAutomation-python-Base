@@ -42,9 +42,10 @@ while 1:
     time.sleep(0.1)
     low_count = 0
     high_count = high_count +1
+    os.system("vcgencmd display_power 1")
     if high_count in range(50,500,10): 
         #### What to do once a Movement is recognized, on exact number so only triggered once for movement
-        os.system("vcgencmd display_power 1")
+        
         client.publish("HomA/kitchen/move",1)
         os.system("sudo fswebcam -r 1280x720 --no-banner /home/pi/HomeAutomation-python-Base/pictures/"+str(time.strftime("%H:%M:%S", time.localtime()))+"image.jpg")
     # Warte 100 ms
