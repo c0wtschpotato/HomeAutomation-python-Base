@@ -131,6 +131,9 @@ def set_leds_to_input(sentpayload):
 	if obj["function"] == "setalltocolor":
 		ws.setalltocolor(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])))
 
+	if obj["function"] == "percentOfAll":
+		ws.percentOfAll(ws.pixels,int(obj["percent"],int(obj["coloron"]),int(obj["colorOff"])))
+
 	if obj["function"] == "rainbow_colors":
 		print("starting ranbow cycle")
 		ws.rainbow_cycle(ws.pixels)
