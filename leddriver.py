@@ -132,6 +132,7 @@ def set_leds_to_input(sentpayload):
 		ws.setalltocolor(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])))
 
 	if obj["function"] == "percentOfAll":
+		print("in func percentOfAll")
 		print(obj["percent"][0])
 		ws.percentOfAll(ws.pixels,int(obj["percent"]),(int(obj["coloron"][0]),int(obj["coloron"][1]),int(obj["coloron"][2])),(int(obj["colorOff"][0]),int(obj["colorOff"][0]),int(obj["colorOff"][2])))
 
