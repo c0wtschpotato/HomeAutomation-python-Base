@@ -196,6 +196,16 @@ def setalltocolor(pixels,color=(255,255,255),affected_pixels=(0,PIXEL_COUNT)):
     for i in range(affected_pixels[0],affected_pixels[1]):
         pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(color[0],color[1],color[2]))#
     pixels.show()
+
+def percentOfAll(perc = 50,coloron=(255,255,255),colorOff= (0,0,0)):
+    if perc <= 0:
+        perc = 1
+    if perc >= 100:
+        perc = 100
+
+    setalltocolor(pixels,colorOff)
+    setalltocolor(pixels, coloron,(0,int(round(PIXEL_COUNT*(perc/100)))))
+
         
 
 def ColorWave(pixels,basecolor=(255,0,128),runningcolor=(255,0,0),number_of_running=10,sleep_time=(0.1),turns=5,brightness_diff=10):
