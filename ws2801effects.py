@@ -1,4 +1,6 @@
 # Simple demo of of the WS2801/SPI-like addressable RGB LED lights.
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 import time, random
 import RPi.GPIO as GPIO
  
