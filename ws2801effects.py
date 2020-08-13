@@ -8,6 +8,7 @@ import Adafruit_GPIO.SPI as SPI
 from random import randrange
 import configparser
 cfgpath = "/home/pi/HomeAutomation-python-Base/LED.cfg"
+initcfg = configparser.ConfigParser()
 initcfg.read(cfgpath)
 # Configure the count of pixels:
 PIXEL_COUNT = config["LED"]["PixelCount"]
