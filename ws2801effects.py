@@ -198,7 +198,7 @@ def setalltocolor(pixels,color=(255,255,255),affected_pixels=(0,PIXEL_COUNT)):
         pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(color[0],color[1],color[2]))#
     pixels.show()
 
-def percentOfAll(perc = 50,coloron=(255,255,255),off= (0,0,0)):
+def w(perc = 50,coloron=(255,255,255),colorOff= (0,0,0)):
     if perc <= 0:
         perc = 1
     if perc >= 100:
