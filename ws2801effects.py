@@ -204,6 +204,7 @@ def percentOfAll(perc = 50,coloron=(255,255,255),colorOff= (0,0,0)):
     if perc >= 100:
         perc = 100
     calcedCount = int(round(PIXEL_COUNT*(perc/100)))
+    print(calcedCount)
     setalltocolor(pixels,colorOff,(calcedCount+1,PIXEL_COUNT))
     setalltocolor(pixels, coloron,(0,calcedCount))
 
