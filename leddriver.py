@@ -138,7 +138,7 @@ def set_leds_to_input(sentpayload):
 		print(obj["percent"])
 		print(int(obj["coloron"][0]),int(obj["coloron"][1]),int(obj["coloron"][2]))
 		# ws.percentOfAll(ws.pixels,int(obj["percent"]),(int(obj["coloron"][0]),int(obj["coloron"][1]),int(obj["coloron"][2])),(int(obj["colorOff"][0]),int(obj["colorOff"][0]),int(obj["colorOff"][2])))
-		ws.percentOfAll(100)
+		ws.percentOfAll(obj["percent"])
 
 	if obj["function"] == "rainbow_colors":
 		print("starting ranbow cycle")
