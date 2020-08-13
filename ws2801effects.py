@@ -11,7 +11,7 @@ cfgpath = "/home/pi/HomeAutomation-python-Base/LED.cfg"
 initcfg = configparser.ConfigParser()
 initcfg.read(cfgpath)
 # Configure the count of pixels:
-PIXEL_COUNT = initcfg["LED"]["PixelCount"]
+PIXEL_COUNT = int(initcfg["LED"]["PixelCount"])
  
 # Alternatively specify a hardware SPI connection on /dev/spidev0.0:
 SPI_PORT   = 0
