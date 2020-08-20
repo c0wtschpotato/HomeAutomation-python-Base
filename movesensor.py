@@ -66,10 +66,11 @@ while 1:
                         if high_count >= 10 and display == 0:#display off if lowcount and it is on
                             os.system("vcgencmd display_power 0")
                         sleep_start = (str(datetime.now().strftime("%d-%m-%Y %H:%M:%S")))
+                        print("sleeping since "+sleep_start)
                         while GPIO.input(16) == GPIO.LOW:
                                 
                                 high_count = 0
-                                print("sleeping since "+sleep_start)
+                                
                                 time.sleep(0.5)
 
 
