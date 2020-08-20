@@ -65,7 +65,7 @@ while 1:
                 time.sleep(0.1)
                 if low_count >= 300:
                         client.publish("HomA/kitchen/move",0)
-                        if high_count >= 10 and display == 1:#display off if lowcount and it is on
+                        if low_count >= 10 and display == 1:#display off if lowcount and it is on
                             os.system("vcgencmd display_power 0")
                             display = 0
                         sleep_start = (str(datetime.now().strftime("%d-%m-%Y %H:%M:%S")))
