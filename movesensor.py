@@ -65,9 +65,9 @@ while 1:
                 time.sleep(0.1)
                 if low_count >= 300:
                         client.publish("HomA/kitchen/move",0)
-                        if low_count >= 10 and display == 1:#display off if lowcount and it is on
-                            os.system("vcgencmd display_power 0")
-                            display = 0
+                        
+                        os.system("vcgencmd display_power 0")
+                        display = 0
                         sleep_start = (str(datetime.now().strftime("%d-%m-%Y %H:%M:%S")))
                         print("sleeping since "+sleep_start)
                         while GPIO.input(16) == GPIO.LOW:
