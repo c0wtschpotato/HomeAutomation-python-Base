@@ -47,7 +47,7 @@ while 1:
         #### What to do once a Movement is recognized, on exact number so only triggered once for movement
         
         client.publish("HomA/kitchen/move",1)
-        os.system("sudo fswebcam -r 1280x720 --no-banner /home/pi/HomeAutomation-python-Base/pictures/"+str(datetime.now().strftime("%d-%m-%Y %H:%M:%S"))+".jpg")
+        #os.system("sudo fswebcam -r 1280x720 --no-banner /home/pi/HomeAutomation-python-Base/pictures/"+str(datetime.now().strftime("%d-%m-%Y %H:%M:%S"))+".jpg")
     # Warte 100 ms
     time.sleep(0.1)
   if GPIO.input(16) == GPIO.LOW:
