@@ -45,7 +45,7 @@ while 1:
     high_count = high_count +1
     if high_count == 10 and display == 0:#display on if hightcount and it is off
         print(str(datetime.now().strftime("%d-%m-%Y %H:%M:%S")+" at Highcount "+str(high_count)))
-       os.system("vcgencmd display_power 1")
+        os.system("vcgencmd display_power 1")
     if high_count in range(50,500,10): 
         #### What to do once a Movement is recognized, on exact number so only triggered once for movement
         
