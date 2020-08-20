@@ -43,7 +43,7 @@ while 1:
     time.sleep(0.1)
     low_count = 0
     high_count = high_count +1
-    if high_count == 10 and display == 0:#display on if hightcount and it is off
+    if high_count == 20 and display == 0:#display on if hightcount and it is off
         print(str(datetime.now().strftime("%d-%m-%Y %H:%M:%S")+" at Highcount "+str(high_count)))
         os.system("vcgencmd display_power 1")
     if high_count in range(50,500,10): 
