@@ -40,7 +40,7 @@ while 1:
   if GPIO.input(16) == GPIO.HIGH:
     #print(str(time.strftime("%H:%M:%S", time.localtime()))+" at Highcount:"+ str(high_count))
     # Warte 100 ms
-    time.sleep(0.1)
+    #time.sleep(0.1)
     low_count = 0
     high_count = high_count +1
     print(high_count)
@@ -59,7 +59,7 @@ while 1:
                 low_count = low_count +1
                 #print(str(datetime.now().strftime("%d-%m-%Y %H:%M:%S")+" at Lowcount "+str(low_count)))
                 #os.system("vcgencmd display_power 0")
-                if low_count == 10:## reset high count if low sets in
+                if low_count == 30:## reset high count if low sets in
                     print(str(datetime.now().strftime("%d-%m-%Y %H:%M:%S")+" at Lowcount "+str(low_count)))
                     high_count = 0
                 time.sleep(0.1)
