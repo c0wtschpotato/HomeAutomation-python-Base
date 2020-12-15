@@ -164,7 +164,7 @@ def lightning(pixels):
         setalltocolor(pixels,(0,0,180))
         time.sleep(random.randrange(1,3))
         
-def WaveOnAll(step = 10)
+def WaveOnAll(step = 10):
     global pixels
     for i in range(0,255):
         setalltocolor(pixels,255,i,255)
