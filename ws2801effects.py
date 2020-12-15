@@ -167,7 +167,7 @@ def lightning(pixels):
 def WaveOnAll(step = 10):
     global pixels
     for i in range(0,255):
-        setalltocolor(pixels,255,i,255)
+        setalltocolor(pixels,(255,i,255))
         time.sleep(0.01)
 
         # pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(21,131,148))## hellblauer blitz
