@@ -149,7 +149,7 @@ def on_message(client, userdata, msg):
                     home.hts.voldown()
                 if rec.cmd == "targetvolume":
                     home.hts.targetvolume(rec.key)
-                if rec.cmd == "power":
+                if rec.cmd == "powerswitch":
                     home.hts.powerswitch()
                 if rec.cmd == "targetchannel":
                     home.hts.targetchannel(rec.key)
