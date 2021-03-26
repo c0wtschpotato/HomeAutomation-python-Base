@@ -150,7 +150,7 @@ def on_message(client, userdata, msg):
                 if rec.cmd == "targetvolume":
                     home.hts.targetvolume(rec.key)
                 if rec.cmd == "power":
-                    home.hts.power()
+                    home.hts.powerswitch()
                 if rec.cmd == "targetchannel":
                     home.hts.targetchannel(rec.key)
 
