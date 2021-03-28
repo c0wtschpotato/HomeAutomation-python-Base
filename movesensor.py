@@ -7,7 +7,7 @@ import RPi.GPIO as GPIO
 import paho.mqtt.client as mqtt
 
 from datetime import datetime
-
+fh = file('/dev/input/mice')
 
 ##Simply reads GPIO for movement and activates Screen
 # RPi.GPIO Layout verwenden (wie Pin-Nummern)
@@ -52,6 +52,11 @@ while 1:
         #### What to do once a Movement is recognized, on exact number so only triggered once for movement
         
         client.publish("HomA/kitchen/move",1)
+        While True:##### Loop for at least 20 Secs after Mouse is moved and just then check again for Low on Movesens
+            fh.read(3)
+            print('Bewegung der Maus')
+            time.sleep(20)
+
         #os.system("sudo fswebcam -r 1280x720 --no-banner /home/pi/HomeAutomation-python-Base/pictures/"+str(datetime.now().strftime("%d-%m-%Y %H:%M:%S"))+".jpg")
     # Warte 100 ms
     time.sleep(0.1)
