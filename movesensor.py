@@ -48,14 +48,15 @@ while 1:
         print(str(datetime.now().strftime("%d-%m-%Y %H:%M:%S")+" at Highcount "+str(high_count)))
         os.system("vcgencmd display_power 1")
         display = 1
-    if high_count in range(50,500,10): 
-        #### What to do once a Movement is recognized, on exact number so only triggered once for movement
-        
-        client.publish("HomA/kitchen/move",1)
         while True:##### Loop for at least 20 Secs after Mouse is moved and just then check again for Low on Movesens
             fh.read(3)
             print('Bewegung der Maus')
             time.sleep(20)
+    if high_count in range(50,500,10): 
+        #### What to do once a Movement is recognized, on exact number so only triggered once for movement
+        
+        client.publish("HomA/kitchen/move",1)
+
 
         #os.system("sudo fswebcam -r 1280x720 --no-banner /home/pi/HomeAutomation-python-Base/pictures/"+str(datetime.now().strftime("%d-%m-%Y %H:%M:%S"))+".jpg")
     # Warte 100 ms
