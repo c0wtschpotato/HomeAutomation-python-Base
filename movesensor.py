@@ -18,6 +18,7 @@ GPIO.setup(16, GPIO.IN)
 low_count = 0
 high_count = 0
 display = 0
+idle_count = 0
 # Pin 11 (GPIO 17) auf Output setzen
 #GPIO.setup(11, GPIO.OUT)
 def on_connect(client, userdata, flags, rc):
@@ -48,10 +49,11 @@ while 1:
         print(str(datetime.now().strftime("%d-%m-%Y %H:%M:%S")+" at Highcount "+str(high_count)))
         os.system("vcgencmd display_power 1")
         display = 1
-        while True:##### Loop for at least 20 Secs after Mouse is moved and just then check again for Low on Movesens
-            fh.read(3)
-            print('Bewegung der Maus')
-            time.sleep(20)
+        for idle_count in range(0,30):##### Loop for at least 20 Secs after Mouse is moved and just then check again for Low on Movesens
+            if fh.read(3) != "":
+                print('Bewegung der Maus')
+            time.sleep(1)
+            idle_count = idle_count +1
     if high_count in range(50,500,10): 
         #### What to do once a Movement is recognized, on exact number so only triggered once for movement
         
