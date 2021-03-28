@@ -50,7 +50,7 @@ while 1:
         os.system("vcgencmd display_power 1")
         display = 1
         while True:##### Loop for at least 20 Secs after Mouse is moved and just then check again for Low on Movesens
-            fh.read(3)            
+            print(fh.read(3))
             time.sleep(1)
             if fh.read(3) == "":
                 idle_count = idle_count +1
