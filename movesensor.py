@@ -7,7 +7,7 @@ import RPi.GPIO as GPIO
 import paho.mqtt.client as mqtt
 
 from datetime import datetime
-fh = file('/dev/input/mice')
+fh = file('/dev/input/mice','r')
 
 ##Simply reads GPIO for movement and activates Screen
 # RPi.GPIO Layout verwenden (wie Pin-Nummern)
