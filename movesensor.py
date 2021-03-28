@@ -56,6 +56,7 @@ while 1:
             else:
                 print("no Movement")
                 idle_count = idle_count +1
+            print("Mouse Idle: "&idle_count)
             time.sleep(1)
             
     if high_count in range(50,500,10): 
