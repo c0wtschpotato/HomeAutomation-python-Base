@@ -51,6 +51,7 @@ while 1:
         display = 1
         for idle_count in range(0,30):##### Loop for at least 20 Secs after Mouse is moved and just then check again for Low on Movesens
             if fh.read(3) != "":
+                print fh.read(3)
                 print('Bewegung der Maus')
             time.sleep(1)
             idle_count = idle_count +1
