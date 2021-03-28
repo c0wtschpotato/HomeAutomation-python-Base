@@ -52,7 +52,7 @@ while 1:
         #### What to do once a Movement is recognized, on exact number so only triggered once for movement
         
         client.publish("HomA/kitchen/move",1)
-        While True:##### Loop for at least 20 Secs after Mouse is moved and just then check again for Low on Movesens
+        while True:##### Loop for at least 20 Secs after Mouse is moved and just then check again for Low on Movesens
             fh.read(3)
             print('Bewegung der Maus')
             time.sleep(20)
