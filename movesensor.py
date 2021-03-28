@@ -53,8 +53,11 @@ while 1:
             if fh.read(3) != "":
                 print fh.read(3)
                 print('Bewegung der Maus')
+            else:
+                print("no Movement")
+                idle_count = idle_count +1
             time.sleep(1)
-            idle_count = idle_count +1
+            
     if high_count in range(50,500,10): 
         #### What to do once a Movement is recognized, on exact number so only triggered once for movement
         
