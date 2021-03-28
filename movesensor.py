@@ -58,6 +58,8 @@ while 1:
             if idle_count >= 30:
                 print("No movement, going to Idle")
                 break
+            print("Idlecount:")
+            print idle_count
 
     if high_count in range(50,500,10): 
         #### What to do once a Movement is recognized, on exact number so only triggered once for movement
