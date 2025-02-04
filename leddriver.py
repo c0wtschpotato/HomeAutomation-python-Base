@@ -23,7 +23,6 @@ current_status =""## init empty
 last_status = None
 ##empty, saves current to last before changing current
 
-print("subbed again")
 t = "emptythread"
 def loopfunc(input_payload,pickfunc,opt = 0.0035):###function used with threading to loop certain effects// could be overruled by rereading retained mqtt messages
 	global do_run
@@ -152,12 +151,13 @@ def set_leds_to_input(sentpayload):
 			pass
 		do_run = True
 		AnimationThread = threading.Thread(target = loop_animation,args=()).start()
+	client.unsubscribe("HomA/ledstrip1/set_status")
+	client.subscribe("HomA/ledstrip1/set_status")
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 client.connect(HOST, 1883, 60)
-client.unsubscribe("HomA/ledstrip1/set_status")
-client.subscribe("HomA/ledstrip1/set_status")
+
 client.loop_forever()
 
 
