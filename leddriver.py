@@ -156,6 +156,7 @@ client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 client.connect(HOST, 1883, 60)
+client.unsubscribe("HomA/ledstrip1/set_status")
 client.subscribe("HomA/ledstrip1/set_status")
 client.loop_forever()
 
