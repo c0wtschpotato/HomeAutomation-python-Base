@@ -22,7 +22,7 @@ PORT = 1883
 current_status =""## init empty
 last_status = None
 ##empty, saves current to last before changing current
-client.subscribe("HomA/ledstrip1/set_status")
+
 print("subbed again")
 t = "emptythread"
 def loopfunc(input_payload,pickfunc,opt = 0.0035):###function used with threading to loop certain effects// could be overruled by rereading retained mqtt messages
@@ -156,7 +156,7 @@ client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 client.connect(HOST, 1883, 60)
-
+client.subscribe("HomA/ledstrip1/set_status")
 client.loop_forever()
 
 
