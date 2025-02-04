@@ -22,8 +22,10 @@ PORT = 1883
 current_status =""## init empty
 last_status = None
 ##empty, saves current to last before changing current
+client.subscribe("HomA/ledstrip1/set_status")
+print("subbed again")
 t = "emptythread"
-def loopfunc(input_payload,pickfunc,opt = 0.0035):###function used with threading to loop certain effects
+def loopfunc(input_payload,pickfunc,opt = 0.0035):###function used with threading to loop certain effects// could be overruled by rereading retained mqtt messages
 	global do_run
 	r = randrange(0,120)
 	g = randrange(0,255)
@@ -46,7 +48,7 @@ def loopfunc(input_payload,pickfunc,opt = 0.0035):###function used with threadin
 				return
 	return
 
-def loop_animation():
+def loop_animation():##could loop by retained message
 	cfg = config.read(os.path.join(os.getcwd(), cfgpath))
 	print(cfg["loop"]["func"])
 	for i in range(0,20):
