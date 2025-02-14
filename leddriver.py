@@ -80,6 +80,17 @@ def on_message(client, userdata, msg):
 		print("Done"+"\n")
 		# print("last know status was "+ last_status)
 
+	if msg.topic == "v2mqtt/light/2A8CB08184C4D3FC/command":##checks govee2mqtt
+		global current_status
+		global last_status
+		print("copy govee state: "+msg.payload+ "\n\n")
+		current_status = msg.payload
+		last_status = current_status
+		print("setting LEDs to input"+"\n")
+		set_leds_to_input(current_status)
+		print("Done"+"\n")
+
+
 	if msg.topic == "HomA/ledstrip1/get_status" :
 		global current_status
 		if msg.payload != "get":
