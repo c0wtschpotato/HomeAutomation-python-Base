@@ -63,6 +63,7 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("hermes/hotword/toggleOn")
     client.subscribe("c0wtschpotato:PCcontrol")
     client.subscribe("HomA/Philips/set_status")
+    client.subscribe("gv2mqtt/light/2A8CB08184C4D3FC/command")
 
 def on_message(client, userdata, msg):
 	global do_run
@@ -111,8 +112,6 @@ def on_message(client, userdata, msg):
 		cfg['philips']['vol_up'] = '1'
 
 
-		
-
 def set_leds_to_input(sentpayload):
 	print ("in set leds to input with" + sentpayload)
 	global do_run
@@ -151,6 +150,11 @@ def set_leds_to_input(sentpayload):
 			pass
 		do_run = True
 		AnimationThread = threading.Thread(target = loop_animation,args=()).start()
+	if obj["state"] == "ON":###attached to govee2mqtt
+		ws.setalltocolor(ws.pixels,(int(obj["color"]["r"]),int(obj["color"]["g"]),int(obj["color"]["b"])))
+
+
+
 	client.unsubscribe("HomA/ledstrip1/set_status")
 	time.sleep(0.1)###so it doesnt loop too fast
 	client.subscribe("HomA/ledstrip1/set_status")
