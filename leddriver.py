@@ -132,6 +132,7 @@ def set_leds_to_input(sentpayload):
 
 	if obj["state"]=="ON":
 		#ws.setalltocolor(ws.pixels,(int(obj["color"]["r"]),int(obj["color"]["g"]),int(obj["color"]["b"])))
+		print("not needed line")
 	print("passed State ON")
 	if obj ["function"] == "rainbow_slow":
 		print("starting rainbow_slow")
