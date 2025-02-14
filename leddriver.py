@@ -128,6 +128,7 @@ def set_leds_to_input(sentpayload):
 	#global do_run
 	#global t
 	obj = json.loads(sentpayload)
+	print("passed loading json")
 	if obj["state"]=="ON":
 		#ws.setalltocolor(ws.pixels,(int(obj["color"]["r"]),int(obj["color"]["g"]),int(obj["color"]["b"])))
 		print("not needed line")
