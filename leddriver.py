@@ -152,6 +152,7 @@ def set_leds_to_input(sentpayload):
 		do_run = True
 		AnimationThread = threading.Thread(target = loop_animation,args=()).start()
 	client.unsubscribe("HomA/ledstrip1/set_status")
+	time.sleep(0.1)###so it doesnt loop too fast
 	client.subscribe("HomA/ledstrip1/set_status")
 client = mqtt.Client()
 client.on_connect = on_connect
