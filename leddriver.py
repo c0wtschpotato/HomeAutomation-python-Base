@@ -129,7 +129,7 @@ def set_leds_to_input(sentpayload):
 	global t
 
 	obj = json.loads(sentpayload)	
-	print(sentpayload["state"]=="ON")
+	print(obj["state"]=="ON")
 	if obj ["function"] == "rainbow_slow":
 		print("starting rainbow_slow")
 		ws.rainbow_slow(ws.pixels)
