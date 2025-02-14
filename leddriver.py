@@ -162,7 +162,7 @@ def set_leds_to_input(sentpayload):
 		do_run = True
 		AnimationThread = threading.Thread(target = loop_animation,args=()).start()
 	
-	if obj["command"] == "ON":###attached to govee2mqtt
+	if obj["state"] == "ON":###attached to govee2mqtt
 		ws.setalltocolor(ws.pixels,(int(obj["color"]["r"]),int(obj["color"]["g"]),int(obj["color"]["b"])))
 
 
