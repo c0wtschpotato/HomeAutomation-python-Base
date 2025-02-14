@@ -128,20 +128,20 @@ def set_leds_to_input(sentpayload):
 	#global do_run
 	#global t
 	obj = json.loads(sentpayload)
-	print("passed loading json")
+
 	if obj["state"]=="ON":
-		#ws.setalltocolor(ws.pixels,(int(obj["color"]["r"]),int(obj["color"]["g"]),int(obj["color"]["b"])))
-		print("not needed line")
-	print("passed State ON")
+		ws.setalltocolor(ws.pixels,(int(obj["color"]["r"]),int(obj["color"]["g"]),int(obj["color"]["b"])))
+		
+
 	if obj ["function"] == "rainbow_slow":
 		print("starting rainbow_slow")
 		ws.rainbow_slow(ws.pixels)
 		print("cycle done")
-	print("passed rainbow_slow")
+
 	if obj["function"] == "lightning":
 		print("starting function lightning")
 		ws.lightning(ws.pixels)
-	print("passed lightning")
+
 	if obj["function"] == "running_on_chain":
 		ws.running_on_chain(ws.pixels,(int(obj["basecolor"]["r"]),int(obj["basecolor"]["g"]),int(obj["basecolor"]["b"])),(int(obj["runningcolor"]["r"]),int(obj["runningcolor"]["g"]),int(obj["runningcolor"]["b"])),int(obj["number_of_running"]),float(obj["sleep_time"]))
 
