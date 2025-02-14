@@ -131,7 +131,7 @@ def set_leds_to_input(sentpayload):
 	obj = json.loads(sentpayload)
 
 	if obj["state"]=="ON":
-		ws.setalltocolor(ws.pixels,(int(obj["color"]["r"]),int(obj["color"]["g"]),int(obj["color"]["b"])))
+		#ws.setalltocolor(ws.pixels,(int(obj["color"]["r"]),int(obj["color"]["g"]),int(obj["color"]["b"])))
 	print("passed State ON")
 	if obj ["function"] == "rainbow_slow":
 		print("starting rainbow_slow")
@@ -165,13 +165,8 @@ def set_leds_to_input(sentpayload):
 			pass
 		do_run = True
 		AnimationThread = threading.Thread(target = loop_animation,args=()).start()
-
-	
-
-
-
 	client.unsubscribe("HomA/ledstrip1/set_status")
-	time.sleep(0.1)###so it doesnt loop too fast
+	time.sleep(0.1)
 	client.subscribe("HomA/ledstrip1/set_status")
 client = mqtt.Client()
 client.on_connect = on_connect
