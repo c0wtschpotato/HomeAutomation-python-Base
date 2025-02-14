@@ -125,11 +125,9 @@ def on_message(client, userdata, msg):
 
 def set_leds_to_input(sentpayload):
 	print ("in set leds to input with" + sentpayload)
-	global do_run
-	global t
-
+	#global do_run
+	#global t
 	obj = json.loads(sentpayload)
-
 	if obj["state"]=="ON":
 		#ws.setalltocolor(ws.pixels,(int(obj["color"]["r"]),int(obj["color"]["g"]),int(obj["color"]["b"])))
 		print("not needed line")
