@@ -130,6 +130,10 @@ def set_leds_to_input(sentpayload):
 
 	obj = json.loads(sentpayload)	
 	print(obj["state"]=="ON")
+
+	if obj["state"]=="ON":###attached to govee2mqtt
+		print("checkfunc state ON")
+		ws.setalltocolor(ws.pixels,(int(obj["color"]["r"]),int(obj["color"]["g"]),int(obj["color"]["b"])))
 	if obj ["function"] == "rainbow_slow":
 		print("starting rainbow_slow")
 		ws.rainbow_slow(ws.pixels)
@@ -162,9 +166,7 @@ def set_leds_to_input(sentpayload):
 		do_run = True
 		AnimationThread = threading.Thread(target = loop_animation,args=()).start()
 
-	if obj["state"]=="ON":###attached to govee2mqtt
-		print("checkfunc state ON")
-		ws.setalltocolor(ws.pixels,(int(obj["color"]["r"]),int(obj["color"]["g"]),int(obj["color"]["b"])))
+	
 
 
 
