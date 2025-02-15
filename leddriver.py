@@ -129,7 +129,7 @@ def set_leds_to_input(sentpayload):
 	#global t
 	obj = json.loads(sentpayload)
 
-	if obj["state"]=="ON" and obj["function"]=="":
+	if "state" in obj and not "function" in obj:
 		ws.setalltocolor(ws.pixels,(int(obj["color"]["r"]),int(obj["color"]["g"]),int(obj["color"]["b"])))
 		
 
