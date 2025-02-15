@@ -123,8 +123,8 @@ def on_message(client, userdata, msg):
 
 def set_leds_to_input(sentpayload):
 	print ("in set leds to input with" + sentpayload)
-	#global do_run
-	#global t
+	global do_run
+	global t
 	obj = json.loads(sentpayload)
 
 	if "state" in obj and not "function" in obj:
