@@ -78,8 +78,6 @@ def on_message(client, userdata, msg):
 		print("setting LEDs to input"+"\n")
 		set_leds_to_input(current_status)
 		print("Done"+"\n")
-		# print("last know status was "+ last_status)
-
 	if msg.topic == "gv2mqtt/light/2A8CB08184C4D3FC/command":##checks govee2mqtt
 		global current_status
 		global last_status
