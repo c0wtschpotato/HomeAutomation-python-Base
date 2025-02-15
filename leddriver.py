@@ -68,7 +68,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
 	global do_run
 	global t
-	print(\n+"Message in: "+msg.topic)
+	print("Message in: "+msg.topic)
 	if msg.topic == "HomA/ledstrip1/set_status":
 		global current_status
 		global last_status
