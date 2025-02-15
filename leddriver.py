@@ -87,7 +87,7 @@ def on_message(client, userdata, msg):
 		print("setting LEDs to input"+"\n")
 		set_leds_to_input(current_status)
 		print("Done"+"\n")
-
+	print("passed gov2mqtt lines")
 
 	if msg.topic == "HomA/ledstrip1/get_status" :
 		global current_status
