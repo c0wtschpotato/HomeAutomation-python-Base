@@ -78,7 +78,7 @@ def on_message(client, userdata, msg):
 		print("setting LEDs to input"+"\n")
 		set_leds_to_input(current_status)
 		print("Done"+"\n")
-	if msg.topic == "gv2mqtt/light/2A8CB08184C4D3FC/command":##checks govee2mqtt
+	if msg.topic == "gv2mqtt/light/2A8CB08184C4D3FC/command":
 		global current_status
 		global last_status
 		print("copy govee state: "+msg.payload+ "\n\n")
