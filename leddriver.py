@@ -63,12 +63,12 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("hermes/hotword/toggleOn")
     client.subscribe("c0wtschpotato:PCcontrol")
     client.subscribe("HomA/Philips/set_status")
-    #client.subscribe("gv2mqtt/light/2A8CB08184C4D3FC/command")
+    client.subscribe("gv2mqtt/light/2A8CB08184C4D3FC/command")
 
 def on_message(client, userdata, msg):
 	global do_run
 	global t
-	print("Message in: "+msg.topic)
+	print(\n+"Message in: "+msg.topic)
 	if msg.topic == "HomA/ledstrip1/set_status":
 		global current_status
 		global last_status
