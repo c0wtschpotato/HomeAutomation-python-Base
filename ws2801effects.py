@@ -169,14 +169,14 @@ def WaveOnAll(step = 10):
     for i in range(0,255,step):
         setalltocolor(pixels,(i,i,255))
         time.sleep(0.01)
-	print "step"
+#	print "step"
     for i in range(255,0,-1*step):
 	setalltocolor(pixels,(255,i,i))
 	time.sleep(0.01)
     for i in range(0,255,step):
 	setalltocolor(pixels,(255-i*step,i,0))
 	time.sleep(0.01)
-    print "finish"
+#    print "finish"
 
 
 
