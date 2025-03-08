@@ -23,6 +23,7 @@ def on_connect(client, userdata, flags, rc):
 
 
 def motion_function():
+    global delay
     client.publish("HomA/move1",1)
     delay = 0
     if hotornot() is True:
@@ -33,6 +34,7 @@ def motion_function():
         print("Movement but not night")
 
 def no_motion_function():
+    global delay
     if delay <= 5:
         delay += 1
         time.sleep(3)
