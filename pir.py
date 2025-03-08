@@ -40,10 +40,10 @@ def no_motion_function():
 def hotornot():
     d = datetime.datetime.utcnow() < astral.sun.night(observer)[1].replace(tzinfo=None)
     m = datetime.datetime.utcnow() > astral.sun.night(observer)[0].replace(tzinfo=None)
- ###   if d is True:
- ###       print("es ist vor Sonnenaufgang")
- ###   if m is True:
- ###       print("es ist nach Sonnenuntergang")
+    if d is True:
+        print("es ist vor Sonnenaufgang")
+    if m is True:
+        print("es ist nach Sonnenuntergang")
     if d is True and m is True:
         print("Es ist Nacht")
         return True
