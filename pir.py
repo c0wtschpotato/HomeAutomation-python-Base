@@ -6,6 +6,7 @@ import paho.mqtt.client as mqtt
 
 HOST = "192.168.1.107"
 pir = MotionSensor(18)
+client = mqtt.Client()
 client.on_connect = on_connect
 client.connect(HOST, 1883, 60)
 
