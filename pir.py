@@ -30,7 +30,7 @@ pir.when_motion = motion_function
 pir.when_no_motion = no_motion_function
 client.on_message = on_message
 client.connect(HOST, PORT, 60)
-client.loop_forever()
+mqtt_client.loop_forever()
 
 
 pause()
