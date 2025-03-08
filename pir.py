@@ -43,7 +43,6 @@ def no_motion_function():
         delay += 1
         time.sleep(3)
         print(f'delayed {delay}')
-        return
     client.publish("HomA/move1",0)
     client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"OFF"}')
     client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"OFF"}')
