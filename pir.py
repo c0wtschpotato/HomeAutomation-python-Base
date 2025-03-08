@@ -23,11 +23,13 @@ def on_connect(client, userdata, flags, rc):
 def motion_function():
     client.publish("HomA/move1",1)
     client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"ON"}')
+    client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"ON"}')
     print("published movement")
 
 def no_motion_function():
     client.publish("HomA/move1",0)
     client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"OFF"}')
+    client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"ON"}')
     print("published movement stopped")
 client = mqtt.Client()
 client.on_connect = on_connect
