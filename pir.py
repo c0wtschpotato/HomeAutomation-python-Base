@@ -5,7 +5,7 @@ from signal import pause
 import paho.mqtt.client as mqtt
 import time 
 import datetime, astral
-
+from astral.sun import sun
 
 HOST = "192.168.1.107"
 pir = MotionSensor(18)
