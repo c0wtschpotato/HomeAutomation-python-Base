@@ -10,8 +10,7 @@ from astral.sun import sun
 HOST = "192.168.1.107"
 pir = MotionSensor(18)
 observer = astral.Observer(longitude = 48.572195884199324, latitude = 13.43809806362507, elevation = 312)
-global delay
-delay = 0 
+
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
     client.subscribe("HomA/ledstrip1/get_status")## for internal comm
@@ -59,7 +58,7 @@ def hotornot():
 
 client = mqtt.Client()
 client.on_connect = on_connect
-
+delay = 0 
 pir.when_motion = motion_function
 pir.when_no_motion = no_motion_function
 client.connect(HOST, 1883, 60)
