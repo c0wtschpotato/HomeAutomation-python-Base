@@ -24,6 +24,7 @@ def on_connect(client, userdata, flags, rc):
 
 def motion_function():
     client.publish("HomA/move1",1)
+    delay = 0
     if hotornot() is True:
         client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"ON"}')
         client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"ON"}')
