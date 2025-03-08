@@ -34,6 +34,7 @@ def motion_function():
 def no_motion_function():
     if delay <= 5:
         delay += 1
+        time.sleep(3)
         print("delayed {delay}")
         return
     client.publish("HomA/move1",0)
