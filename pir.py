@@ -10,6 +10,7 @@ from astral.sun import sun
 HOST = "192.168.1.107"
 pir = MotionSensor(18)
 observer = astral.Observer(longitude = 48.572195884199324, latitude = 13.43809806362507, elevation = 312)
+global delay
 delay = 0 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
@@ -46,10 +47,10 @@ def no_motion_function():
 def hotornot():
     d = datetime.datetime.utcnow() < astral.sun.night(observer)[1].replace(tzinfo=None)
     m = datetime.datetime.utcnow() > astral.sun.night(observer)[0].replace(tzinfo=None)
-    if d is True:
-        print("es ist vor Sonnenaufgang")
-    if m is True:
-        print("es ist nach Sonnenuntergang")
+#    if d is True:
+#        print("es ist vor Sonnenaufgang")
+#    if m is True:
+#        print("es ist nach Sonnenuntergang")
     if d is True and m is True:
         print("Es ist Nacht")
         return True
