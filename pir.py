@@ -42,10 +42,11 @@ def no_motion_function():
     if delay <= 5:
         delay += 1
         print(f'delayed {delay}')
-    client.publish("HomA/move1",0)
-    client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"OFF"}')
-    client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"OFF"}')
-    print("published movement stopped")
+    if delay > 5:
+        client.publish("HomA/move1",0)
+        client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"OFF"}')
+        client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"OFF"}')
+        print("published movement stopped")
 
 def hotornot():
     d = datetime.datetime.utcnow() < astral.sun.night(observer)[1].replace(tzinfo=None)
