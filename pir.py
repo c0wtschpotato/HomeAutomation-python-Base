@@ -38,13 +38,16 @@ def no_motion_function():
     print("published movement stopped")
 
 def hotornot():
-    if datetime.datetime.utcnow() < astral.sun.night(observer)[1].replace(tzinfo=None) is True:
-        print("es ist vor Sonnenaufgang")
-    if datetime.datetime.utcnow() > astral.sun.night(observer)[0].replace(tzinfo=None) is True:
-        print("es ist nach Sonnenuntergang")
-    if datetime.datetime.utcnow() < astral.sun.night(observer)[1].replace(tzinfo=None) is True and datetime.datetime.utcnow() > astral.sun.night(observer)[0].replace(tzinfo=None) is True:
+    d = datetime.datetime.utcnow() < astral.sun.night(observer)[1].replace(tzinfo=None)
+    m = datetime.datetime.utcnow() > astral.sun.night(observer)[0].replace(tzinfo=None)
+ ###   if d is True:
+ ###       print("es ist vor Sonnenaufgang")
+ ###   if m is True:
+ ###       print("es ist nach Sonnenuntergang")
+    if d is True and m is True:
         print("Es ist Nacht")
         return True
+    print("EoF")
 
 
 client = mqtt.Client()
