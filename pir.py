@@ -38,7 +38,7 @@ def no_motion_function():
     print("published movement stopped")
 
 def hotornot():
-    if datetime.datetime.utcnow() > astral.sun.night(obs)[1].replace(tzinfo=None) is True and datetime.datetime.utcnow() < astral.sun.night(obs)[0].replace(tzinfo=None) is True:
+    if datetime.datetime.utcnow() > astral.sun.night(observer)[1].replace(tzinfo=None) is True and datetime.datetime.utcnow() < astral.sun.night(observer)[0].replace(tzinfo=None) is True:
         print("Es ist Nacht")
         return True
 
