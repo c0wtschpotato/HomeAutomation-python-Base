@@ -3,6 +3,7 @@
 from gpiozero import MotionSensor
 from signal import pause
 import paho.mqtt.client as mqtt
+import time 
 
 HOST = "192.168.1.107"
 pir = MotionSensor(18)
@@ -21,17 +22,19 @@ def on_connect(client, userdata, flags, rc):
 
 def motion_function():
     client.publish("HomA/move1",1)
+    print("published movement")
 
 def no_motion_function():
     client.publish("HomA/move1",0)
+    print("published movement stopped")
 client = mqtt.Client()
 client.on_connect = on_connect
-client.connect(HOST, 1883, 60)
-client.loop_forever()
+
 
 pir.when_motion = motion_function
 pir.when_no_motion = no_motion_function
+client.connect(HOST, 1883, 60)
+client.loop_forever()
 
-pause()
 
 
