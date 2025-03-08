@@ -9,7 +9,7 @@ import datetime, astral
 
 HOST = "192.168.1.107"
 pir = MotionSensor(18)
-observer = astral.observer(longitude = 48.572195884199324, latitude = 13.43809806362507, elevation = 312)
+observer = astral.Observer(longitude = 48.572195884199324, latitude = 13.43809806362507, elevation = 312)
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
