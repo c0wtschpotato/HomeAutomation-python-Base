@@ -10,7 +10,7 @@ from astral.sun import sun
 HOST = "192.168.1.107"
 pir = MotionSensor(18)
 observer = astral.Observer(longitude = 48.572195884199324, latitude = 13.43809806362507, elevation = 312)
-
+delay = 0 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
     client.subscribe("HomA/ledstrip1/get_status")## for internal comm
@@ -32,6 +32,10 @@ def motion_function():
         print("Movement but not night")
 
 def no_motion_function():
+    if delay <= 5:
+        delay += 1
+        print("delayed {delay}")
+        return
     client.publish("HomA/move1",0)
     client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"OFF"}')
     client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"OFF"}')
