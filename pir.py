@@ -23,7 +23,7 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("HomA/kitchen/move")
 
 
-def motion_function():
+def motion_function(): 
     client.publish("HomA/move1",1)
     if hotornot() is True:
         client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"ON"}')
@@ -34,9 +34,10 @@ def motion_function():
 
 def no_motion_function():
     client.publish("HomA/move1",0)
-    client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"OFF"}')
-    client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"OFF"}')
-    print("published movement stopped")
+    if hotornot() is True:
+        client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"OFF"}')
+        client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"OFF"}')
+        print("published movement stopped")
 
 def hotornot():
     d = datetime.datetime.utcnow() < astral.sun.night(observer)[1].replace(tzinfo=None)
@@ -58,6 +59,3 @@ pir.when_motion = motion_function
 pir.when_no_motion = no_motion_function
 client.connect(HOST, 1883, 60)
 client.loop_forever()
-
-
-

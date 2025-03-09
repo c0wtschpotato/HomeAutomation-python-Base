@@ -14,6 +14,7 @@ cfgpath = "/home/pi/HomeAutomation-python-Base/LED.cfg"
 print ("installing depencies")
 os.system("sudo apt-get install libzbar-dev libzbar0 libffi-dev libssl-dev wiringpi python-pip")
 os.system("sudo pip3 install RPi.GPIO")
+os.system("sudo pip install gpiozero")
 os.system("sudo pip3 install hermes")
 os.system("sudo pip3 install broadlink")
 os.system("sudo pip3 install board")
