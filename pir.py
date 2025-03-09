@@ -38,6 +38,8 @@ def no_motion_function():
         client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"OFF"}')
         client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"OFF"}')
         print("published movement stopped")
+    else:
+        print("Movement ended, but not night")
 
 def hotornot():
     d = datetime.datetime.utcnow() < astral.sun.night(observer)[1].replace(tzinfo=None)
