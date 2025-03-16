@@ -28,18 +28,19 @@ def motion_function():
     if hotornot() is True:
         client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"ON"}')
         client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"ON"}')
-        print("published lights on")
+        print("published lights on"+str(datetime.datetime.utcnow()))
     else:
-        print("Movement but not night")
+        print("Movement but not night"+str(datetime.datetime.utcnow()))
 
 def no_motion_function():
     client.publish("HomA/move1",0)
     if hotornot() is True:
         client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"OFF"}')
         client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"OFF"}')
-        print("published movement stopped")
+        print("published movement stopped"+str(datetime.datetime.utcnow()))
+
     else:
-        print("Movement ended, but not night")
+        print("Movement ended, but not night"+str(datetime.datetime.utcnow()))
 
 def hotornot():
     d = datetime.datetime.utcnow() < astral.sun.night(observer)[1].replace(tzinfo=None)
