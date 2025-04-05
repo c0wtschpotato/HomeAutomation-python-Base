@@ -51,7 +51,7 @@ def set_display(state):
         print("HDMI On")
         os.system("vcgencmd display_power 1")
     else:
-        os.system("vcgencmd display_power 1")
+        os.system("vcgencmd display_power 0")
         print("HDMI Off")
 
 def hotornot():
@@ -68,7 +68,7 @@ def hotornot():
 
 def on_message(client, userdata, msg):
     if msg.topic == 'HomA/kitchen/move':
-        set_display(str(msg.payload))
+        set_display(int(msg.payload))
 
 
 
