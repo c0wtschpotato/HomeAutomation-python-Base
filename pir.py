@@ -46,10 +46,13 @@ def no_motion_function():
     set_display(0)
 
 def set_display(state):
-    print("Set state to",state)
-    state = str(state)
-    os.system(f"vcgencmd display_power {state}")
-
+    print("Set state")
+    if state == 1:
+        print("HDMI On")
+        os.system("vcgencmd display_power 1")
+    else:
+        os.system("vcgencmd display_power 1")
+        print("HDMI Off")
 
 def hotornot():
     d = datetime.datetime.utcnow() < astral.sun.night(observer)[1].replace(tzinfo=None)
