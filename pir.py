@@ -68,7 +68,7 @@ def hotornot():
 
 def on_message(client, userdata, msg):
     if msg.topic == 'HomA/kitchen/move':
-        set_display(msg.payload)
+        set_display(str(msg.payload))
 
 
 
