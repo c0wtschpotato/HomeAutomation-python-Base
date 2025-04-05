@@ -46,7 +46,7 @@ def no_motion_function():
     set_display(0)
 
 def set_display(state):
-    print("Set state")
+    print("State recieved",state)
     if state == 1:
         print("HDMI On")
         os.system("vcgencmd display_power 1")
