@@ -46,6 +46,8 @@ def no_motion_function():
     set_display(0)
 
 def set_display(state):
+    print("Set state to",state)
+    state = str(state)
     os.system(f"vcgencmd display_power {state}")
 
 
@@ -63,7 +65,6 @@ def hotornot():
 
 def on_message(client, userdata, msg):
     if msg.topic == 'HomA/kitchen/move':
-        print("Set state to",msg.payload)
         set_display(msg.payload)
 
 
