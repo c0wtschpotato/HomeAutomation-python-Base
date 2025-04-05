@@ -46,10 +46,8 @@ def no_motion_function():
     set_display(0)
 
 def set_display(state):
-    if state == 1:
-        os.system("vcgencmd display_power 1")
-    else:
-        os.system("vcgencmd display_power 0")
+    os.system("vcgencmd display_power ",state)
+
 
 def hotornot():
     d = datetime.datetime.utcnow() < astral.sun.night(observer)[1].replace(tzinfo=None)
@@ -65,6 +63,7 @@ def hotornot():
 
 def on_message(client, userdata, msg):
     if msg.topic == 'HomA/kitchen/move':
+        print("Set state to",msg)
         set_display(msg)
 
 
