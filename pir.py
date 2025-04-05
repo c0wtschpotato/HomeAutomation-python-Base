@@ -6,6 +6,7 @@ import paho.mqtt.client as mqtt
 import time 
 import datetime, astral
 from astral.sun import sun
+import os
 
 HOST = "192.168.1.107"
 pir = MotionSensor(18)
@@ -31,6 +32,7 @@ def motion_function():
         print("published lights on"+str(datetime.datetime.utcnow()))
     else:
         print("Movement but not night"+str(datetime.datetime.utcnow()))
+    os.system("vcgencmd display_power 1")
 
 def no_motion_function():
     client.publish("HomA/move1",0)
@@ -41,6 +43,7 @@ def no_motion_function():
 
     else:
         print("Movement ended, but not night"+str(datetime.datetime.utcnow()))
+    os.system("vcgencmd display_power 0")
 
 def hotornot():
     d = datetime.datetime.utcnow() < astral.sun.night(observer)[1].replace(tzinfo=None)
