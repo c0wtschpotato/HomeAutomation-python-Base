@@ -25,17 +25,17 @@ def on_connect(client, userdata, flags, rc):
 
 
 def motion_function(): 
-    client.publish("HomA/move1",1)
+    client.publish("HomA/kitchen/move",1)
     if hotornot() is True:
         client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"ON"}')
         client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"ON"}')
         print("published lights on"+str(datetime.datetime.utcnow()))
     else:
         print("Movement but not night"+str(datetime.datetime.utcnow()))
-    os.system("vcgencmd display_power 1")
+    set_display(1)
 
 def no_motion_function():
-    client.publish("HomA/move1",0)
+    client.publish("HomA/kitchen/move",0)
     if hotornot() is True:
         client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"OFF"}')
         client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"OFF"}')
@@ -43,7 +43,13 @@ def no_motion_function():
 
     else:
         print("Movement ended, but not night"+str(datetime.datetime.utcnow()))
-    os.system("vcgencmd display_power 0")
+    set_display(0)
+
+def set_display(state):
+    if state == 1:
+        os.system("vcgencmd display_power 1")
+    else:
+        os.system("vcgencmd display_power 0")
 
 def hotornot():
     d = datetime.datetime.utcnow() < astral.sun.night(observer)[1].replace(tzinfo=None)
@@ -57,11 +63,16 @@ def hotornot():
         return True
     print("EoF")
 
+def on_message(client, userdata, msg):
+    if msg.topic == 'HomA/kitchen/move':
+        set_display(msg)
+
+
 
 client = mqtt.Client()
 client.on_connect = on_connect
-
 pir.when_motion = motion_function
 pir.when_no_motion = no_motion_function
+client.on_message = on_message
 client.connect(HOST, 1883, 60)
 client.loop_forever()
