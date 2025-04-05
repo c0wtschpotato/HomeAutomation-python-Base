@@ -46,7 +46,7 @@ def no_motion_function():
     set_display(0)
 
 def set_display(state):
-    os.system("vcgencmd display_power ",state)
+    os.system(f"vcgencmd display_power {state}")
 
 
 def hotornot():
