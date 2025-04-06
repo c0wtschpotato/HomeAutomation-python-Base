@@ -67,7 +67,7 @@ def hotornot():
     print("EoF")
 
 def on_message(client, userdata, msg):
-    if msg.topic == 'HomA/kitchen/move':
+    if msg.topic == 'HomA/sensor/kitchen/move':
         set_display(int(msg.payload))
 
 
