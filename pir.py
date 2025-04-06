@@ -21,7 +21,7 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("hermes/hotword/toggleOn")
     client.subscribe("c0wtschpotato:PCcontrol")
     client.subscribe("HomA/Philips/set_status")
-    client.subscribe("HomA/kitchen/move")
+    client.subscribe("HomA/sensor/kitchen/move")
 
 
 def motion_function(): 
