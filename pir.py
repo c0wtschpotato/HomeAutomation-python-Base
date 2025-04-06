@@ -25,7 +25,7 @@ def on_connect(client, userdata, flags, rc):
 
 
 def motion_function(): 
-    client.publish("HomA/kitchen/move",1)
+    client.publish("HomA/sensor/kitchen/move",1)
     if hotornot() is True:
         client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"ON"}')
         client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"ON"}')
@@ -35,7 +35,7 @@ def motion_function():
     set_display(1)
 
 def no_motion_function():
-    client.publish("HomA/kitchen/move",0)
+    client.publish("HomA/sensor/kitchen/move",0)
     if hotornot() is True:
         client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"OFF"}')
         client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"OFF"}')

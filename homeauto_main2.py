@@ -43,6 +43,7 @@ def on_connect(client, userdata, flags, rc):
         client.subscribe("HomA/mhz/cmd")
         client.subscribe("HomA/mhz")
         client.subscribe("HomA/pc")
+        client.subscribe("HomA/sensor/kitchen/move")
 
 
 def decidemethod(type,section = "11001",key = "3",value = "0"):### picks type and way to proceed
