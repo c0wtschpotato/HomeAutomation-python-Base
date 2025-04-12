@@ -8,7 +8,7 @@ import datetime, astral
 from astral.sun import sun
 import os
 device = os.uname()[1]
-os.system("DISPLAY=:0.0 chromium-browser "http://192.168.1.103:8123/lovelace/default_view"")##open display to HASS 
+os.system("DISPLAY=:0.0 chromium-browser 'http://192.168.1.103:8123/lovelace/default_view'")##open display to HASS 
 HOST = "192.168.1.107"
 if device == "armv61": ## check if pi zero
     pir = MotionSensor(18)
