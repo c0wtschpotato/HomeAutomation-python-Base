@@ -51,8 +51,10 @@ def set_display(state):
     if state == 1:
         print("HDMI On")
         os.system("vcgencmd display_power 1")
+        os.system("wlr-randr --output HDMI-A-1 --on")###newer PI OS
     else:
         os.system("vcgencmd display_power 0")
+        os.system("wlr-randr --output HDMI-A-1 --off")###newer PI OS
         print("HDMI Off")
 
 def hotornot():
