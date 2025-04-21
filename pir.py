@@ -7,7 +7,7 @@ import time
 import datetime, astral
 from astral.sun import sun
 import os
-device = os.uname()[1]
+device = os.uname()[4]
 #os.system("DISPLAY=:0.0 chromium-browser 'http://192.168.1.103:8123/lovelace/default_view'")##open display to HASS 
 HOST = "192.168.1.107"
 if device == "armv61": ## check if pi zero
@@ -78,7 +78,7 @@ def on_message(client, userdata, msg):
 
 client = mqtt.Client()
 client.on_connect = on_connect
-if device[4] == "armv61": ## check if pi zero
+if device == "armv61": ## check if pi zero
     print("pi zero detected")
     pir.when_motion = motion_function
     pir.when_no_motion = no_motion_function
