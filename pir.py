@@ -58,7 +58,7 @@ def set_display(state):
         os.system("vcgencmd display_power 0")
         os.system("wlr-randr --output HDMI-A-1 --off")###newer PI OS
         print("HDMI Off")
-    print("\\n")
+    print("\n")
 
 def hotornot():
     d = datetime.datetime.utcnow() < astral.sun.sunrise(observer,datetime.datetime.today()+datetime.timedelta(days=1)).replace(tzinfo=None)### offset um 1 tag damit nicht der heutige sunrise verwendet wird
