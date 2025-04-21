@@ -4,14 +4,14 @@ from gpiozero import MotionSensor
 from signal import pause
 import paho.mqtt.client as mqtt
 import time 
-import datetime, astral
+import datetime, astral, os
 from astral.sun import sun
 #os.system("DISPLAY=:0.0 chromium-browser 'http://192.168.1.103:8123/lovelace/default_view'")##open display to HASS 
 HOST = "192.168.1.107"
 try:## error catch for other pis but zero
     pir = MotionSensor(18)
 except:
-    pass
+    print("not pi zero")
 
 observer = astral.Observer(longitude = 13.43809806362507 , latitude = 48.572195884199324  , elevation = 312)
 
@@ -85,7 +85,7 @@ try:
     pir.when_motion = motion_function
     pir.when_no_motion = no_motion_function
 except:
-    pass
+    print("not pi zero")
 print("deine fotzenmutter")
 client.on_message = on_message
 client.connect(HOST, 1883, 60)
