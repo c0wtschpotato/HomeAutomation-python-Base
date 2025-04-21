@@ -58,6 +58,7 @@ def set_display(state):
         os.system("vcgencmd display_power 0")
         os.system("wlr-randr --output HDMI-A-1 --off")###newer PI OS
         print("HDMI Off")
+    print("\\n")
 
 def hotornot():
     d = datetime.datetime.utcnow() < astral.sun.sunrise(observer,datetime.datetime.today()+datetime.timedelta(days=1)).replace(tzinfo=None)### offset um 1 tag damit nicht der heutige sunrise verwendet wird
@@ -76,18 +77,14 @@ def on_message(client, userdata, msg):
         set_display(int(msg.payload))
 
 
-print("unfassbar")
 client = mqtt.Client()
 client.on_connect = on_connect
-print("na schau dir das an")
 try:
     print("pi zero detected")
     pir.when_motion = motion_function
     pir.when_no_motion = no_motion_function
 except:
     print("not pi zero")
-print("deine fotzenmutter")
 client.on_message = on_message
 client.connect(HOST, 1883, 60)
 client.loop_forever()
-print("ach, is nich wahr")
