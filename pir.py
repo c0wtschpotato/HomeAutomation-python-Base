@@ -12,7 +12,7 @@ device = os.uname()[1]
 HOST = "192.168.1.107"
 if device == "armv61": ## check if pi zero
     pir = MotionSensor(18)
-observer = astral.Observer(longitude = 48.572195884199324, latitude = 13.43809806362507, elevation = 312)
+observer = astral.Observer(latitude = 48.572195884199324, longitude = 13.43809806362507, elevation = 312)
 
 
 def on_connect(client, userdata, flags, rc):
@@ -76,11 +76,11 @@ def on_message(client, userdata, msg):
 
 
 
-#client = mqtt.Client()
-#client.on_connect = on_connect
-#if device == "armv61": ## check if pi zero
-#    pir.when_motion = motion_function
-#    pir.when_no_motion = no_motion_function
-#client.on_message = on_message
-#client.connect(HOST, 1883, 60)
-#client.loop_forever()
+client = mqtt.Client()
+client.on_connect = on_connect
+if device == "armv61": ## check if pi zero
+    pir.when_motion = motion_function
+    pir.when_no_motion = no_motion_function
+client.on_message = on_message
+client.connect(HOST, 1883, 60)
+client.loop_forever()
