@@ -76,11 +76,11 @@ def on_message(client, userdata, msg):
 
 
 
-client = mqtt.Client()
-client.on_connect = on_connect
-if device == "armv61": ## check if pi zero
-    pir.when_motion = motion_function
-    pir.when_no_motion = no_motion_function
-client.on_message = on_message
-client.connect(HOST, 1883, 60)
-client.loop_forever()
+#client = mqtt.Client()
+#client.on_connect = on_connect
+#if device == "armv61": ## check if pi zero
+#    pir.when_motion = motion_function
+#    pir.when_no_motion = no_motion_function
+#client.on_message = on_message
+#client.connect(HOST, 1883, 60)
+#client.loop_forever()
