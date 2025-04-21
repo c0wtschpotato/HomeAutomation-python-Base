@@ -10,6 +10,8 @@ from astral.sun import sun
 HOST = "192.168.1.107"
 try:## error catch for other pis but zero
     pir = MotionSensor(18)
+except:
+    pass
 
 observer = astral.Observer(longitude = 13.43809806362507 , latitude = 48.572195884199324  , elevation = 312)
 
@@ -82,6 +84,8 @@ try:
     print("pi zero detected")
     pir.when_motion = motion_function
     pir.when_no_motion = no_motion_function
+except:
+    pass
 print("deine fotzenmutter")
 client.on_message = on_message
 client.connect(HOST, 1883, 60)
