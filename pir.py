@@ -11,7 +11,7 @@ HOST = "192.168.1.107"
 try:## error catch for other pis but zero
     pir = MotionSensor(18)
 
-observer = astral.Observer(latitude = 48.572195884199324 , longitude = 13.43809806362507 , elevation = 312)
+observer = astral.Observer(latitude = 48.5721958841993 , longitude = 13.438098063625 , elevation = 312)
 
 
 def on_connect(client, userdata, flags, rc):
