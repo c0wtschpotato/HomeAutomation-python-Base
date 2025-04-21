@@ -8,7 +8,7 @@ import datetime, astral
 from astral.sun import sun
 import os
 device = os.uname()[1]
-os.system("DISPLAY=:0.0 chromium-browser 'http://192.168.1.103:8123/lovelace/default_view'")##open display to HASS 
+#os.system("DISPLAY=:0.0 chromium-browser 'http://192.168.1.103:8123/lovelace/default_view'")##open display to HASS 
 HOST = "192.168.1.107"
 if device == "armv61": ## check if pi zero
     pir = MotionSensor(18)
@@ -31,9 +31,9 @@ def motion_function():
     if hotornot() is True:
         client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"ON"}')
         client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"ON"}')
-        print("published lights on"+str(datetime.datetime.utcnow()))
+        print("published lights on"+str(datetime.datetime.now()))
     else:
-        print("Movement but not night"+str(datetime.datetime.utcnow()))
+        print("Movement but not night"+str(datetime.datetime.now()))
     set_display(1)
 
 def no_motion_function():
@@ -41,10 +41,10 @@ def no_motion_function():
     if hotornot() is True:
         client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"OFF"}')
         client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"OFF"}')
-        print("published movement stopped"+str(datetime.datetime.utcnow()))
+        print("published movement stopped"+str(datetime.datetime.now()))
 
     else:
-        print("Movement ended, but not night"+str(datetime.datetime.utcnow()))
+        print("Movement ended, but not night"+str(datetime.datetime.now()))
     set_display(0)
 
 def set_display(state):
@@ -59,8 +59,8 @@ def set_display(state):
         print("HDMI Off")
 
 def hotornot():
-    d = datetime.datetime.utcnow() < astral.sun.night(observer)[1].replace(tzinfo=None)
-    m = datetime.datetime.utcnow() > astral.sun.night(observer)[0].replace(tzinfo=None)
+    d = datetime.datetime.utcnow() < astral.sun.sunset(observer).replace(tzinfo=None)
+    m = datetime.datetime.utcnow() > astral.sun.sunrise(observer).replace(tzinfo=None)
 #    if d is True:
 #        print("es ist vor Sonnenaufgang")
 #    if m is True:
