@@ -59,8 +59,8 @@ def set_display(state):
         print("HDMI Off")
 
 def hotornot():
-    d = datetime.datetime.utcnow() < astral.sun.sunset(observer).replace(tzinfo=None)
-    m = datetime.datetime.utcnow() > astral.sun.sunrise(observer).replace(tzinfo=None)
+    d = datetime.datetime.utcnow() < astral.sun.sunrise(observer,datetime.datetime.today()+datetime.timedelta(days=1)).replace(tzinfo=None)### offset um 1 tag damit nicht der heutige sunrise verwendet wird
+    m = datetime.datetime.utcnow() > astral.sun.sunset(observer).replace(tzinfo=None)
 #    if d is True:
 #        print("es ist vor Sonnenaufgang")
 #    if m is True:
