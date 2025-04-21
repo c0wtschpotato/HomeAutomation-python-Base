@@ -75,13 +75,16 @@ def on_message(client, userdata, msg):
         set_display(int(msg.payload))
 
 
-
+print("unfassbar")
 client = mqtt.Client()
 client.on_connect = on_connect
+print("na schau dir das an")
 if device == "armv61": ## check if pi zero
     print("pi zero detected")
     pir.when_motion = motion_function
     pir.when_no_motion = no_motion_function
+print("deine fotzenmutter")
 client.on_message = on_message
 client.connect(HOST, 1883, 60)
 client.loop_forever()
+print("ach, is nich wahr")
