@@ -12,7 +12,7 @@ try:## error catch for other pis but zero
     pir = MotionSensor(18)
 except:
     print("not pi zero")
-
+channel = input("Channel to post in (HomA/sensor/kitchen/move)")
 observer = astral.Observer(longitude = 13.43809806362507 , latitude = 48.572195884199324  , elevation = 312)
 
 
@@ -27,8 +27,8 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("HomA/sensor/kitchen/move")
 
 
-def motion_function(): 
-    client.publish("HomA/sensor/kitchen/move",1)
+def motion_function(channel): 
+    client.publish(channel,1)
     if hotornot() is True:
         client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"ON"}')
         client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"ON"}')
@@ -37,9 +37,9 @@ def motion_function():
         print("Movement but not night"+str(datetime.datetime.now()))
     set_display(1)
 
-def no_motion_function():
-    client.publish("HomA/sensor/kitchen/move",0)
-    if hotornot() is True:
+def no_motion_function(channel):
+    client.publish(channel,0)
+    if hotornot() is True and channel == "HomA/sensor/kitchen/move":
         client.publish("gv2mqtt/light/3ACA983DAE115A38/command",'{"state":"OFF"}')
         client.publish("gv2mqtt/light/D67AB08184CE6070/command",'{"state":"OFF"}')
         print("published movement stopped"+str(datetime.datetime.now()))
