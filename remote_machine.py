@@ -51,8 +51,8 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
 	if msg.topic == "HomA/remote/%s" %customchannel:
 		if msg.payload == "shutdown":
-		print("Shutdown recieved")
-		os.system("sudo shutdown now")
+			print("Shutdown recieved")
+			os.system("sudo shutdown now")
 		else:
 			print("unknown message")
 
