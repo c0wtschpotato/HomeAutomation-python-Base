@@ -10,7 +10,7 @@ except:
 ###########Commands#################################
 #shutdown - shutdown machine#
 config_file = 'config.json'
-create_or_read_config()
+
 PORT = 1883
 global customchannel
 
@@ -56,7 +56,7 @@ def on_message(client, userdata, msg):
 
 
 
-
+create_or_read_config()
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
