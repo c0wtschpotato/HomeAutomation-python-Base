@@ -27,10 +27,10 @@ def create_or_read_config():
             print(f"Custom Channel: {config['customchannel']}")
     else:
         host = input("Are you in Host network? y/n:")
-			if host == "y":
-				host = "192.168.1.107"
-			else:
-				host = "192.168.0.51"
+		if host == "y":
+			host = "192.168.1.107"
+		else:
+			host = "192.168.0.51"
         customchannel = input("Bitte geben Sie den Custom Channel ein: ")
 
         config = {
