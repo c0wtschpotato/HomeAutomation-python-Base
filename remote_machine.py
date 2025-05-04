@@ -14,7 +14,7 @@ except:
 HOST = input("Host IP:")
 PORT = 1883
 global channel
-channel = input("Name the mqtt channel to listen to (HomA/remote/CHANNELNAME)")
+customchannel = input("Name the mqtt channel to listen to (HomA/remote/CHANNELNAME)")
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
