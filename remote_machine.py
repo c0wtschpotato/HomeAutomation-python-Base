@@ -12,7 +12,7 @@ except:
 config_file = 'config.json'
 
 PORT = 1883
-global customchannel,host,customchannel
+global customchannel,host
 
 
 def create_or_read_config():
