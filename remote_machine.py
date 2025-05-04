@@ -11,7 +11,7 @@ except:
 
 
 
-HOST = '192.168.1.107'
+HOST = input("Host IP:")
 PORT = 1883
 channel = input("Name the mqtt channel to listen to (HomA/remote/CHANNELNAME)")
 
