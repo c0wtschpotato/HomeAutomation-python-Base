@@ -9,14 +9,11 @@ except:
 ####################################################
 ###########Commands#################################
 #shutdown - shutdown machine#
-
-
-
 config_file = 'config.json'
-
+create_or_read_config()
 PORT = 1883
 global customchannel
-customchannel = input("Name the mqtt channel to listen to (HomA/remote/CHANNELNAME)")
+
 
 def create_or_read_config():
 	if os.path.exists(config_file):
