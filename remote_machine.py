@@ -34,6 +34,6 @@ def on_message(client, userdata, msg,customchannel):
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
-client.connect(HOST, 1883, 60)
+client.connect(HOST, 1883, 60, customchannel)
 
 client.loop_forever()
