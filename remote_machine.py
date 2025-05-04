@@ -16,6 +16,7 @@ global customchannel,host
 
 
 def create_or_read_config():
+	global customchannel,host
 	if os.path.exists(config_file):
 		with open(config_file, 'r') as file:
 			config = json.load(file)
