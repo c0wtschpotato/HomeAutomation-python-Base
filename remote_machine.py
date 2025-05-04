@@ -11,7 +11,11 @@ except:
 
 
 
-HOST = input("Host IP:")
+HOST = input("Are you in Host network? y/n:")
+if HOST == "y":
+	HOST = "192.168.1.107"
+else:
+	HOST = "192.168.0.51"
 PORT = 1883
 global channel
 customchannel = input("Name the mqtt channel to listen to (HomA/remote/CHANNELNAME)")
@@ -23,10 +27,11 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
     if msg.topic == "HomA/remote/%s" %customchannel:
-        msg.payload == "shutdown"
+        if msg.payload == "shutdown":
         print("Shutdown recieved")
         os.system("sudo shutdown now")
-
+    	else:
+    		print("unknown message")
 
 
 
@@ -35,6 +40,6 @@ def on_message(client, userdata, msg):
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
-client.connect("192.168.0.51", 1883, 60)
+client.connect(HOST, 1883, 60)
 
 client.loop_forever()
