@@ -54,7 +54,7 @@ def on_message(client, userdata, msg):
 			print("Shutdown recieved")
 			os.system("sudo shutdown now")
 		else:
-			print("unknown message")
+			print(f"unknown message {msg.payload}")
 
 
 
