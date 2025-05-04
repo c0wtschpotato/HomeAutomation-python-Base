@@ -4,6 +4,11 @@ try:
 	import paho.mqtt.client as mqtt
 except:
 	os.system("pip install paho-mqtt")
+####################################################
+###########Commands#################################
+#shutdown - shutdown machine#
+
+
 
 
 HOST = '192.168.1.107'
