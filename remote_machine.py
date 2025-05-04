@@ -20,10 +20,10 @@ def create_or_read_config():
 		with open(config_file, 'r') as file:
 			config = json.load(file)
 			print("Konfiguration geladen:")
-			host= {config['host']}
-			print(f"Host: {config['host']}")
-			customchannel ={config['customchannel']}
-			print(f"Custom Channel: {config['customchannel']}")
+			host= config['host']
+			print(f"Host: {host}")
+			customchannel =config['customchannel']
+			print(f"Custom Channel: {customchannel}")
 	else:
 		host = input("Are you in Host network? y/n:")
 		if host == "y":
