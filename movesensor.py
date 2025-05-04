@@ -29,7 +29,7 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("hermes/hotword/toggleOn")
     client.subscribe("c0wtschpotato:PCcontrol")
     client.subscribe("HomA/Philips/set_status")
-    client.subscribe("HomA/sensor/ktichen/move")
+    client.subscribe("HomA/sensor/kitchen/move")
 
 
 client = mqtt.Client()
