@@ -19,42 +19,42 @@ global customchannel
 customchannel = input("Name the mqtt channel to listen to (HomA/remote/CHANNELNAME)")
 
 def create_or_read_config():
-    if os.path.exists(config_file):
-        with open(config_file, 'r') as file:
-            config = json.load(file)
-            print("Konfiguration geladen:")
-            print(f"Host: {config['host']}")
-            print(f"Custom Channel: {config['customchannel']}")
-    else:
-        host = input("Are you in Host network? y/n:")
+	if os.path.exists(config_file):
+		with open(config_file, 'r') as file:
+			config = json.load(file)
+			print("Konfiguration geladen:")
+			print(f"Host: {config['host']}")
+			print(f"Custom Channel: {config['customchannel']}")
+	else:
+		host = input("Are you in Host network? y/n:")
 		if host == "y":
 			host = "192.168.1.107"
 		else:
 			host = "192.168.0.51"
-        customchannel = input("Bitte geben Sie den Custom Channel ein: ")
+		customchannel = input("Bitte geben Sie den Custom Channel ein: ")
 
-        config = {
-            'host': host,
-            'customchannel': customchannel
-        }
+		config = {
+		    'host': host,
+		    'customchannel': customchannel
+		}
 
-        with open(config_file, 'w') as file:
-            json.dump(config, file, indent=4)
+		with open(config_file, 'w') as file:
+		    json.dump(config, file, indent=4)
 
-        print("Konfiguration gespeichert.")
+		print("Konfiguration gespeichert.")
 
 def on_connect(client, userdata, flags, rc):
-    print("Connected with result code " + str(rc))
-    client.subscribe("HomA/remote/%s" %customchannel)## for internal comm
+	print("Connected with result code " + str(rc))
+	client.subscribe("HomA/remote/%s" %customchannel)## for internal comm
 
 
 def on_message(client, userdata, msg):
-    if msg.topic == "HomA/remote/%s" %customchannel:
-        if msg.payload == "shutdown":
-        print("Shutdown recieved")
-        os.system("sudo shutdown now")
-    	else:
-    		print("unknown message")
+	if msg.topic == "HomA/remote/%s" %customchannel:
+		if msg.payload == "shutdown":
+		print("Shutdown recieved")
+		os.system("sudo shutdown now")
+		else:
+			print("unknown message")
 
 
 
