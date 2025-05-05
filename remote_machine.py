@@ -64,7 +64,7 @@ def on_message(client, userdata, msg):
 			if get_os_type == "Windows":
 				os.system("shutdown -s")
 			else:
-				os.system("sudo poweroff")
+				os.system("sudo /sbin/shutdown -h now")## Scheint unter OMV WOL zu ermöglichen
 		else:
 			print(f"unknown message {msg.payload}")
 
