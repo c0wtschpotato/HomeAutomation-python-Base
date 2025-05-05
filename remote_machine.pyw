@@ -61,7 +61,7 @@ def on_message(client, userdata, msg):
 	if msg.topic == "HomA/remote/%s" %customchannel:
 		if msg.payload == "shutdown" or msg.payload == b"shutdown":
 			print("Shutdown recieved")
-			if get_os_type == "Windows":
+			if get_os_type() == "Windows":
 				os.system("shutdown -s")
 			else:
 				os.system("sudo shutdown now")

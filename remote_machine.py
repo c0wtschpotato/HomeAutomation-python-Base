@@ -64,7 +64,7 @@ def on_message(client, userdata, msg):
 			if get_os_type == "Windows":
 				os.system("shutdown -s")
 			else:
-				os.system("sudo shutdown now")
+				os.system("sudo poweroff")
 		else:
 			print(f"unknown message {msg.payload}")
 
